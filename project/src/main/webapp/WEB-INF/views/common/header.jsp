@@ -24,8 +24,7 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600' rel='stylesheet' type='text/css'>
 
         <!-- BOOTSTRAP CSS -->
-        <!-- <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"> -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
         <!-- Image Slider -->
         <link rel="stylesheet" href="/css/plagin-css/plagin.css">
@@ -48,9 +47,9 @@
 
         <!-- Start: Navbar Area
         ============================= -->
-        <header id="header" class="okayNav-header fixed-top main-navbar-top">
+        <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
             <div class="container">
-                <div class="d-flex flex-row justify-content-between">
+                <div class="row">
                     
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
@@ -62,8 +61,8 @@
                     </div> <!-- End: .col-xs-3 -->
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6">
 
-                        <nav role="navigation" id="js-navbar-menu" class="okayNav pull-right d-flex justify-content-end">
-                            <ul id="navbar-nav" class="navbar-nav d-flex flex-row flex-wrap justify-content-end">
+                        <nav role="navigation" class="okayNav pull-right" id="js-navbar-menu">
+                            <ul id="navbar-nav" class="navbar-nav">
                                 <li><a class="btn-nav" href="#features">Features</a></li>
                                 <li><a class="btn-nav" href="#work">work</a></li>
                                 <li><a class="btn-nav" href="#testimnial">Testimnial</a></li>
@@ -75,7 +74,7 @@
                     </div> <!-- End: .col-xs-9 -->
                 </div> <!-- End: .row -->
             </div> <!-- End: .container -->
-        </header>
+        </header><!-- /header -->
         <!-- End: Navbar Area
         ============================= -->
 
@@ -83,10 +82,10 @@
         
         <!-- Start: Header Section
         ================================ -->
-        <section class="header-section-1 bg-image-1 header-js" id="header">
+        <section class="header-section-1 bg-image-1 header-js" id="header" >
             <div class="overlay-color">
                 <div class="container">
-                    <div class="section-separator d-flex flex-row justify-content-center">
+                    <div class="row section-separator">
 
                         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                             <div class="part-inner text-center">

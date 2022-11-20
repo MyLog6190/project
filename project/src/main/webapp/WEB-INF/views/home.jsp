@@ -10,13 +10,13 @@
 <%@include file ="common/header.jsp" %>
   <!-- Start: Features Section 7
         ====================================== -->
-        <section class="features-section-7 content-half" >
+        <section class="features-section-7 content-half background-light" >
 
-            <div class="container-half container-half-left"></div>
+            <div class="container-half container-half-left background-light"></div>
             <div class="container-half container-half-right cover" style="background-image: url(images/background-4.jpg);"></div>
 
             <div class="container">
-                <div class="section-separator text-left">
+                <div class="row section-separator text-left">
 
                     <div class="col-md-6">
                         <div class="inner">
