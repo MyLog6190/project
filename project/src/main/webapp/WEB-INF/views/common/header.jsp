@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>     
-  
         <!-- TITLE OF SITE --> 
         <title>StartOn - Landing Page Template</title>
-  
         <!-- Meta -->
         <meta charset="utf-8">
         <meta name="description" content="StartUp Landing Page Template" />
@@ -13,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- FAV AND TOUCH ICONS   -->
-        <link rel="icon" href="images/favicon.ico">
+        <link rel="icon" href="/images/favicon.ico">
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
         <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -23,17 +24,17 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600' rel='stylesheet' type='text/css'>
 
         <!-- BOOTSTRAP CSS -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
         <!-- Image Slider -->
-        <link rel="stylesheet" href="css/plagin-css/plagin.css">
+        <link rel="stylesheet" href="/css/plagin-css/plagin.css">
 
         <!-- FONT ICONS -->
-        <link rel="stylesheet" href="icons/toicons/css/styles.css">
+        <link rel="stylesheet" href="/icons/toicons/css/styles.css">
 
         <!--   COUSTOM CSS link  -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/responsive.css">
 
 
         <!--[if lt IE 9]>
@@ -44,7 +45,6 @@
     </head>
     <body class="">
 
-
         <!-- Start: Navbar Area
         ============================= -->
         <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
@@ -54,8 +54,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
-                            <img src="images/logo.png" alt="" class="logo-1 img-responsive">
-                            <img src="images/logo-dark.png" alt="" class="logo-2 img-responsive">
+                            <img src="/images/logo.png" alt="" class="logo-1 img-responsive">
+                            <img src="/images/logo-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
@@ -101,17 +101,5 @@
         </section>
         <!-- End: Header Section
         ================================ -->
-        
-        <!-- SCRIPTS 
-        ========================================-->
-        <script src="js/plagin-js/jquery-1.11.3.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/plagin-js/plagin.js"></script>
-
-        <!-- Custom Script 
-        ==========================================-->
-        <script src="js/custom-scripts.js"></script>
-
-    </body>
-
+ 	</body>
 </html>
