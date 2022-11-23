@@ -10,9 +10,7 @@
 #menu-container{
   position: relative;
 }
-#lib{
-  width:300px;
-}
+
 #menu{
   position: absolute;
     margin:0;
@@ -42,13 +40,12 @@
 
 .exercise-libs{
   display: flex;
-  justify-content: space-between;
   margin: 10px 20px;
   width: 75vw;
-  height: 3rem;
+  height: 5rem;
   background-color: #eeeeee;
   
-  line-height: 3rem;
+  line-height: 5rem;
   font-size: 2rem;
   color: #555555;
   text-align: center;
@@ -56,7 +53,7 @@
 
 
 .libs-image{
-  height:100%;
+  height:5rem;
   border:1px solid #aaaaaa;
   
 }
@@ -64,6 +61,7 @@
 .libs-detail{
   border:1px solid #555555;
   border-radius: 100%;
+  height: 5rem;
 }
 
 .detail-rotate {
@@ -74,11 +72,6 @@
   cursor: pointer;
 }
 
-#libs{
-	position:relative;
-	text-align: center;
-}
-
 a{
 	cursor: pointer;
 }
@@ -87,7 +80,7 @@ a:visited, a:hover, a:link, a:active{
 	color: white;
 }
 .finder-container{
-  width: 550px;
+  width: min(50vw, 550px);
   height: 3rem;
   border: 1px solid #333333;
   border-radius: 10px;
@@ -102,7 +95,7 @@ a:visited, a:hover, a:link, a:active{
 }
 
 .finder{
-  width: 500px;
+  width: min(45vw,500px);
   height: 2.5rem;
   border: 0px;
   margin: 0;
@@ -156,25 +149,30 @@ a:visited, a:hover, a:link, a:active{
       </div>
       <div class="d-flex flex-column justify-content-center">
         <div class="exercise-lib-container">
-          <div class="exercise-libs leg">
-            <div class="d-flex">
+          <div class="exercise-libs flex-column align-items-between leg">
+            <div class="d-flex flex-row justify-content-between">
               <img class="libs-image" src="/images/libimages/leg/1.png" />
               <div>바벨 백스쿼트</div>
               <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
             </div>
             <div class="detail-container">
-              <div>
-                운동 사진
-              </div>
-              <div>
-                운동 설명
-              </div>
-              <div>
-                유튜브 검색
-              </div>
+              <div>운동 사진</div>
+              <div>운동 설명</div>
+              <div>유튜브 검색</div>
             </div>
           </div>
-          <div class="exercise-libs leg">컨벤셔널 데드리프트</div>
+          <div class="exercise-libs flex-column align-items-between leg">
+            <div class="d-flex flex-row justify-content-between">
+              <img class="libs-image" src="/images/libimages/leg/1.png" />
+              <div>컨벤셔널 데드리프트</div>
+              <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
+            </div>
+          	<div class="detail-container">
+              <div>운동 사진</div>
+              <div>운동 설명</div>
+              <div>유튜브 검색</div>
+            </div>
+          </div>
           <div class="exercise-libs leg">프론트 스쿼트</div>
           <div class="exercise-libs leg">레그 프레스</div>
           <div class="exercise-libs leg">레그 컬</div>
@@ -221,9 +219,18 @@ start()
 const libsDetail = document.querySelectorAll('.libs-detail')
 
 libsDetail.forEach(btn => btn.addEventListener("click", e =>{
+	const detailContainers = document.querySelectorAll('.detail-container')
 	const classList = e.target.classList
+	console.log(detailContainers)
+	detailContainers.forEach(dc =>{
+		dc.style.display = 'none'
+	})
+	
 	classList.toggle("detail-rotate")
+	
 }))
+
+
 
 </script>
 </body>
