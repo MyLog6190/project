@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <style>
 #menu-container{
@@ -24,21 +23,20 @@
   width:300px;
   list-style: none;
 }
-.circle{
-  margin:50px;
+
+.exercise-field{
+  margin: 10px 20px;
   background-color: #555555;
-  width: 250px;
-  height: 250px;
-  border-radius: 100%;
-  line-height: 250px;
+  width: 200px;
+  height: 3rem;
+  border-radius: 15px;
+  line-height: 3rem;
   font-size: 2rem;
+  color: #eeeeee;
 }
-.images{
-  background-position: center;
-  background-repeat: cover;
-  width: 250px;
-  height: 250px;
-}
+
+
+
 .img1{
   background-image: url(/images/our-members/1.jpg);
 }
@@ -64,20 +62,55 @@
 	list-style: none;
 }
 
-#libs:hover > ul{
-	display: flex;
-	z-index: 10;
-	
-}
 a{
 	cursor: pointer;
 }
 a:visited, a:hover, a:link, a:active{
 	color: white;
 }
-</style>
+.finder-container{
+  width: 550px;
+  height: 3rem;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-<!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
+.finder-container:hover{
+  background-color: #eeeeee;
+}
+
+.finder{
+  width: 500px;
+  height: 2.5rem;
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+.finder:focus{
+  outline: none;
+  caret-color: #333333;
+}
+
+.finder::placeholder{
+  color: #555555;
+  font:
+}
+
+.finder-img{
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+</style>
 </head>
 <body>
 <%@include file ="common/header.jsp" %>
@@ -86,27 +119,34 @@ a:visited, a:hover, a:link, a:active{
   <div class="container">
    	<div id ="menu-container" class="">
   	  <div id="libs" class="navbar-nav text-center"><span>운동 라이브러리</span>
-  	  	<ul id="lib-menu" class="btn-nav flex-column justify-content-center align-items-center">
-  	  		<li>하체</li>
-  	  		<li>가슴</li>
-  	  		<li>등</li>
-  	  		<li>어깨</li>
-  	  		<li>팔</li>
-  	  		<li>역도</li>
-  	  		<li>복근</li>
-  	  		<li>기타</li>
-  	  	</ul>
-  	  </div>
+  	  	<div id="lib-menu" class="btn-nav flex-column justify-content-center align-items-center"></div>
+      </div>
   	</div>
   	<div id="lib-container" class="d-flex flex-column justify-content-center align-items-center">
-  	  <div>
-  		<input type="text" />
+  	  <div class="finder-container">
+        <img src="/icons/myicons/magnifying-glass.png" class="finder-img" />
+  		<input type="text" class="finder" placeholder="찾으시는 운동을 검색해보세요." />
   	  </div>
 	  <div class="d-flex flex-wrap justify-content-center">
-		<a class="circle images text-center " href="#" ><span>하체</span></a>
-		<a class="circle img2 images" href="#"></a>
-		<a class="circle img3 images" href="#"></a>
-		<a class="circle img4 images" href="#"></a>
+        <div class="exercise-field text-center" data-filter="bookmark"><span>북마크</span></div>
+		<div class="exercise-field text-center" ><span>하체</span></div>
+		<div class="exercise-field text-center" ><span>가슴</span></div>
+		<div class="exercise-field text-center" ><span>등</span></div>
+		<div class="exercise-field text-center" ><span>어깨</span></div>
+        <div class="exercise-field text-center" ><span>팔</span></div>
+        <div class="exercise-field text-center" ><span>역도</span></div>
+        <div class="exercise-field text-center" ><span>복근</span></div>
+        <div class="exercise-field text-center" data-filter="etc"><span>기타</span></div>
+        <div class="exercise-field text-center" ><span>유산소</span></div>
+      </div>
+      <div>
+        <div class="exercise-libs" data-filter="etc">버피</div>
+        <div class="exercise-libs" data-filter="etc">쓰러스터</div>
+        <div class="exercise-libs" data-filter="etc">케틀벨 스윙</div>
+        <div class="exercise-libs" data-filter="etc">파머스 워크</div>
+        <div class="exercise-libs" data-filter="">트레드밀</div>
+        <div class="exercise-libs" data-filter="">싸이클</div>
+        <div class="exercise-libs" data-filter="">로잉머신</div>
       </div>
     </div>
   </div>
@@ -115,14 +155,31 @@ a:visited, a:hover, a:link, a:active{
   ================================ -->
 <%@include file ="common/footer.jsp" %>
 <script>
-const libs = document.getElementById('libs');
-alert(libs.classList[0]);
 
-libMenu.addEventListener("click",()=>{
-	let menu = document.getElementById('lib-menu');
-	menu.setAttribute('class', "");	
-})
-
+function start (){
+    const filters = document.querySelectorAll('.exercise-field')
+    const exerItems = document.querySelectorAll('.exercise-libs')
+    
+    
+    filters.forEach(b=>b.addEventListener('click',(e)=>{
+        e.preventDefault()
+        const filter = e.target.dataset.filter
+		console.log(filter)
+        exerItems.forEach(i=>{
+            if(filter ==='all'){
+                i.style.display = 'flex';
+            }else{
+                if(i.classList.contains(filter)){
+                    i.style.display='flex';
+                }
+                else{
+                    i.style.display='none';
+                }
+            }
+        })
+    }))
+}
+start()
 </script>
 </body>
 
