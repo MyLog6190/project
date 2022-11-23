@@ -30,25 +30,48 @@
   width: 200px;
   height: 3rem;
   border-radius: 15px;
+  
   line-height: 3rem;
   font-size: 2rem;
   color: #eeeeee;
+  text-align: center;
+}
+.exercise-field:hover{
+  cursor: pointer;
+}
+
+.exercise-libs{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  width: 75vw;
+  height: 3rem;
+  background-color: #eeeeee;
+  
+  line-height: 3rem;
+  font-size: 2rem;
+  color: #555555;
+  text-align: center;
 }
 
 
-
-.img1{
-  background-image: url(/images/our-members/1.jpg);
+.libs-image{
+  height:100%;
+  border:1px solid #aaaaaa;
+  
 }
 
-.img2{
-  background-image: url(/images/our-members/2.jpg);
+.libs-detail{
+  border:1px solid #555555;
+  border-radius: 100%;
 }
-.img3{
-  background-image: url(/images/our-members/3.jpg);
+
+.detail-rotate {
+  transform: rotateZ(180deg);
 }
-.img4{
-  background-image: url(/images/our-members/4.jpg);
+
+.libs-detail:hover{
+  cursor: pointer;
 }
 
 #libs{
@@ -56,15 +79,10 @@
 	text-align: center;
 }
 
-#lib-menu{
-	display: none;
-	position:absolute;
-	list-style: none;
-}
-
 a{
 	cursor: pointer;
 }
+
 a:visited, a:hover, a:link, a:active{
 	color: white;
 }
@@ -99,13 +117,12 @@ a:visited, a:hover, a:link, a:active{
 
 .finder::placeholder{
   color: #555555;
-  font:
 }
 
 .finder-img{
-  width: 2rem;
-  height: 2rem;
-  margin: 0;
+  width: 25px;
+  height: 25px;
+  margin: 5;
   padding: 0;
   box-sizing: border-box;
 }
@@ -117,36 +134,56 @@ a:visited, a:hover, a:link, a:active{
   <!-- Start: Features Section 7
   ====================================== -->
   <div class="container">
-   	<div id ="menu-container" class="">
-  	  <div id="libs" class="navbar-nav text-center"><span>운동 라이브러리</span>
-  	  	<div id="lib-menu" class="btn-nav flex-column justify-content-center align-items-center"></div>
+   	<div id ="menu-container" class="position-relative">
+  	  <div id="libs" class="text-center d-flex justify-content-center align-items-center">
+        <div class="">운동 라이브러리</div>
+  	  	<div>필터 해제</div>
       </div>
   	</div>
   	<div id="lib-container" class="d-flex flex-column justify-content-center align-items-center">
   	  <div class="finder-container">
-        <img src="/icons/myicons/magnifying-glass.png" class="finder-img" />
+        <img src="/icons/libicons/magnifying-glass.png" class="finder-img" />
   		<input type="text" class="finder" placeholder="찾으시는 운동을 검색해보세요." />
   	  </div>
 	  <div class="d-flex flex-wrap justify-content-center">
-        <div class="exercise-field text-center" data-filter="bookmark"><span>북마크</span></div>
-		<div class="exercise-field text-center" ><span>하체</span></div>
-		<div class="exercise-field text-center" ><span>가슴</span></div>
-		<div class="exercise-field text-center" ><span>등</span></div>
-		<div class="exercise-field text-center" ><span>어깨</span></div>
-        <div class="exercise-field text-center" ><span>팔</span></div>
-        <div class="exercise-field text-center" ><span>역도</span></div>
-        <div class="exercise-field text-center" ><span>복근</span></div>
-        <div class="exercise-field text-center" data-filter="etc"><span>기타</span></div>
-        <div class="exercise-field text-center" ><span>유산소</span></div>
+        <div class="exercise-field" data-filter="bookmark">북마크</div>
+		<div class="exercise-field" data-filter="leg" >하체</div>
+		<div class="exercise-field" data-filter="chest">가슴</div>
+		<div class="exercise-field" data-filter="back">등</div>
+		<div class="exercise-field" data-filter="delt">어깨</div>
+        <div class="exercise-field" data-filter="arm">팔</div>
+        <div class="exercise-field" data-filter="abs">복근</div>
       </div>
-      <div>
-        <div class="exercise-libs" data-filter="etc">버피</div>
-        <div class="exercise-libs" data-filter="etc">쓰러스터</div>
-        <div class="exercise-libs" data-filter="etc">케틀벨 스윙</div>
-        <div class="exercise-libs" data-filter="etc">파머스 워크</div>
-        <div class="exercise-libs" data-filter="">트레드밀</div>
-        <div class="exercise-libs" data-filter="">싸이클</div>
-        <div class="exercise-libs" data-filter="">로잉머신</div>
+      <div class="d-flex flex-column justify-content-center">
+        <div class="exercise-lib-container">
+          <div class="exercise-libs leg">
+            <div class="d-flex">
+              <img class="libs-image" src="/images/libimages/leg/1.png" />
+              <div>바벨 백스쿼트</div>
+              <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
+            </div>
+            <div class="detail-container">
+              <div>
+                운동 사진
+              </div>
+              <div>
+                운동 설명
+              </div>
+              <div>
+                유튜브 검색
+              </div>
+            </div>
+          </div>
+          <div class="exercise-libs leg">컨벤셔널 데드리프트</div>
+          <div class="exercise-libs leg">프론트 스쿼트</div>
+          <div class="exercise-libs leg">레그 프레스</div>
+          <div class="exercise-libs leg">레그 컬</div>
+          <div class="exercise-libs leg">레그 익스텐션</div>
+          <div class="exercise-libs chest">벤치프레스</div>
+          <div class="exercise-libs chest">인클라인 벤치프레스</div>
+          <div class="exercise-libs chest">덤벨 벤치프레스</div>
+          <div class="exercise-libs chest">인클라인 덤벨 벤치프레스</div>
+        </div>
       </div>
     </div>
   </div>
@@ -164,7 +201,6 @@ function start (){
     filters.forEach(b=>b.addEventListener('click',(e)=>{
         e.preventDefault()
         const filter = e.target.dataset.filter
-		console.log(filter)
         exerItems.forEach(i=>{
             if(filter ==='all'){
                 i.style.display = 'flex';
@@ -179,7 +215,16 @@ function start (){
         })
     }))
 }
+
 start()
+
+const libsDetail = document.querySelectorAll('.libs-detail')
+
+libsDetail.forEach(btn => btn.addEventListener("click", e =>{
+	const classList = e.target.classList
+	classList.toggle("detail-rotate")
+}))
+
 </script>
 </body>
 
