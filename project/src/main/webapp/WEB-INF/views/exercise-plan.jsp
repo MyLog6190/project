@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/views/exercise-plan.css" />
+<link rel="stylesheet" type="text/css" href="/views/css/exercise-plan.css" />
 
 <main>
   <div class="pick light">
