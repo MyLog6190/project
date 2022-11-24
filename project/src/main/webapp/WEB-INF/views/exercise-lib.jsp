@@ -42,7 +42,6 @@
   display: flex;
   margin: 10px 20px;
   width: 75vw;
-  height: 5rem;
   background-color: #eeeeee;
   
   line-height: 5rem;
@@ -65,12 +64,28 @@
 }
 
 .detail-rotate {
+  display: block;
   transform: rotateZ(180deg);
 }
 
 .libs-detail:hover{
   cursor: pointer;
 }
+
+.detail-container{
+  display: block;
+}
+
+.detail-container :not(last-child){
+  border-bottom: 1px solid black;
+}
+
+.details{
+  background-color: Blanchedalmond;
+  box-sizing: bordor-box;
+}
+
+
 
 a{
 	cursor: pointer;
@@ -155,10 +170,10 @@ a:visited, a:hover, a:link, a:active{
               <div>바벨 백스쿼트</div>
               <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
             </div>
-            <div class="detail-container">
-              <div>운동 사진</div>
-              <div>운동 설명</div>
-              <div>유튜브 검색</div>
+            <div class="detail-container d-none">
+              <div class="details">운동 사진</div>
+              <div class="details">운동 설명</div>
+              <div class="details">유튜브 검색</div>
             </div>
           </div>
           <div class="exercise-libs flex-column align-items-between leg">
@@ -167,10 +182,22 @@ a:visited, a:hover, a:link, a:active{
               <div>컨벤셔널 데드리프트</div>
               <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
             </div>
-          	<div class="detail-container">
-              <div>운동 사진</div>
-              <div>운동 설명</div>
-              <div>유튜브 검색</div>
+          	<div class="detail-container d-none">
+              <div class="details">운동 사진</div>
+              <div class="details">운동 설명</div>
+              <div class="details">유튜브 검색</div>
+            </div>
+          </div>
+          <div class="exercise-libs flex-column align-items-between leg">
+            <div class="d-flex flex-row justify-content-between">
+              <img class="libs-image" src="/images/libimages/leg/1.png" />
+              <div>프론트 스쿼트</div>
+              <img class="libs-detail" src="/icons/libicons/down-arrow.png"/>
+            </div>
+            <div class="detail-container d-none">
+              <div class="details">운동 사진</div>
+              <div class="details">운동 설명</div>
+              <div class="details">유튜브 검색</div>
             </div>
           </div>
           <div class="exercise-libs leg">프론트 스쿼트</div>
@@ -195,7 +222,6 @@ function start (){
     const filters = document.querySelectorAll('.exercise-field')
     const exerItems = document.querySelectorAll('.exercise-libs')
     
-    
     filters.forEach(b=>b.addEventListener('click',(e)=>{
         e.preventDefault()
         const filter = e.target.dataset.filter
@@ -212,24 +238,43 @@ function start (){
             }
         })
     }))
+    oneDetail()
 }
 
 start()
 
-const libsDetail = document.querySelectorAll('.libs-detail')
 
-libsDetail.forEach(btn => btn.addEventListener("click", e =>{
-	const detailContainers = document.querySelectorAll('.detail-container')
-	const classList = e.target.classList
-	console.log(detailContainers)
-	detailContainers.forEach(dc =>{
-		dc.style.display = 'none'
-	})
-	
-	classList.toggle("detail-rotate")
-	
-}))
 
+function oneDetail(){
+	const libsDetails = document.querySelectorAll('.libs-detail')
+
+
+	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
+		e.preventDefault()
+		const detailContainers = document.querySelectorAll('.detail-container')
+		const presentDetail = e.target.parentNode.nextElementSibling;
+		const presentBtn = e.target
+		const classList = presentBtn.classList
+
+		classList.toggle("detail-rotate")
+
+		detailContainers.forEach(detail => {
+			const detailBtn = detail.previousElementSibling.children[2]
+			if(detailBtn != presentBtn){
+				detailBtn.classList.remove("detail-rotate")
+			}
+			if(presentDetail != detail){
+				detail.classList.add("d-none");
+			} else {
+				if(classList.contains("detail-rotate")){
+					presentDetail.classList.remove('d-none');
+				} else{
+					presentDetail.classList.add('d-none');
+				}
+			}
+		})
+	}))
+}
 
 
 </script>
