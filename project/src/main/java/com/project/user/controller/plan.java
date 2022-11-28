@@ -17,6 +17,6 @@ public class plan {
 	@GetMapping("/b")
 	public String hello2(@RequestParam("code") String code) {
 		System.out.println(code);
-		return "exercise-plan";
+		return "/exercise-plan";
 	}
 }

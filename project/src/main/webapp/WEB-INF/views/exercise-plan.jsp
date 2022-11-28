@@ -182,9 +182,7 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
   	  const gitUrl = "https://github.com/login/oauth/authorize";
   	  const client_id = "7825cbafe9c48e56615a";
   	  const finalUrl = gitUrl+"?client_id=" +client_id+ "&scope={read:user,user:email}";
-  	  fetch(finalUrl, {
-  	      mode : 'no-cors',
-  	  }).then(response => console.log(response)).then(data => console.log(data))
+  	  location.href = finalUrl;
   	  
   	  
     }
