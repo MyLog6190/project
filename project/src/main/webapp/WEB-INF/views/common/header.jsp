@@ -54,8 +54,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
-                            <img src="/images/logo.png" alt="" class="logo-1 img-responsive">
-                            <img src="/images/logo-dark.png" alt="" class="logo-2 img-responsive">
+                            <img src="/common/images/logo.png" alt="" class="logo-1 img-responsive">
+                            <img src="/common/images/logo-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
