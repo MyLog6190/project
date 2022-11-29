@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+*{
+	padding: 0;
+  	margin: 0;
+  	box-sizing: border-box;
+	background: #EAEAEA;
+}
+
+.center1{     /*카카오톡버튼 이미지 위치 %로 조정*/
+	/*display: block;*/
+	margin-bottom: 10px;
+	/*margin-top: 250px;*/
+	margin-top: 25%;
+	margin-left: 36.5%;
+	/* border-radius: 25px;
+	align-items: center; */
+}
+.center2{    /*네이버 버튼 이미지 위치 %로 조정*/
+	margin-bottom: 30px;
+	margin-left: 36.5%;
+	
+}
+
+.center3{	/*카카오톡버튼 이미지 위치 px로 조정*/
+	position:absolute;
+	margin-top: 350px;
+	margin-left: 500px;
+	cursor: pointer;
+}
+
+.center4{	/*네이버 버튼 이미지 위치 px로 조정*/
+	position:absolute;
+	margin-left: 500px;
+	margin-top: 410px;
+	cursor: pointer;
+}
+
+.login-btn-wrap{
+	position:absolute;
+    height: 45px;
+    width: 300px;
+    line-height: 42px;
+    margin: 470px 0px 0px 500px;
+    border: solid 2px rgba(0,0,0,.1);
+    border-radius: 5px;
+    background-color: #7112FF;
+    color: #fff;
+    cursor: pointer;
+}
+
+#login-btn{
+    width:150px;
+    height:35px;
+    background-color: #7112FF;
+    border: none;
+    color:#fff;
+    font-size: 18px;
+    outline:none;
+    margin:auto;
+    display:block;
+    cursor: pointer;
+}
+
+#pos1{
+	position: absolute;
+	margin-left: 620px;
+	margin-top: 200px;
+	cursor: pointer;
+}

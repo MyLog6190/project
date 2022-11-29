@@ -14,10 +14,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- FAV AND TOUCH ICONS   -->
-        <link rel="icon" href="/images/favicon.ico">
-        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <link rel="icon" href="/common/images/favicon.ico">
+        <link rel="apple-touch-icon" href="/common/images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/common/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/common/images/apple-touch-icon-114x114.png">
 
         <!-- GOOGLE FONTS -->
         <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -27,14 +27,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
         <!-- Image Slider -->
-        <link rel="stylesheet" href="/css/plagin-css/plagin.css">
+        <link rel="stylesheet" href="/common/css/plagin-css/plagin.css">
 
         <!-- FONT ICONS -->
-        <link rel="stylesheet" href="/icons/toicons/css/styles.css">
+        <link rel="stylesheet" href="/common/icons/toicons/css/styles.css">
 
         <!--   COUSTOM CSS link  -->
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/responsive.css">
+        <link rel="stylesheet" href="/common/css/style.css">
+        <link rel="stylesheet" href="/common/css/responsive.css">
 
 
         <!--[if lt IE 9]>
@@ -43,19 +43,19 @@
         <![endif]-->
 
     </head>
-    <body class="">
+    <body class="position-relative">
 
         <!-- Start: Navbar Area
         ============================= -->
-        <header id="header" class="okayNav-header fixed-top main-navbar-top">
+        <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
             <div class="container">
                 <div class="d-flex">
                     
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
-                            <img src="/images/logo.png" alt="" class="logo-1 img-responsive">
-                            <img src="/images/logo-dark.png" alt="" class="logo-2 img-responsive">
+                            <img src="/common/images/logo.png" alt="" class="logo-1 img-responsive">
+                            <img src="/common/images/logo-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
