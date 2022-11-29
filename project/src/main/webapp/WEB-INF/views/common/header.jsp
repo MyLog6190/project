@@ -43,11 +43,11 @@
         <![endif]-->
 
     </head>
-    <body class="">
+    <body class="position-relative">
 
         <!-- Start: Navbar Area
         ============================= -->
-        <header id="header" class="okayNav-header fixed-top main-navbar-top">
+        <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
             <div class="container">
                 <div class="d-flex">
                     
