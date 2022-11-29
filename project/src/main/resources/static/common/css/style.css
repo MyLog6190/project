@@ -841,6 +841,13 @@ h6 {
 .main-navbar-top .okayNav-header {
   background-color: transparent;
 }
+.navbar-fixed-top{
+   position: absolute;
+   width: 100vw;
+   display: flex;
+   justify-content: center; 
+}
+
 .main-navbar-top .navbar-brand {
   display: block;
   height: 77px;
