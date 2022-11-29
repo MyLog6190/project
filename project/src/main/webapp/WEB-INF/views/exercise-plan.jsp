@@ -2,8 +2,8 @@
 pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-plan.css" />
 
-<main>
-  <div class="pick light">
+<main class="light">
+  <div class="pick">
     <div class="calendar">
       <div class="calendar-header">
         <span class="month-pricker" id="month-picker"></span>
@@ -37,21 +37,53 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
         </div>
       </div>
     </div>
-    <div>
-      <h3 id="date-to-plan"></h3>
-      <button type="button" class="btn btn-primary">운동 계획하기</button>
-    </div>
+    
   </div>
   <div class="exercise-plan">
+  	<div>
+      <h3 id="date-to-plan"></h3>
+      <input type="button" class="btn btn-primary" value='운동 계획하기'/>
+    </div>
+    
+    <div id="exercise" class="exercise hidden">
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>
+		</div>
+		<div class="exercise-program">
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>
+		</div>    
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>
+		</div>
+		<div class="exercise-program">
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>
+		</div>
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>    
+		</div>
+		<div class="exercise-program">
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h3>프로그램 이름</h3>
+		</div>    
+    </div>
+  </div>
+  
+  <div class="exercise-list">
+  	
+  </div>
     <ul>
       <li><a onclick="getGitLogin()">git</a></li>
     </ul>
-  </div>
 </main>
 <script type="text/javascript">
     document.querySelector(".dark-mode-switch").onclick = () => {
-      document.querySelector(".pick").classList.toggle("dark");
-      document.querySelector(".pick").classList.toggle("light");
+      document.querySelector("main").classList.toggle("dark");
+      document.querySelector("main").classList.toggle("light");
     };
     const today = new Date()
 
@@ -160,6 +192,13 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
 
     selectPlanDate();
 
+    let btn = document.querySelector(".btn-primary")
+    btn.onclick = () => {
+    	 document.querySelector("#exercise").classList.remove('hidden');
+    	 btn.classList.add('create-exercise-plan')
+    	 btn.value = '운동 계획 생성'
+    };
+    
   /*   const gitLogin = () => {
   	  const gitUrl = "https://github.com/login/oauth/access_token"
   	  const tokenRequest = fetch(gitUrl, {
@@ -183,8 +222,6 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
   	  const client_id = "7825cbafe9c48e56615a";
   	  const finalUrl = gitUrl+"?client_id=" +client_id+ "&scope={read:user,user:email}";
   	  location.href = finalUrl;
-  	  
-  	  
     }
 </script>
 <%@include file ="common/footer.jsp" %>
