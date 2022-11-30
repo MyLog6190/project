@@ -6,37 +6,38 @@ document.querySelector(".dark-mode-switch").onclick = () => {
 
 // 달력 출력
 class Calendar {
-	printCalendar = () => {
-		const today = new Date()
-		cal.dateFormat(today)
-		
-		const dateToPlan = document.querySelector('#date-to-plan')
-		dateToPlan.innerHTML = cal.dateFormat(today);
-		
-		const year = today.getFullYear();
-		const month = today.getMonth();
-	
-		this.printYearAndMonth(year,month);	
-		this.getDay(year, month);
-		this.prevMonth(year, month);
-		this.nextMonth(year, month);
+	constructor(year, month) {
+		this.year = year;
+		this.month = month;
+		this.getfullDayOfMonth();
+		this.prevMonth();
+		this.nextMonth();
+		this.selectPlanDate();
 	}
 	
-	getFirstDay = (year, month) => {
-      const date = new Date(year, month, 1);
+	getFirstDayOfMonth = () => {
+      const date = new Date(this.year, this.month, 1);
       return date.getDay();
     };
     
-    getLastDay = (year, month) => {
-      const date = new Date(year, month + 1, 0);
+    getLastDayOfMonth = () => {
+      const date = new Date(this.year, this.month + 1, 0);
       return date.getDate();
     }
     
-    getDay = (year, month) => {
+    getfullDayOfMonth = () => {
+	
+	  const yearPicker = document.querySelector("#year");
+	  const monthPicker = document.querySelector("#month-picker");
+		
+	  yearPicker.innerHTML = this.year ;
+	  monthPicker.innerHTML = `${ this.month + 1}월`;
+	  
       const calendarDays = document.querySelector(".calendar-days");
+     
       calendarDays.innerHTML = "";
-      const firstDay = this.getFirstDay(year, month);
-      const LastDay = this.getLastDay(year, month);
+      const firstDay = this.getFirstDayOfMonth();
+      const LastDay = this.getLastDayOfMonth();
 
       for (let i = 1; i < LastDay + firstDay + 1; i++) {
         const day = document.createElement("div");
@@ -44,7 +45,7 @@ class Calendar {
         if (i >= firstDay + 1) {
           day.classList.add("day");
           day.classList.add("calendar-day-hover");
-          day.setAttribute("id", `${year}-${(month + 1)}-${i - firstDay >= 10 ? "" : "0"}${(i - firstDay)}`);
+          day.setAttribute("id", `${ this.year }-${( this.month + 1 )}-${ i - firstDay >= 10 ? "" : "0"}${(i - firstDay)}`);
           day.innerHTML = i - firstDay;
           day.innerHTML += `
   		                <span></span>
@@ -62,34 +63,32 @@ class Calendar {
       	return `${ date.getFullYear() }년 ${ month }월\t ${ day }일`
 	}
 	
-    prevMonth = (year, month) => {
+    prevMonth = () => {
 	    const prev = document.querySelector("#prev-year");
 
 	    prev.onclick = () => {
-	      if (month == 0) {
-	        --year;
-	        month = 11;
+	      if (this.month == 0) {
+	        this.year--;
+	        this.month = 11;
 	      } else {
-	        --month;
+	        this.month--;
 	      }
-		  this.getDay(year, month);
-		  this.printYearAndMonth(year,month);
+	      this.getfullDayOfMonth();
 		  this.selectPlanDate();
 	    }
 	}
 
-	nextMonth = (year,month) => {
+	nextMonth = () => {
 		const next = document.querySelector("#next-year");
 		
 		next.onclick = () => {
-		    if (month == 11) {
-		       ++year;
-		       month = 0;
+		    if (this.month == 11) {
+		       this.year++;
+		       this.month = 0;
 		    } else {
-		       ++month;
+		       this.month++;
 		    }
-		    this.getDay(year, month);
-		    this.printYearAndMonth(year,month);
+		    this.getfullDayOfMonth();
 		    this.selectPlanDate();      
 		}
 	}
@@ -106,22 +105,11 @@ class Calendar {
   	  });
     }
     
-    printYearAndMonth = (year, month) => {
-		const yearPicker = document.querySelector("#year");
-		const monthPicker = document.querySelector("#month-picker");
-		
-		const thisYear = year;
-		const thisMonth = month;
-		
-		yearPicker.innerHTML = thisYear ;
-		monthPicker.innerHTML = `${ thisMonth + 1}월`;
-		
-	    this.getDay(thisYear, thisMonth);
-	}
 }
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+const cal = new Calendar(year, month);
 
-const cal = new Calendar();
-cal.printCalendar();
-cal.selectPlanDate();
 
 
