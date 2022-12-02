@@ -245,60 +245,6 @@ main{
   display: none;
 }
 
-.month-list {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: var(--bg-main);
-  padding: 20px;
-  color: var(--color-txt);
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 5px;
-  transform: scale(1.5);
-  visibility: hidden;
-  pointer-events: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.month-list > div {
-  display: grid;
-  place-items: center;
-}
-
-.month-list > div > div {
-  width: 100%;
-  padding: 5px 20px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.month-list > div > div:hover {
-  background-attachment: fixed;
-}
-
-.month-list.show {
-  transform: scale(1);
-  visibility: visible;
-  pointer-events: visible;
-}
-.exercise-type-picker{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 30px;
-  grid-column-gap: 30px;
-  margin-left: 30px;	
-  padding: 10px;
-}
-.exercise-type{
-	background-color: var(--blue);
-	width: 130px;
-	height: 130px;
-	border-radius: 50%;
-}
 .btn-primary{
 	margin-top:30px;
 	width: 800px;
@@ -308,37 +254,71 @@ h3{
 	color:var(--color-txt);
 	margin-top:20px;
 }
+
+h5{
+	color:var(--color-txt);
+	margin-top:20px;
+}
 #date-to-plan{
 	margin:30px 0px 20px 5px;
 	color:var(--color-txt);
 }
+
 .exercise {
 	display:flex;
 	width: 800px;
 	height: 300px;
-	overflow-x: scroll;
-	margin-top: 100px;
-	
+	flex-basis:100%;
+	flex-shrink:0;
+	overflow-x: auto;
+	margin-top: 50px;
 }
 
 .exercise-program{
-	width: 180px;
-	height: 180px;
-	border-radius: 50%;
-	margin: 30px 30px 30px 0px;
-	
+	width: 200px;
+	height: 200px;
+	border-radius: 10%;
+	margin: 30px 30px 30px 30px;	
 	box-shadow: var(--shadow);
-	border-radius: 50%;
 	display: flex;
 	flex-direction: column;
+	flex-basis: 200px;
+	flex-shrink: 0;
 	align-items: center;
+	justify-content: center;
 }
 
 .exercise_program_img{
-	width:auto;
-    height:100%;
-    object-fit:cover;
+	width:100px;
+    height:100px;
     border-radius: 50%;
+}
+
+.exercise-program-list {
+	color: var(--color-txt);
+}
+
+.modal{
+	background-color: var(--bg-body);	
+}
+
+.exercise-info{
+	display: flex;
+	padding: 0px 20px 20px 0px;
+	box-shadow: var(--shadow);
+	
+}
+.exercise-info>div {
+	display: grid;
+	place-items: center;
+	padding: 10px;
+	
+}
+.exercise-info_img {
+	width:100px;
+    height:100px;
+    border-radius: 10%;
+    padding: 10px;
 }
 
 .hidden {

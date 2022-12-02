@@ -45,7 +45,7 @@
         <![endif]-->
 
     </head>
-    <body class="position-relative">
+    <body class="">
 
         <!-- Start: Navbar Area
         ============================= -->

@@ -1,101 +1,45 @@
 @charset "UTF-8";
-#menu-container{
+body{
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-use-select: none;
+ user-select: none;
+}
+#title-container{
   position: relative;
 }
 
-#menu{
-  position: absolute;
-    margin:0;
-}
-#menu > li{
-  padding: 10px 10px 10px 30px;
-  z-index: 99;
-  width:300px;
-  list-style: none;
-}
 
+#libs{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 #libs-title{
-	
-}
-
-.exercise-field{
-  margin: 10px 20px;
-  background-color: #eeeeee;
-  width: 200px;
-  height: 3rem;
-  border-radius: 15px;
-  
-  line-height: 3rem;
-  font-size: 2rem;
-  color: #555555;
-  text-align: center;
-}
-.exercise-field:hover{
-  cursor: pointer;
-}
-
-.exercise-libs{
-  display: flex;
-  margin: 10px 20px;
-  width: 60vw;
-  background-color: #eeeeee;
-  
-  line-height: 5rem;
-  font-size: 2rem;
-  color: #555555;
-  text-align: center;
-}
-
-
-.libs-image{
-  height:5rem;
-  border:1px solid #aaaaaa;
-  
-}
-
-.libs-detail{
-  border:1px solid #555555;
-  border-radius: 100%;
+  background-color: #dddddd; 
+  border: 1px solid #dddddd;
+  width: max(50vw,600px);
   height: 5rem;
+  text-align: center;
+  line-height: 5rem;
+  
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
-
-.detail-rotate {
-  display: block;
-  transform: rotateZ(180deg);
-}
-
-.libs-detail:hover{
-  cursor: pointer;
-}
-
-.detail-container{
-  display: block;
-}
-
-.detail-container :not(last-child){
-  border-bottom: 1px solid black;
-}
-
-.details{
-  background-color: Blanchedalmond;
-  box-sizing: bordor-box;
-}
-
-
-
-a{
-	cursor: pointer;
-}
-
-a:visited, a:hover, a:link, a:active{
-	color: white;
+#lib-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #finder-container{
   width: min(50vw, 550px);
   height: 3rem;
   border: 1px solid #333333;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -145,3 +89,95 @@ input[type=radio]:checked + label {
   border: 1px solid #333333;
   color: #cccccc;
 }
+
+#filter-container{
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.exercise-field{
+  margin: 10px 20px;
+  background-color: #eeeeee;
+  width: 200px;
+  height: 3rem;
+  border-radius: 15px;
+  
+  line-height: 3rem;
+  font-size: 2rem;
+  color: #555555;
+  text-align: center;
+}
+.exercise-field:hover{
+  cursor: pointer;
+}
+
+
+
+#exercise-lib-container{
+  flex-direction: column;
+  align-items: between;
+}
+
+
+
+.exercise-libs{
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  margin: 10px 20px;
+  width: 60vw;
+  background-color: #eeeeee;
+  
+  line-height: 5rem;
+  font-size: 2rem;
+  color: #555555;
+  text-align: center;
+}
+
+.libs-image{
+  height:5rem;
+  border:1px solid #aaaaaa;
+  
+}
+
+.libs-detail{
+  border:1px solid #555555;
+  border-radius: 100%;
+  height: 5rem;
+}
+
+.detail-rotate {
+  display: block;
+  transform: rotateZ(180deg);
+}
+
+.libs-detail:hover{
+  cursor: pointer;
+}
+
+.detail-container{
+  display: block;
+}
+
+.detail-container :not(last-child){
+  border-bottom: 1px solid black;
+}
+
+.details{
+  background-color: Blanchedalmond;
+  box-sizing: bordor-box;
+}
+
+
+
+a{
+	cursor: pointer;
+}
+
+a:visited, a:hover, a:link, a:active{
+	color: white;
+}
+
+
+
