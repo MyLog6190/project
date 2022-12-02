@@ -299,8 +299,8 @@ h6 {
  */
 .section-separator {
   display: block;
-  padding-top: 50px; /*헤더 ~ 본문 사이 공간. 본문 부분*/
-  padding-bottom: 0px; /*헤더 ~ 본문 사이 공간. 헤더 부분*/
+  padding-top: 145px;
+  padding-bottom: 145px;
 }
 .section-separator.sp-top {
   padding-bottom: 0px;
@@ -981,7 +981,6 @@ h6 {
  * Header Style 1
  * ===============================
 */
-/*
 .bg-image-1 {
   background: url('../images/background-1.jpg');
   -webkit-background-size: cover;
@@ -993,13 +992,12 @@ h6 {
   background-repeat: no-repeat;
   background-color: #ffffff;
 }
-*/
 .header-section-1 .logo-link {
   max-width: 50px;
   margin-bottom: 70px;
 }
 .header-section-1 .section-separator {
-  padding-top: 100px; /*문제의 공간. 제거완료*/
+  padding-top: 187px;
 }
 .header-section-1 .title {
   color: #ffffff;
@@ -1500,10 +1498,4 @@ h6 {
   color: rgba(255, 255, 255, 0.32);
   font-size: 15px;
   font-weight: 400;
-}
-
-.notice {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 }
