@@ -25,7 +25,8 @@
                     <div class="col-md-6">
                         <div class="inner">
 							<!-- <span>태그 사용 번핏 로고 / 노말 버전 / 프로 버전 버튼 아이콘  회원가입 로그인 고객센터 얘는 헤더  -->
-                            <div class="detail"><p>이번 달 운동<br></p>
+                            <div class="detail">
+                            <p >이번 달 운동<br></p>
                             <p>운동량(시간/볼륨)<br></p>
                             <p>이번 주 계획 운동량</p><hr>
                             </div>
