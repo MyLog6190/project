@@ -15,7 +15,7 @@
 <span class="user_name_size">홍길동</span>
 </div>
 
-<div class="contatiner2">
+<div class="container2">
 <span>주차별 목표 달성량</span>
 <button class="detail-btn">상세보기</button>
 </div>
