@@ -26,7 +26,6 @@ class Calendar {
     }
     
     getfullDayOfMonth = () => {
-	
 	  const yearPicker = document.querySelector("#year");
 	  const monthPicker = document.querySelector("#month-picker");
 		
