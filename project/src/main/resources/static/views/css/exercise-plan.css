@@ -1,40 +1,4 @@
-@charset "UTF-8";
-:root {
-  --dark-body: #4d4c5a;
-  --dark-main: #141529;
-  --dark-second: #79788c;
-  --dark-hover: #323048;
-  --dark-text: #f8fbff;
-
-  --light-body: #f3f8fe;
-  --light-main: #fdfdfd;
-  --light-second: #c3c2c8;
-  --light-hover: #edf0f5;
-  --light-text: #151426;
-
-  --blue: #0000ff;
-  --white: #fff;
-
-  --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-  --font-family: cursive;
-}
-
-.dark {
-  --bg-body: var(--dark-body);
-  --bg-main: var(--dark-main);
-  --bg-second: var(--dark-second);
-  --color-hover: var(--dark-hover);
-  --color-txt: var(--dark-text);
-}
-
-.light {
-  --bg-body: var(--light-body);
-  --bg-main: var(--light-main);
-  --bg-second: var(--light-second);
-  --color-hover: var(--light-hover);
-  --color-txt: var(--light-text);
-}
+@import url("./darkMode.css");
 
 * {
   padding: 0;
@@ -245,60 +209,6 @@ main{
   display: none;
 }
 
-.month-list {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: var(--bg-main);
-  padding: 20px;
-  color: var(--color-txt);
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 5px;
-  transform: scale(1.5);
-  visibility: hidden;
-  pointer-events: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.month-list > div {
-  display: grid;
-  place-items: center;
-}
-
-.month-list > div > div {
-  width: 100%;
-  padding: 5px 20px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.month-list > div > div:hover {
-  background-attachment: fixed;
-}
-
-.month-list.show {
-  transform: scale(1);
-  visibility: visible;
-  pointer-events: visible;
-}
-.exercise-type-picker{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 30px;
-  grid-column-gap: 30px;
-  margin-left: 30px;	
-  padding: 10px;
-}
-.exercise-type{
-	background-color: var(--blue);
-	width: 130px;
-	height: 130px;
-	border-radius: 50%;
-}
 .btn-primary{
 	margin-top:30px;
 	width: 800px;
@@ -308,39 +218,153 @@ h3{
 	color:var(--color-txt);
 	margin-top:20px;
 }
+
+h5{
+	color:var(--color-txt);
+	margin-top:20px;
+}
 #date-to-plan{
 	margin:30px 0px 20px 5px;
 	color:var(--color-txt);
 }
+
 .exercise {
 	display:flex;
 	width: 800px;
 	height: 300px;
-	overflow-x: scroll;
-	margin-top: 100px;
-	
+	flex-basis:100%;
+	flex-shrink:0;
+	overflow-x: auto;
+	margin-top: 50px;
 }
 
 .exercise-program{
-	width: 180px;
-	height: 180px;
-	border-radius: 50%;
-	margin: 30px 30px 30px 0px;
-	
+	width: 200px;
+	height: 200px;
+	border-radius: 10%;
+	margin: 30px 30px 30px 30px;	
 	box-shadow: var(--shadow);
-	border-radius: 50%;
 	display: flex;
 	flex-direction: column;
+	flex-basis: 200px;
+	flex-shrink: 0;
 	align-items: center;
+	justify-content: center;
 }
 
 .exercise_program_img{
-	width:auto;
-    height:100%;
-    object-fit:cover;
+	width:100px;
+    height:100px;
     border-radius: 50%;
+}
+
+.exercise-program-list {
+	color: var(--color-txt);
+}
+
+.modal{
+	background-color: var(--bg-body);	
+}
+
+.exercise-info{
+	display: flex;
+	padding: 0px 20px 20px 0px;
+	box-shadow: var(--shadow);
+	
+}
+.exercise-info>div {
+	display: grid;
+	place-items: center;
+	padding: 10px;
+	
+}
+.exercise-info_img {
+	width:100px;
+    height:100px;
+    border-radius: 10%;
+    padding: 10px;
 }
 
 .hidden {
 	display: none;
+}
+
+.excercise-to-do-plan{
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.exercise-to-do-list{
+	width:700px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 15px;
+	box-shadow: var(--shadow);
+	background: white;
+	background-color: var(--bg-body);
+}
+
+.exercise-img {
+	margin-right: 30px;	
+	padding: 20px;
+}
+
+.exercise-set-info {
+	display: flex;
+}
+
+.exercise-img {
+	width:200px;
+	height:200px;
+}
+
+.exercise-sets {
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	height: 200px;
+	
+	
+}
+.exercise-to-do-check {
+	width: 450px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.excercise_set{
+	width: 300px;
+}
+
+.excercise_set > input{
+	width:40px;
+	height:40px;
+	text-align: center;
+	font: 15px;
+	
+	
+	border:none;
+}
+
+.excercise_set > label{
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+input[type="checkbox"]{
+	width:25px;
+	height:25px;
 }

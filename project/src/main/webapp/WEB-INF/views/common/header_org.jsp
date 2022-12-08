@@ -5,7 +5,7 @@
 <html>
     <head>     
         <!-- TITLE OF SITE --> 
-        <title>StartFit - Landing Page Template</title>
+        <title>StartOn - Landing Page Template</title>
         <!-- Meta -->
         <meta charset="utf-8">
         <meta name="description" content="StartUp Landing Page Template" />
@@ -56,8 +56,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
-                            <img src="/common/images/Start_Fit_logo_fin.png" alt="" class="logo-1 img-responsive">
-                            <img src="/common/images/Start_Fit_Logo.png" alt="" class="logo-2 img-responsive">
+                            <img src="/common/images/logo.png" alt="" class="logo-1 img-responsive">
+                            <img src="/common/images/logo-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
@@ -65,10 +65,12 @@
 
                         <nav role="navigation" class="okayNav pull-right d-flex justify-content-end" id="js-navbar-menu">
                             <ul id="navbar-nav" class="navbar-nav d-flex flex-row justify-content-end flex-wrap">
-                                <li><a class="btn-nav" href="#features">회원가입</a></li>
-                                <li><a class="btn-nav" href="#work">로그인</a></li>
-                                <li><a class="btn-nav" href="/views/common/dongbaek.jsp">고객센터</a></li>
-                           </ul>
+                                <li><a class="btn-nav" href="#features">Features</a></li>
+                                <li><a class="btn-nav" href="#work">work</a></li>
+                                <li><a class="btn-nav" href="#testimnial">Testimnial</a></li>
+                                <li><a class="btn-nav" href="#pricing">pricing</a></li>
+                                <li><a class="btn-nav" href="#contact">contact</a></li>
+                            </ul>
                         </nav>
 
                     </div> <!-- End: .col-xs-9 -->
@@ -79,7 +81,7 @@
         ============================= -->
 
 
-   
+        
         <!-- Start: Header Section
         ================================ -->
         <section class="header-section-1 bg-image-1 header-js" id="header" >
@@ -88,13 +90,12 @@
                     <div class="section-separator d-flex flex-column align-items-center">
 
                         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                        <!--  Header SubTitle Goes here -->
-<!--                           <div class="part-inner text-center ">
+                            <div class="part-inner text-center ">
 
-                                
-                                <h1 class="title">스타트핏에 오신 것을 환영합니다.<br>여기 뭐라고 쓸까요? 지워버리는 게 낫나 위 내비 버튼만 냅두고..?</h1> 
+                                <!--  Header SubTitle Goes here -->
+                                <h1 class="title">Welcome to Im Startup Launch Your Product Now</h1> 
                             </div>
--->                        </div> <!-- End: .part-1 -->
+                        </div> <!-- End: .part-1 -->
 
                     </div> <!-- End: .row -->
                 </div> <!-- End: .container -->
@@ -102,6 +103,5 @@
         </section>
         <!-- End: Header Section
         ================================ -->
-       
  	</body>
 </html>

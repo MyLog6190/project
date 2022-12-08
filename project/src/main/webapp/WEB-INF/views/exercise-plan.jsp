@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-plan.css" />
-
 <main class="light">
   <div class="pick">
     <div class="calendar">
@@ -39,184 +38,293 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
     </div>
     
   </div>
+  
   <div class="exercise-plan">
   	<div>
       <h3 id="date-to-plan"></h3>
       <input type="button" class="btn btn-primary" value='운동 계획하기'/>
     </div>
     
+    <div class="excercise-to-do-plan">
+	    <div class="exercise-to-do-list">
+		    <div class="exercise-to-do">
+		    	<span>복근</span> | <span>싯업</span>
+		    	<i class="bi bi-trash"></i>
+				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+					<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+					<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+				</svg>
+		    </div>
+		     
+		    <hr>
+		     
+		    <div class="exercise-set-info">
+		     
+			   	<img class="exercise-img" src="/views/images/g.png">
+				<div class="exercise-sets">
+			    	
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input class="excercise_set_count" id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input class="excercise_set_count" id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input class="excercise_set_count" id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input class="excercise_set_count" id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input class="excercise_set_count" id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input class="excercise_set_count" id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input  id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input  id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	
+			    </div>
+			    
+			 </div>
+	
+  
+	    
+	    </div>
+	    <div class="exercise-to-do-list">
+		    <div class="exercise-to-do">
+		    	<span>복근</span> | <span>싯업</span>
+		    	<i class="bi bi-trash"></i>
+				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+					<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+					<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+				</svg>
+		    </div>
+		     
+		    <hr>
+		     
+		    <div class="exercise-set-info">
+		     
+			   	<img class="exercise-img" src="/views/images/g.png">
+				<div class="exercise-sets">
+			    	
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input class="excercise_set_count" id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input class="excercise_set_count" id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input class="excercise_set_count" id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input class="excercise_set_count" id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input class="excercise_set_count" id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input class="excercise_set_count" id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	<div class="exercise-to-do-check">
+			    		<div class="excercise_set">
+				    		<input id="set" type="number" min="0" max="5" value=""/>
+				    		<label for="set"> Set </label>
+				    		<input  id="weight" type="number" min="0" max="100" value="10"/>
+				    		<label for="weight"> Kg </label>
+				    		<input  id="number" type="number" min="0" max="100" value="10"/>
+				    		<label for="number">횟수</label>
+			    		</div>
+			    		
+			    		<div>
+				    		<input type="checkbox" />
+				    		<i class="bi bi-trash"></i>
+				    		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+							  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+							  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+			    		</div>
+			    	</div>
+			    	
+			    </div>
+			    
+			 </div>
+	
+  
+	    
+	    </div>
+    
+   </div>
+  
     <div id="exercise" class="exercise hidden">
 		<div class="exercise-program" >
 			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>
-		</div>
-		<div class="exercise-program">
-			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>
-		</div>    
-		<div class="exercise-program" >
-			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>
-		</div>
-		<div class="exercise-program">
-			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>
+			<h5>프로그램 이름</h5>
 		</div>
 		<div class="exercise-program" >
 			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>    
+			<h5>프로그램 이름</h5>
 		</div>
-		<div class="exercise-program">
+		<div class="exercise-program" >
 			<img class="exercise_program_img" src="/views/images/g.png">
-			<h3>프로그램 이름</h3>
-		</div>    
+			<h5>프로그램 이름</h5>
+		</div>
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h5>프로그램 이름</h5>
+		</div>
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h5>프로그램 이름</h5>
+		</div>
+		<div class="exercise-program" >
+			<img class="exercise_program_img" src="/views/images/g.png">
+			<h5>프로그램 이름</h5>
+		</div>
     </div>
-  </div>
-  
-  <div class="exercise-list">
-  	
   </div>
     <ul>
       <li><a onclick="getGitLogin()">git</a></li>
     </ul>
+    
 </main>
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">프로그램 이름</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	  	<div class="exercise-program-list">
+	  		<div class="exercise-info">
+	  			<img class="exercise-info_img" src="/views/images/g.png">
+		  		<div>
+		  			<h4>운동 종목</h4>
+		  			<span>3set X 15reps</span>
+		  		</div>
+	  		</div>
+	  		<div class="exercise-info">
+	  			<img class="exercise-info_img" src="/views/images/g.png">
+		  		<div>
+		  			<h4>운동 종목</h4>
+		  			<span>3set X 15reps</span>
+		  		</div>
+	  		</div>
+	  		<div class="exercise-info">
+	  			<img class="exercise-info_img" src="/views/images/g.png">
+		  		<div>
+		  			<h4>운동 종목</h4>
+		  			<span>3set X 15reps</span>
+		  		</div>
+	  		</div>
+	  		<div class="exercise-info">
+	  			<img class="exercise-info_img" src="/views/images/g.png">
+		  		<div>
+		  			<h4>운동 종목</h4>
+		  			<span>3set X 15reps</span>
+		  		</div>
+	  		</div>
+	  		<div class="exercise-info">
+	  			<img class="exercise-info_img" src="/views/images/g.png">
+		  		<div>
+		  			<h4>운동 종목</h4>
+		  			<span>3set X 15reps</span>
+		  		</div>
+	  		</div>
+	    </div>
+	  </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">운동하러 가기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="/views/js/exercise-plan.js"></script>
 <script type="text/javascript">
-    document.querySelector(".dark-mode-switch").onclick = () => {
-      document.querySelector("main").classList.toggle("dark");
-      document.querySelector("main").classList.toggle("light");
-    };
-    const today = new Date()
-
-    const dateFormat = (date) => {
-  	  let month = date.getMonth() + 1;
-        let day = date.getDate();
-
-        return date.getFullYear()+'년\t'+ month+ '월\t' + day + '일'
-    }
-
-    dateFormat(today)
-
-    let dateToPlan = document.querySelector('#date-to-plan')
-    dateToPlan.innerHTML = dateFormat(today);
-
-    let year = today.getFullYear();
-    let month = today.getMonth();
-
-    let yearPicker = document.querySelector("#year");
-    yearPicker.innerHTML = year;
-
-    let monthPicker = document.querySelector("#month-picker");
-    monthPicker.innerHTML = month + 1 + "월";
-
-
-    let prev = document.querySelector("#prev-year");
-
-    prev.onclick = () => {
-      if (month == 0) {
-        --year;
-        month = 11;
-        yearPicker.innerHTML = year;
-      } else {
-        --month;
-      }
-
-      printDay(year, month);
-      selectPlanDate();
-      monthPicker.innerHTML = month + 1 + "월";
-    };
-
-    let next = document.querySelector("#next-year");
-
-    next.onclick = () => {
-      if (month == 11) {
-        ++year;
-        month = 0;
-        yearPicker.innerHTML = year;
-      } else {
-        ++month;
-      }
-
-      printDay(year, month);
-      selectPlanDate();
-      monthPicker.innerHTML = month + 1 + "월";
-    };
-
-    const getFirstDay = (year, month) => {
-      const date = new Date(year, month, 1);
-      return date.getDay();
-    };
-
-    const getLastDay = (year, month) => {
-      const date = new Date(year, month + 1, 0);
-      return date.getDate();
-    };
-
-    const printDay = (year, month) => {
-      let calendarDays = document.querySelector(".calendar-days");
-      calendarDays.innerHTML = "";
-      const firstDay = getFirstDay(year, month);
-      const LastDay = getLastDay(year, month);
-
-      for (let i = 1; i < LastDay + firstDay + 1; i++) {
-        const day = document.createElement("div");
-        calendarDays.appendChild(day);
-        if (i >= firstDay + 1) {
-          day.classList.add("day");
-          day.classList.add("calendar-day-hover");
-          let or = i - firstDay >= 10 ? "" : "0";
-          day.setAttribute("id", year + "-" + (month + 1) +"-" + or + (i - firstDay));
-          day.innerHTML = i - firstDay;
-          day.innerHTML += `
-  		                <span></span>
-  		                <span></span>
-  		                <span></span>
-  		                <span></span>
-  	                `;
-        }
-      }
-    };
-
-    printDay(year, month);
-
-    /* ------- */
-    const selectPlanDate = () => {
-  	  let days = document.querySelectorAll('.day')
-  	  days.forEach((day) => {
-  		 day.onclick = (e) => {
-  			 let id = e.target.id;
-  			 console.log(id)
-  			 dateToPlan.innerHTML = dateFormat(new Date(id));
-  		 }
-  	  });
-    }
-
-    selectPlanDate();
 
     let btn = document.querySelector(".btn-primary")
     btn.onclick = () => {
     	 document.querySelector("#exercise").classList.remove('hidden');
-    	 btn.classList.add('create-exercise-plan')
-    	 btn.value = '운동 계획 생성'
+    	 btn.classList.add('create-exercise-btn')
+    	 let changeBtn = document.querySelector(".create-exercise-btn")
+    	 changeBtn.value = "운동 계획 생성"
     };
     
-  /*   const gitLogin = () => {
-  	  const gitUrl = "https://github.com/login/oauth/access_token"
-  	  const tokenRequest = fetch(gitUrl, {
-
-            method: "POST",
-            header: {
-                "Content-Type": "application/json",
-            },
-            data: {
-                client_id: "7825cbafe9c48e56615a",
-                client_secret: "653ec28ac8080a0345c890d60d494c47919888ba",
-                code:
-            }
-        }).json();
-
-  	  console.log(tokenRequest);
-    } */
-
+	let exercise_programs = document.querySelectorAll(".exercise-program");
+	exercise_programs.forEach((exercise_program) => {
+		exercise_program.onclick = (e) => {
+			let modal = document.querySelector(".modal");
+			modal.style.display = "block";
+		}
+	})
+	
+	let btn_close = document.querySelector(".btn-close");
+	btn_close.onclick = (e) => {
+		let modal = document.querySelector(".modal");
+		modal.style.display = "none";
+	}
     const getGitLogin = () => {
   	  const gitUrl = "https://github.com/login/oauth/authorize";
   	  const client_id = "7825cbafe9c48e56615a";

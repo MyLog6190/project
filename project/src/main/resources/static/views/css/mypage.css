@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+*{  /*전체 배경*/
+   padding: 0; margin: 0; box-sizing: border-box; /*background: #121212;*/}
+
+h1{
+	text-align:center; color: #000000;
+}
+
+.container1{ display: flex; width: 100vmax; flex-direction: row; /*플렉스박스 컨테이너*/
+justify-content: center; align-items: center; align-content: center; 
+margin-top:2vmax;}
+
+.container2{ display: flex; width: 100vmax; flex-direction: row; /*플렉스박스 컨테이너2*/
+justify-content: center; align-items: center; align-content: center; 
+margin-top:2vmax; cursor: pointer;}
+
+.user_size{
+	width: 7vmax;
+	height: 7vmax;
+	cursor: pointer;
+}
+
+.user_name_size{
+	margin-left: 1vmax;
+	font-size: 3vmax;
+	cursor: pointer;
+}
+
+.detail-btn{ /*상세보기 버튼*/
+    width: 3.2vmax; height: 1.8vmax; background-color: #6CC0FF;
+    border: none; border-radius: 5px; color:#fff; font-size: 0.6vmax; font-weight: bold;
+    outline:none; margin:0px; display:block;}
