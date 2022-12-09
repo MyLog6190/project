@@ -37,14 +37,14 @@ function oneDetail(){
 	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
 		e.preventDefault()
 		const detailContainers = document.querySelectorAll('.detail-container')
-		const presentDetail = e.target.parentNode.nextElementSibling;
+		const presentDetail = e.target.parentNode.parentNode.nextElementSibling;
 		const presentBtn = e.target
 		const classList = presentBtn.classList
 
 		classList.toggle("detail-rotate")
 
 		detailContainers.forEach(detail => {
-			const detailBtn = detail.previousElementSibling.children[2]
+			const detailBtn = detail.previousElementSibling.children[2].lastElementChild
 			if(detailBtn != presentBtn){
 				detailBtn.classList.remove("detail-rotate")
 			}

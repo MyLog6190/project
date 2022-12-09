@@ -5,6 +5,7 @@ import lombok.*;
 
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +16,8 @@ public class ExerciseLibDTO {
 	private String elName;
 	
 	private int cid;
+	
+	private String cname;
 	
 	private String elImg;
 	

@@ -33,6 +33,7 @@ public class ExerciseLibController {
 		try {
 			list = exerciseLibService.getAll();
 			model.addAttribute("ellist", list);
+			log.info(model);
 		} catch(Exception e) {
 			log.error(e.getMessage());
 			log.info("라이브러리 로드 과정에서 문제 발생");
@@ -40,20 +41,10 @@ public class ExerciseLibController {
 		return "/exercise-lib";
 	}
 	
-//	@GetMapping("/list")
-//	public String libex1(Model model) {
-//		
-//		List<ExerciseLibDTO> list = null;
-//		
-//		try {
-//			list = exerciseLibService.getAll();
-//			model.addAttribute("list", list);
-//		} catch(Exception e) {
-//			log.error(e.getMessage());
-//			log.info("라이브러리 로드 과정에서 문제 발생");
-//			model.addAttribute("error", "뉴스를 정상적으로 가져오지 못했습니다.");
-//		}
-//
-//		return "/lib-example";
-//	}
+	@GetMapping("/login")
+	public String libex1(Model model) {
+		
+
+		return "/lib-login";
+	}
 }

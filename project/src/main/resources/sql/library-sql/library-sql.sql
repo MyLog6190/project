@@ -1,35 +1,46 @@
-select * from exercise_libraries
+select * from exercise_libraries order by elid
 
 
 create table exercise_libraries(
 	elid number primary key,
 	elname varchar2(50) not null,
 	cid number not null,
+	cname varchar2(50) not null,
 	elimg varchar2(100) not null,
 	eldetail varchar2(2000) not null
 )
 
+delete from EXERCISE_LIBRARIES where elid > 0
+
+update EXERCISE_LIBRARIES set cid = 2 where cname='chest'
+
 insert into exercise_libraries(
-	elid, elname, cid, elimg, eldetail
+	elid, elname, cid, cname, elimg, eldetail
 	)
-	values (lib_seq.nextVal, '스쿼트4', 1, '/images/libimages/leg/1.png', '운동 설명....')
+	values ((select nvl(max(elid),0)+1 from exercise_libraries),
+		'바벨 백스쿼트', 2, 'leg', '/images/libimages/leg/1.png', '운동 설명....')
 
-
+insert into exercise_libraries(
+	elid, elname, cid, cname, elimg, eldetail
+	)
+	values ((select nvl(max(elid),0)+1 from exercise_libraries),
+		'인플라인 덤벨 벤치프레스', 1, 'chest', '/images/libimages/chest/1.png', '운동 설명....')
 
 create sequence lib_seq start with 1 INCREMENT BY 1;
 
 
 
-select * from user_sequences
-
+ Name                                      Null?    Type
+ ----------------------------------------- -------- --------------------
  ELID                                      NOT NULL NUMBER
  ELNAME                                    NOT NULL VARCHAR2(50)
  CID                                       NOT NULL NUMBER
- ELIMG                                              VARCHAR2(100)
- ELDETAIL                                           VARCHAR2(2000)
+ ELIMG                                     NOT NULL VARCHAR2(100)
+ ELDETAIL                                  NOT NULL VARCHAR2(2000)
+ CNAME                                     NOT NULL VARCHAR2(50)
 
  
- alter table exercise_libraries modify( eldetail varchar2(2000)) 
+ alter table exercise_libraries add (	cname varchar2(50) not null) 
  
  drop table exercise_libraries
  

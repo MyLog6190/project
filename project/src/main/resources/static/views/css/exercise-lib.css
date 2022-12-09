@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+:root{
+  --box-ex-width: 200px;
+  --box-ex-height: 150px;
+}
 body{
  -webkit-user-select: none;
  -moz-user-select: none;
@@ -168,6 +173,12 @@ input[type=radio]:checked + label {
   box-sizing: bordor-box;
 }
 
+.box-ex{
+  width: var(--box-ex-width);
+  height: var(--box-ex-height);
+  line-height: var(--box-ex-height);
+  
+}
 
 
 a{
