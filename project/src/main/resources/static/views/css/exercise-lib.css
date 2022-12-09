@@ -146,8 +146,6 @@ input[type=radio]:checked + label {
 }
 
 .libs-detail{
-  border:1px solid #555555;
-  border-radius: 100%;
   height: 5rem;
 }
 

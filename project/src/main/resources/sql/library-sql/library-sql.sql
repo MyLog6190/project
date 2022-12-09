@@ -8,6 +8,7 @@ create table exercise_libraries(
 	cname varchar2(50) not null,
 	elimg varchar2(100) not null,
 	eldetail varchar2(2000) not null
+	bookmarked number(1) default 0
 )
 
 delete from EXERCISE_LIBRARIES where elid > 0
@@ -28,7 +29,7 @@ insert into exercise_libraries(
 
 create sequence lib_seq start with 1 INCREMENT BY 1;
 
-
+update exercise_libraries set bookmark = 1 where elid = 8
 
  Name                                      Null?    Type
  ----------------------------------------- -------- --------------------
@@ -38,9 +39,10 @@ create sequence lib_seq start with 1 INCREMENT BY 1;
  ELIMG                                     NOT NULL VARCHAR2(100)
  ELDETAIL                                  NOT NULL VARCHAR2(2000)
  CNAME                                     NOT NULL VARCHAR2(50)
+ BOOKMARKED
 
  
- alter table exercise_libraries add (	cname varchar2(50) not null) 
+ alter table exercise_libraries add (bookmark number(1) default 0) 
  
  drop table exercise_libraries
  

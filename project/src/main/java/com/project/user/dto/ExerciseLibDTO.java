@@ -23,4 +23,5 @@ public class ExerciseLibDTO {
 	
 	private String elDetail;
 
+	private boolean bookmark;
 }

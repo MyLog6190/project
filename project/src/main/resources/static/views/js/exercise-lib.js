@@ -1,4 +1,12 @@
 
+async function handleRequest() {
+    await axios.post('/bookmarking').then(function (response) {
+        console.log(response)
+
+    }).catch(e =>{
+		console.log(e);
+	})
+}
  
 function start (){
     const filters = document.querySelectorAll('.exercise-field')
@@ -37,10 +45,12 @@ function oneDetail(){
 	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
 		e.preventDefault()
 		const detailContainers = document.querySelectorAll('.detail-container')
-		const presentDetail = e.target.parentNode.parentNode.nextElementSibling;
-		const presentBtn = e.target
+		let presentNode = e.target
+		if(e.target.tagName==='path')
+			presentNode = e.target.parentNode
+		const presentDetail = presentNode.parentNode.parentNode.nextElementSibling;
+		const presentBtn = presentNode
 		const classList = presentBtn.classList
-
 		classList.toggle("detail-rotate")
 
 		detailContainers.forEach(detail => {

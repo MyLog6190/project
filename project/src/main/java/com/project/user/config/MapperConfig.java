@@ -13,16 +13,16 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @Configuration
 @MapperScan(basePackages = "com.project.user.mapper")
 public class MapperConfig {
-	
-	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-	      SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-	      sessionFactory.setDataSource(dataSource);
-	      
-	      Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/*Mapper.xml");
-	      sessionFactory.setMapperLocations(res);
-	      sessionFactory.setTypeAliasesPackage("com.project.user"); //여기 추가
-	      
-	      return sessionFactory.getObject();
-	}
+   
+   @Bean
+   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+         sessionFactory.setDataSource(dataSource);
+         
+         Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/*Mapper.xml");
+         sessionFactory.setMapperLocations(res);
+         sessionFactory.setTypeAliasesPackage("com.project.user"); //여기 추가
+         
+         return sessionFactory.getObject();
+   }
 }
