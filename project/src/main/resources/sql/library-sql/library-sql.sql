@@ -12,7 +12,7 @@ create table exercise_libraries(
 insert into exercise_libraries(
 	elid, elname, cid, elimg, eldetail
 	)
-	values (lib_seq.nextVal, '스쿼트4', 1, '/images/leg', '운동 설명....')
+	values (lib_seq.nextVal, '스쿼트4', 1, '/images/libimages/leg/1.png', '운동 설명....')
 
 
 

@@ -39,14 +39,14 @@
           <div class="exercise-libs leg">
             <div class="d-flex flex-row justify-content-between">
          	
-              <img class="libs-image" src="/views/images/libimages/leg/1.png" />
+              <img class="libs-image" src="/views${list.elImg }" />
               <div class="libs-name">${list.elName }</div>
               <img class="libs-detail" src="/views/icons/libicons/down-arrow.png" />
             
             </div>
           
             <div class="detail-container d-none">
-              <div class="details">${list.elImg }</div>
+              <div class="details"></div>
               <div class="details">${list.elDetail }</div>
               <div class="details">유튜브 검색</div><!-- 버튼 action, 이름 붙여서 검색 -->
             </div>

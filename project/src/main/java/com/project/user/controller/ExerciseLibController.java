@@ -37,8 +37,6 @@ public class ExerciseLibController {
 			log.error(e.getMessage());
 			log.info("라이브러리 로드 과정에서 문제 발생");
 		}
-		
-		
 		return "/exercise-lib";
 	}
 	
