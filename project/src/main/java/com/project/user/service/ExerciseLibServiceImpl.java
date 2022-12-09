@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j2;
 @org.springframework.transaction.annotation.Transactional
 public class ExerciseLibServiceImpl implements ExerciseLibService {
 
-	private final ExerciseLibMapper exerciseLibMapper;
+	private final ExerciseLibMapper exerciseLibMapper = null;
 	
 	@Override
 	public List<ExerciseLibDTO> getAll() {
