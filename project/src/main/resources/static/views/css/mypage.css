@@ -11,19 +11,23 @@ h1{
 justify-content: center; align-items: center; align-content: center; 
 margin-top:2vmax;}
 
-.container2{ display: flex; width: 100vmax; flex-direction: row; /*플렉스박스 컨테이너2*/
-justify-content: center; align-items: center; align-content: center; 
+.container2{ display: flex; width: 50vmax; flex-direction: row; /*플렉스박스 컨테이너2*/
+justify-content: left; align-items: left; align-content: left; 
+margin: 0px; cursor: pointer;}
+
+.container3{ display: flex; width: 100vmax; flex-direction: row; /*플렉스박스 컨테이너2*/
+justify-content: right; align-items: right; align-content: right; 
 margin-top:2vmax; cursor: pointer;}
 
 .user_size{
-	width: 7vmax;
-	height: 7vmax;
+	width: 5vmax;
+	height: 5vmax;
 	cursor: pointer;
 }
 
 .user_name_size{
 	margin-left: 1vmax;
-	font-size: 3vmax;
+	font-size: 2vmax;
 	cursor: pointer;
 }
 
@@ -31,3 +35,74 @@ margin-top:2vmax; cursor: pointer;}
     width: 3.2vmax; height: 1.8vmax; background-color: #6CC0FF;
     border: none; border-radius: 5px; color:#fff; font-size: 0.6vmax; font-weight: bold;
     outline:none; margin:0px; display:block;}
+    
+/*-------------------------------------------------------------------------*/
+/*  Skill bar style
+/*-------------------------------------------------------------------------*/
+
+    .zt-skill-bar {
+        color: #fff;
+        font-size: 11px;
+        line-height: 25px;
+        height: 25px;
+        margin-bottom: 5px;
+
+        background-color: rgba(0,0,0,0.1);
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+                border-radius: 2px;
+
+    }
+
+    .zt-skill-bar * {
+        webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+           -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+               transition: all 0.5s ease;
+    }
+
+    .zt-skill-bar div {
+        background-color: #2478FF;
+        position: relative;
+        padding-left: 25px;
+        width: 0;
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+           -ms- border-radius: 2px;
+                border-radius: 2px;
+    }
+
+    .zt-skill-bar span {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 0 5px 0 10px;
+        background-color: #1a1a1a;
+
+        -webkit-border-radius: 0 2px 2px 0;
+           -moz-border-radius: 0 2px 2px 0;
+            -ms-border-radius: 0 2px 2px 0;
+                border-radius: 0 2px 2px 0;
+    }
+
+    .zt-skill-bar span:before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: -3px;
+        margin-top: -3px;
+        background-color: #1a1a1a;
+
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+    }    
