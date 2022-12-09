@@ -238,6 +238,19 @@ h5{
 	margin-top: 50px;
 }
 
+.exercise-list {
+	display: flex;
+	justify-content: space-between;
+	box-shadow: var(--shadow);
+	
+}
+
+.exercise-list>div {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+}
+
 .exercise-program{
 	width: 200px;
 	height: 200px;
@@ -264,6 +277,12 @@ h5{
 
 .modal{
 	background-color: var(--bg-body);	
+}
+
+.exercise-to-do{
+	display: flex;
+	justify-content: space-between;
+	padding:20px 20px 0px 20px;
 }
 
 .exercise-info{
@@ -295,6 +314,7 @@ h5{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	
 }
 
 .exercise-to-do-list{
@@ -304,7 +324,10 @@ h5{
 	border-radius: 15px;
 	box-shadow: var(--shadow);
 	background: white;
+	color: var(--color-txt);
 	background-color: var(--bg-body);
+	border: solid 1px var(--color-txt);
+	
 }
 
 .exercise-img {
@@ -329,10 +352,19 @@ h5{
 	
 	
 }
+
 .exercise-to-do-check {
 	width: 450px;
 	display: flex;
 	justify-content: space-between;
+	
+}
+
+.check-and-delete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width:60px;
 }
 
 .excercise_set{
@@ -344,9 +376,9 @@ h5{
 	height:40px;
 	text-align: center;
 	font: 15px;
-	
-	
-	border:none;
+	color: var(--color-txt);
+	background: var(--bg-main);
+	border: none;
 }
 
 .excercise_set > label{
