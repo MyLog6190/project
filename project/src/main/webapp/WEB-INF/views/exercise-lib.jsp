@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,18 +35,23 @@
         <input name="filter" id="abs" type="radio"><label class="exercise-field" data-filter="abs" for="abs">복근</label>
       </div>
       <div class="exercise-lib-container">
-        <div class="exercise-libs leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image" src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">바벨 백스쿼트</div>
-            <img class="libs-detail" src="/views/icons/libicons/down-arrow.png" />
+      	<c:forEach items="${ellist }" var="list">
+          <div class="exercise-libs leg">
+            <div class="d-flex flex-row justify-content-between">
+         	
+              <img class="libs-image" src="/views${list.elImg }" />
+              <div class="libs-name">${list.elName }</div>
+              <img class="libs-detail" src="/views/icons/libicons/down-arrow.png" />
+            
+            </div>
+          
+            <div class="detail-container d-none">
+              <div class="details"></div>
+              <div class="details">${list.elDetail }</div>
+              <div class="details">유튜브 검색</div><!-- 버튼 action, 이름 붙여서 검색 -->
+            </div>
           </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
+        </c:forEach>
         <div class="exercise-libs flex-column align-items-between leg">
           <div class="d-flex flex-row justify-content-between">
             <img class="libs-image"
@@ -179,91 +185,8 @@
   <!-- End: Features Section 7
   ================================ -->
   <%@include file="common/footer.jsp"%>
-  <script>
+  <script type="text/javascript" src="/views/js/exercise-lib.js"></script>
 
-function start (){
-    const filters = document.querySelectorAll('.exercise-field')
-    const exerItems = document.querySelectorAll('.exercise-libs')
-    
-    filters.forEach(b=>b.addEventListener('click',(e)=>{
-        const filter = e.target.dataset.filter
-        const finder = document.querySelector('#finder')
-        finder.value = "";
-        exerItems.forEach(i=>{
-            if(filter ==='all'){
-                i.classList.remove('d-none');
-            }else{
-                if(i.classList.contains(filter)){
-
-                    i.classList.remove('d-none');
-                }
-                else{
-                    i.classList.add('d-none');
-                }
-            }
-        })
-    }))
-    oneDetail()
-    find()
-}
-
-start()
-
-
-
-function oneDetail(){
-	const libsDetails = document.querySelectorAll('.libs-detail')
-
-
-	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
-		e.preventDefault()
-		const detailContainers = document.querySelectorAll('.detail-container')
-		const presentDetail = e.target.parentNode.nextElementSibling;
-		const presentBtn = e.target
-		const classList = presentBtn.classList
-
-		classList.toggle("detail-rotate")
-
-		detailContainers.forEach(detail => {
-			const detailBtn = detail.previousElementSibling.children[2]
-			if(detailBtn != presentBtn){
-				detailBtn.classList.remove("detail-rotate")
-			}
-			if(presentDetail != detail){
-				detail.classList.add("d-none");
-			} else {
-				if(classList.contains("detail-rotate")){
-					presentDetail.classList.remove('d-none');
-				} else{
-					presentDetail.classList.add('d-none');
-				}
-			}
-		})
-	}))
-}
-
-function find(){
-	const finder = document.querySelector("#finder")
-	
-	finder.addEventListener("keyup", e=>{
-		const all = document.querySelector("#all");
-		all.checked =true
-		const libsName = document.querySelectorAll(".libs-name")
-		libsName.forEach(name =>{
-			if(e.target.value === ""){
-				name.parentNode.parentNode.classList.remove("d-none")
-			}else if(name.innerText.search(e.target.value)>=0){
-				name.parentNode.parentNode.classList.remove("d-none")
-			} else{
-				name.parentNode.parentNode.classList.add("d-none")
-			}
-		})
-	})
-	
-}
-
-
-</script>
 </body>
 
 </html>

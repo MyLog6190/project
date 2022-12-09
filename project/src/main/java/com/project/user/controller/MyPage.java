@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/lib")
-public class lib {
+@RequestMapping("/mypage")
+public class  MyPage{
 	
-	@GetMapping("/a")
+	@GetMapping("/my")
 	public String libraries() {
-		return "exercise-lib";
+		return "mypage";
 	}
 }
