@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+*{  /*전체 배경*/
+   padding: 0; margin: 0; box-sizing: border-box; background: #EAEAEA;}
+
+.container{ display: flex; width: 100vmax; flex-direction: column; /*플렉스박스 컨테이너*/
+justify-content: center; align-items: center; align-content: center;}
+
+.center1{ /*번핏 로고 이미지*/
+   width: 250px; height: 100px; margin: 250px 20px 80px 20px; cursor: pointer; border-radius: 10px;}
+
+.center2{   /*카카오톡버튼 이미지*/
+   height: 45px; width: 300px; margin: 5px; cursor: pointer;}
+
+.center3{   /*네이버 버튼 이미지*/
+   height: 45px; width: 300px; margin: 5px; cursor: pointer;}
+
+.login-btn{ /*이메일로 로그인 버튼*/
+    width: 300px; height: 45px; background-color: #7112FF;
+    border: none; border-radius: 5px; color:#fff; font-size: 18px; font-weight: bold;
+    outline:none; margin:5px; display:block; cursor: pointer;}
