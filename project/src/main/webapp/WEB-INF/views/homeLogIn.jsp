@@ -15,36 +15,50 @@
   <!-- Start: Features Section 7
         ====================================== -->
         <section class="features-section-7 content-half" >
-
+<!-- 
             <div class="container-half container-half-left"></div>
             <div class="container-half container-half-right cover" style="background-image: url(images/background-4.jpg);"></div>
-
+ -->
             <div class="container">
-                <div class="row section-separator text-left">
+<!--                 <div class="row section-separator text-left"> -->
 
-                    <div class="col-md-6">
-                        <div class="inner">
+                    <div class="">
+                        <div class="">
 							<!-- <span>태그 사용 번핏 로고 / 노말 버전 / 프로 버전 버튼 아이콘  회원가입 로그인 고객센터 얘는 헤더  -->
-                            <div class="detail">
-                            <p >이번 달 운동<br></p>
-                            <p>운동량(시간/볼륨)<br></p>
-                            <p>이번 주 계획 운동량</p><hr>
-                            </div>
-                            <div class="detail"><span>프로그램</span><span>추천 프로그램 이름과 간략한 설명</span><hr>
-                            </div>
+							
+							
+                            <div class="detail"></div>
+                            
+                            
+                            <div class=home-title><center>프로그램</center></div>
+                            <div class="box1">
+	                            <a href="http://www.naver.com"><img class="prog-img" src="/views/images/progimg/gvt_10x10.jpg" /><span>GVT 10x10
+	                            <br>GVT프로그램은 독일에서 만들어진 상급자용 볼륨 트레이닝입니다.</span></a>
+	                            
+	                            <a href="http://www.naver.com"><img class="prog-img" src="/views/images/progimg/gvt_10x10.jpg" /><span>GVT 10x10
+	                            <br>GVT프로그램은 독일에서 만들어진 상급자용 볼륨 트레이닝입니다.</span></a>
+	                            
+	                            <a href="http://www.naver.com"><img class="prog-img" src="/views/images/progimg/stronglift.png" /><span>Strong lift 5x5<br>
+	                            Storng lift 5x5 프로그램은 2007년에 시작한 스트렝스 트레이닝입니다.</span></a>
+	                        </div>
+
+
+                            
+                           <div class=home-title><center>게시판</center></div> 
                             <div class="box2">
-                                <span>탄단지 계산기(macrocalculator)</span>
-
-                                <span>커뮤니티 게시판</span><hr>
+           	                	<div class=home-btn-each>
+           	                	<button onclick="location.href='joinUs.jsp'">탄단지 계산기<br>Macro Calculator</button>
+           	                	</div>
+           	                	<div class=home-btn-each>
+           	                	<button onclick="location.href='joinUs.jsp'">커뮤니티</button>
+           	                	</div>
+           	                </div>
+                           <div class="detail">
                             </div>
-                            <div class="detail">
-                                <p><br><br><br></p>                            	
-                            </div>
-
                         </div>
                     </div>
 
-                </div>
+ <!--                </div> -->
             </div>
         </section>
         <!-- End: Features Section 7
