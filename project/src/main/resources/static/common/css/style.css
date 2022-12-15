@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*------------------------------------------------------------------
 [Table of contents]
 
@@ -130,6 +130,8 @@
  *  Defult CSS 
  * ===============================
  */
+@import url("../../views/css/darkMode.css");
+
 body {
   font-family: 'Poppins', sans-serif;
   color: rgba(88, 88, 88, 0.8);
@@ -1507,7 +1509,7 @@ h6 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-=======
+
 /*------------------------------------------------------------------
 [Table of contents]
 
@@ -3008,5 +3010,4 @@ h6 {
   color: rgba(255, 255, 255, 0.32);
   font-size: 15px;
   font-weight: 400;
->>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
 }
