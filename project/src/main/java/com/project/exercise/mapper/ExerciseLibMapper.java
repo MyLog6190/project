@@ -7,9 +7,16 @@ import org.springframework.stereotype.Repository;
 
 import com.project.exercise.dto.ExerciseLibDTO;
 
+
 @Repository
 @MapperScan
 public interface ExerciseLibMapper {
 	
-	List<ExerciseLibDTO> getAll();
+	List<ExerciseLibDTO> getAllExerciseLib();
+	
+	ExerciseLibDTO getOneExerciseLib(int elid);
+	
+	void updateBookmark(int elid);
+	
+
 }

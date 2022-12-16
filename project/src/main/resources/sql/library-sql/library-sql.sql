@@ -1,14 +1,21 @@
 select * from exercise_libraries order by elid
 
 
+CREATE TABLE bookmark(
+	ID
+	E_NO
+	
+)
+
+
 create table exercise_libraries(
-	elid number primary key,
-	elname varchar2(50) not null,
-	cid number not null,
-	cname varchar2(50) not null,
-	elimg varchar2(100) not null,
-	eldetail varchar2(2000) not null
-	bookmarked number(1) default 0
+	ID
+	E_NO number primary key,
+	E_NAME varchar2(50) not null,
+	C_NO number not null,
+	C_NAME varchar2(50) not null,
+	E_IMAGE varchar2(100) not null,
+	E_CONTENT varchar2(2000) not null,
 )
 
 delete from EXERCISE_LIBRARIES where elid > 0
@@ -16,7 +23,7 @@ delete from EXERCISE_LIBRARIES where elid > 0
 update EXERCISE_LIBRARIES set cid = 2 where cname='chest'
 
 insert into exercise_libraries(
-	elid, elname, cid, cname, elimg, eldetail
+	E_NO, elname, cid, cname, elimg, eldetail
 	)
 	values ((select nvl(max(elid),0)+1 from exercise_libraries),
 		'바벨 백스쿼트', 2, 'leg', '/images/libimages/leg/1.png', '운동 설명....')

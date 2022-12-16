@@ -139,6 +139,16 @@ input[type=radio]:checked + label {
   text-align: center;
 }
 
+.bookmark-container{
+  display: flex;
+  align-items: center;
+}
+
+.cursor-pointer{
+  cursor:pointer;
+}
+
+
 .libs-image{
   height:5rem;
   border:1px solid #aaaaaa;
@@ -149,14 +159,15 @@ input[type=radio]:checked + label {
   height: 5rem;
 }
 
+.libs-detail:hover{
+  cursor: pointer;
+}
+
 .detail-rotate {
   display: block;
   transform: rotateZ(180deg);
 }
 
-.libs-detail:hover{
-  cursor: pointer;
-}
 
 .detail-container{
   display: block;

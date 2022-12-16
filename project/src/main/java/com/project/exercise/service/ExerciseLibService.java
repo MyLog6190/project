@@ -7,6 +7,10 @@ import com.project.exercise.dto.ExerciseLibDTO;
 
 public interface ExerciseLibService {
 
-	List<ExerciseLibDTO> getAll();
+	List<ExerciseLibDTO> getAllExerciseLib();
+	
+	ExerciseLibDTO getOneExerciseLib(int elid);
+	
+	String updateBookmark(int elid);
 	
 }

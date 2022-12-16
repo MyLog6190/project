@@ -1,4 +1,4 @@
-package com.project.exercise.contoller;
+package com.project.exercise.controller;
 
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class ExercisePlan {
 	public String hello(Model model) {
 		List<ExerciseLibDTO> list = null;
 		try {
-			list = exerciseLibService.getAll();
+			list = exerciseLibService.getAllExerciseLib();
 			model.addAttribute("ellist", list);
 			log.info(model);
 		} catch(Exception e) {

@@ -9,10 +9,8 @@ import com.project.exercise.dto.ExerciseLibDTO;
 import com.project.exercise.mapper.ExerciseLibMapper;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Service
-@Log4j2
 @RequiredArgsConstructor
 @Transactional
 public class ExerciseLibServiceImpl implements ExerciseLibService {
@@ -20,10 +18,21 @@ public class ExerciseLibServiceImpl implements ExerciseLibService {
 	private final ExerciseLibMapper exerciseLibMapper;
 	
 	@Override
-	public List<ExerciseLibDTO> getAll() {
-		List<ExerciseLibDTO> elList = exerciseLibMapper.getAll();
+	public List<ExerciseLibDTO> getAllExerciseLib() {
+		List<ExerciseLibDTO> elList = exerciseLibMapper.getAllExerciseLib();
 		
 		return elList;
 	}
 
+	@Override
+	public ExerciseLibDTO getOneExerciseLib(int elid) {
+		ExerciseLibDTO elDTO = exerciseLibMapper.getOneExerciseLib(elid);
+		return elDTO;
+	}
+
+	@Override
+	public String updateBookmark(int elid) {
+		exerciseLibMapper.updateBookmark(elid);
+		return "update done";
+	}
 }
