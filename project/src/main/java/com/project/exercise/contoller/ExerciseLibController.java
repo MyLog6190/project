@@ -1,4 +1,4 @@
-package com.project.user.controller;
+package com.project.exercise.contoller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.user.dto.ExerciseLibDTO;
-import com.project.user.service.ExerciseLibService;
+import com.project.exercise.dto.ExerciseLibDTO;
+import com.project.exercise.service.ExerciseLibService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -34,7 +34,7 @@ public class ExerciseLibController {
 		List<ExerciseLibDTO> list = null;
 		try {
 			list = exerciseLibService.getAll();
-			model.addAttribute("ellist", list);
+			model.addAttribute("elist", list);
 			log.info(model);
 		} catch(Exception e) {
 			log.error(e.getMessage());

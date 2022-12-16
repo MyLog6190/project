@@ -1,4 +1,4 @@
-package com.project.user.config;
+package com.project.common.config;
 
 import javax.sql.DataSource;
 
@@ -11,7 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = "com.project.user.mapper")
+@MapperScan(basePackages = {"com.project.user.mapper", "com.project.exercise.mapper"})
 public class MapperConfig {
    
    @Bean
@@ -22,7 +22,7 @@ public class MapperConfig {
          Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/*Mapper.xml");
          sessionFactory.setMapperLocations(res);
          sessionFactory.setTypeAliasesPackage("com.project.user"); //여기 추가
-         
+         sessionFactory.setTypeAliasesPackage("com.project.exercise"); //여기 추가
          return sessionFactory.getObject();
    }
 }

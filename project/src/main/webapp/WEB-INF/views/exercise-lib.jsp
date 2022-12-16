@@ -35,11 +35,11 @@
         <input name="filter" id="abs" type="radio"><label class="exercise-field" data-filter="abs" for="abs">복근</label>
       </div>
       <div class="exercise-lib-container">
-        <c:forEach items="${ellist }" var="list">
-          <div class="exercise-libs ${list.cname } <c:if test="${list.bookmark eq true }">bookmark</c:if>">
+        <c:forEach items="${elist }" var="list">
+          <div class="exercise-libs ${list.c_name } <c:if test="${list.bookmark eq true }">bookmark</c:if>">
             <div class="d-flex flex-row justify-content-between">
-              <img class="libs-image" src="/views${list.elImg }" />
-              <div class="libs-name">${list.elName }</div>
+              <img class="libs-image" src="/views${list.e_Img }" />
+              <div class="libs-name">${list.e_name }</div>
               <div class="d-flex align-items-center">
                 <c:choose>
                   <c:when test="${list.bookmark eq false }">
@@ -65,10 +65,10 @@
                 <div class="box-ex">도구</div>
                 <div class="box-ex">타입</div>
               </div>
-              <div class="details">${list.elDetail }</div>
+              <div class="details">${list.e_content }</div>
               <div class="details">
               <a class="btn btn-secondary" target="_blank"
-                  href="https://www.youtube.com/results?search_query=${list.elName } 운동 방법">
+                  href="https://www.youtube.com/results?search_query=${list.e_name } 운동 방법">
                 유튜브 검색
               </a>
               </div><!-- 버튼 action, 이름 붙여서 검색 -->

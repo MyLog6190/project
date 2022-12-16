@@ -1,13 +1,12 @@
-package com.project.user.service;
+package com.project.exercise.service;
 
 import java.util.List;
-
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.user.dto.ExerciseLibDTO;
-import com.project.user.mapper.ExerciseLibMapper;
+import com.project.exercise.dto.ExerciseLibDTO;
+import com.project.exercise.mapper.ExerciseLibMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

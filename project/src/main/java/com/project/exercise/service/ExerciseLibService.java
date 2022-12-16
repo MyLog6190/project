@@ -1,9 +1,8 @@
-package com.project.user.service;
+package com.project.exercise.service;
 
 import java.util.List;
 
-
-import com.project.user.dto.ExerciseLibDTO;
+import com.project.exercise.dto.ExerciseLibDTO;
 
 
 public interface ExerciseLibService {
