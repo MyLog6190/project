@@ -323,6 +323,7 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
   </div>
     <ul>
       <li><a onclick="getGitLogin()">git</a></li>
+      <li><a onclick="kakaoLogin()">kakao</a></li>
     </ul>
     
 </main>
@@ -438,6 +439,8 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
 
 
 <script src="/views/js/exercise-plan.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <script type="text/javascript">
 
     let btn = document.querySelector(".btn-primary");
@@ -483,6 +486,32 @@ pageEncoding="UTF-8"%> <%@include file ="common/header.jsp" %>
   	  const client_id = "7825cbafe9c48e56615a";
   	  const finalUrl = gitUrl+"?client_id=" +client_id+ "&scope={read:user,user:email}";
   	  location.href = finalUrl;
+    }
+    
+    const kakaoLogin = () => {
+    	Kakao.init('6b2dc1e464413590e4c2800c17ceee7e');
+    	Kakao.Auth.login({
+    		  scope:'profile_nickname, profile_image, account_email, gender',
+    	      success: (response) => {
+    	        Kakao.API.request({
+    	          url: '/v2/user/me',
+    	          success: (response) => {
+    	        	  const kakao_account = response.kakao_account;
+    	        	  console.log(kakao_account);
+    	        	  console.log(kakao_account.email );
+    	        	  console.log(kakao_account.gender );
+    	        	  console.log(kakao_account.profile.profile_image_url );
+    	        	  console.log(kakao_account.profile.nickname );
+    	          },
+    	          fail: (error) => {
+    	            console.log(error)
+    	          },
+    	        })
+    	      },
+    	      fail: (error) => {
+    	        console.log(error)
+    	      },
+    	 });
     }
 </script>
 <%@include file ="common/footer.jsp" %>

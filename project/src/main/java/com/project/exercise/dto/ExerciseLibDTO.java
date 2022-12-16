@@ -11,17 +11,13 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class ExerciseLibDTO {
-	private int elid;
+	private String eNo;
 	
-	private String elName;
+	private String eName;
 	
-	private int cid;
+	private String cNo;
 	
-	private String cname;
+	private String ePhoto;
 	
-	private String elImg;
-	
-	private String elDetail;
-
-	private boolean bookmark;
+	private String eContent;
 }
