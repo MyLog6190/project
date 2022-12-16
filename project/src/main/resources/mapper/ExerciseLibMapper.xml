@@ -2,8 +2,19 @@
 <!DOCTYPE mapper PUBLIC
 	 "-//mybatis.org//DTD Config 3.0//EN"
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace='com.project.user.mapper.ExerciseLibMapper'>
-  <select id='getAll' resultType="com.project.user.dto.ExerciseLibDTO">
+<mapper namespace='com.project.exercise.mapper.ExerciseLibMapper'>
+  <select id='getAllExerciseLib' resultType="com.project.exercise.dto.ExerciseLibDTO">
   	SELECT * FROM exercise_libraries order by elid
   </select>
+  
+  <select id='getOneExerciseLib' resultType="com.project.exercise.dto.ExerciseLibDTO">
+  	SELECT * FROM exercise_libraries where elid = ${elid}
+  </select>
+  
+  <update id='updateBookmark' parameterType="int">
+  	UPDATE exercise_libraries set bookmark = DECODE(bookmark, 0, 1, 1, 0)
+  	<where>
+  	 elid = ${elid}
+  	 </where>
+  </update>
 </mapper>
