@@ -56,7 +56,11 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
+<<<<<<< HEAD
+                            <img src="/common/images/Logo_Start_Fit_1202.png" alt="" class="logo-1 img-responsive">
+=======
                             <img src="/common/images/Start_Fit_logo_fin.png" alt="" class="logo-1 img-responsive">
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
                             <img src="/common/images/Start_Fit_Logo.png" alt="" class="logo-2 img-responsive">
                         </a>
 
@@ -97,12 +101,12 @@
 
                         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                         <!--  Header SubTitle Goes here -->
-<!--                           <div class="part-inner text-center ">
+                           <div class="part-inner text-center ">
 
                                 
                                 <h1 class="title">스타트핏에 오신 것을 환영합니다.<br>여기 뭐라고 쓸까요? 지워버리는 게 낫나 위 내비 버튼만 냅두고..?</h1> 
                             </div>
--->                        </div> <!-- End: .part-1 -->
+                        </div> <!-- End: .part-1 -->
 
                     </div> <!-- End: .row -->
                 </div> <!-- End: .container -->
