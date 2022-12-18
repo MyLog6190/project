@@ -45,7 +45,7 @@
         <![endif]-->
 
     </head>
-    <body class="">
+    <body class="light">
 
         <!-- Start: Navbar Area
         ============================= -->
@@ -72,6 +72,14 @@
                                 <li><a class="btn-nav" href="#features">회원가입</a></li>
                                 <li><a class="btn-nav" href="#work">로그인</a></li>
                                 <li><a class="btn-nav" href="/views/common/dongbaek.jsp">고객센터</a></li>
+                                <li>
+                                	<div class="toggle">
+							          <span>Dark Mode</span>
+							          <div class="dark-mode-switch">
+							            <div class="dark-mode-switch-ident"></div>
+							          </div>
+							        </div>
+                                </li>
                            </ul>
                         </nav>
 
