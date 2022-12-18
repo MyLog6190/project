@@ -56,7 +56,11 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
+<<<<<<< HEAD
                             <img src="/common/images/Logo_Start_Fit_1202.png" alt="" class="logo-1 img-responsive">
+=======
+                            <img src="/common/images/Start_Fit_logo_fin.png" alt="" class="logo-1 img-responsive">
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
                             <img src="/common/images/Start_Fit_Logo.png" alt="" class="logo-2 img-responsive">
                         </a>
 

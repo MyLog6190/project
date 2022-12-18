@@ -10,7 +10,6 @@
 			<p>공지사항</p>
 			</div>
 
-			</div>
 			<div class="copyright">
 				Shared by <i class="fa fa-love"></i><a
 					href="https://bootstrapthemes.co">BootstrapThemes</a>

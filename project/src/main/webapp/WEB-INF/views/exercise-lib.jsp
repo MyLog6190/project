@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,144 +35,46 @@
         <input name="filter" id="abs" type="radio"><label class="exercise-field" data-filter="abs" for="abs">복근</label>
       </div>
       <div class="exercise-lib-container">
-        <div class="exercise-libs leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image" src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">바벨 백스쿼트</div>
-            <img class="libs-detail" src="/views/icons/libicons/down-arrow.png" />
+        <c:forEach items="${ellist }" var="list">
+          <div class="exercise-libs ${list.cname } <c:if test="${list.bookmark eq true }">bookmark</c:if>">
+            <div class="d-flex flex-row justify-content-between">
+              <img class="libs-image" src="/views${list.elImg }" />
+              <div class="libs-name">${list.elName }</div>
+              <div class="d-flex align-items-center">
+                <c:choose>
+                  <c:when test="${list.bookmark eq false }">
+                    <svg class="bi bi-bookmark" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+    				  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
+    				</svg>
+                  </c:when>
+                  <c:otherwise>
+                    <svg class="bi bi-bookmark-fill" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+                    </svg>
+                  </c:otherwise>
+                </c:choose>
+                <svg class="libs-detail bi bi-chevron-down" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+            </div>
+          
+            <div class="detail-container d-none">
+              <div class="details">사진</div>
+              <div class="d-flex justify-content-evenly">
+                <div class="box-ex">도구</div>
+                <div class="box-ex">타입</div>
+              </div>
+              <div class="details">${list.elDetail }</div>
+              <div class="details">
+              <a class="btn btn-secondary" target="_blank"
+                  href="https://www.youtube.com/results?search_query=${list.elName } 운동 방법">
+                유튜브 검색
+              </a>
+              </div><!-- 버튼 action, 이름 붙여서 검색 -->
+            </div>
           </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">컨벤셔널 데드리프트</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">프론트 스쿼트</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">레그 프레스</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">레그 컬</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between leg">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/leg/1.png" />
-            <div class="libs-name">레그 익스텐션</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between chest">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/chest/1.png" />
-            <div class="libs-name">벤치프레스</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between chest">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/chest/1.png" />
-            <div class="libs-name">인플라인 벤치프레스</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between chest">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/chest/1.png" />
-            <div class="libs-name">덤벨 벤치프레스</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
-        <div class="exercise-libs flex-column align-items-between chest">
-          <div class="d-flex flex-row justify-content-between">
-            <img class="libs-image"
-              src="/views/images/libimages/chest/1.png" />
-            <div class="libs-name">인플라인 덤벨 벤치프레스</div>
-            <img class="libs-detail"
-              src="/views/icons/libicons/down-arrow.png" />
-          </div>
-          <div class="detail-container d-none">
-            <div class="details">운동 사진</div>
-            <div class="details">운동 설명</div>
-            <div class="details">유튜브 검색</div>
-          </div>
-        </div>
+        </c:forEach>
       </div>
     </div>
   </div>
@@ -179,91 +82,11 @@
   <!-- End: Features Section 7
   ================================ -->
   <%@include file="common/footer.jsp"%>
-  <script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <script type="text/javascript" src="/views/js/exercise-lib.js"></script>
 
-function start (){
-    const filters = document.querySelectorAll('.exercise-field')
-    const exerItems = document.querySelectorAll('.exercise-libs')
-    
-    filters.forEach(b=>b.addEventListener('click',(e)=>{
-        const filter = e.target.dataset.filter
-        const finder = document.querySelector('#finder')
-        finder.value = "";
-        exerItems.forEach(i=>{
-            if(filter ==='all'){
-                i.classList.remove('d-none');
-            }else{
-                if(i.classList.contains(filter)){
-
-                    i.classList.remove('d-none');
-                }
-                else{
-                    i.classList.add('d-none');
-                }
-            }
-        })
-    }))
-    oneDetail()
-    find()
-}
-
-start()
-
-
-
-function oneDetail(){
-	const libsDetails = document.querySelectorAll('.libs-detail')
-
-
-	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
-		e.preventDefault()
-		const detailContainers = document.querySelectorAll('.detail-container')
-		const presentDetail = e.target.parentNode.nextElementSibling;
-		const presentBtn = e.target
-		const classList = presentBtn.classList
-
-		classList.toggle("detail-rotate")
-
-		detailContainers.forEach(detail => {
-			const detailBtn = detail.previousElementSibling.children[2]
-			if(detailBtn != presentBtn){
-				detailBtn.classList.remove("detail-rotate")
-			}
-			if(presentDetail != detail){
-				detail.classList.add("d-none");
-			} else {
-				if(classList.contains("detail-rotate")){
-					presentDetail.classList.remove('d-none');
-				} else{
-					presentDetail.classList.add('d-none');
-				}
-			}
-		})
-	}))
-}
-
-function find(){
-	const finder = document.querySelector("#finder")
-	
-	finder.addEventListener("keyup", e=>{
-		const all = document.querySelector("#all");
-		all.checked =true
-		const libsName = document.querySelectorAll(".libs-name")
-		libsName.forEach(name =>{
-			if(e.target.value === ""){
-				name.parentNode.parentNode.classList.remove("d-none")
-			}else if(name.innerText.search(e.target.value)>=0){
-				name.parentNode.parentNode.classList.remove("d-none")
-			} else{
-				name.parentNode.parentNode.classList.add("d-none")
-			}
-		})
-	})
-	
-}
-
-
-</script>
 </body>
 
 </html>

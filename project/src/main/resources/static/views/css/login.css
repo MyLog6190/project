@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 *{  /*전체 배경*/
-   padding: 0; margin: 0; box-sizing: border-box; background: #EAEAEA;}
+   padding: 0; margin: 0; box-sizing: border-box; background: #121212;}
 
 .container{ display: flex; width: 100vmax; flex-direction: column; /*플렉스박스 컨테이너*/
 justify-content: center; align-items: center; align-content: center;}
