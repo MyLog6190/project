@@ -241,7 +241,9 @@ h5{
 .exercise-list {
 	display: flex;
 	justify-content: space-between;
+	background-color: var(--bg-main);
 	box-shadow: var(--shadow);
+	margin: 20px 20px 20px 20px;
 	
 }
 
