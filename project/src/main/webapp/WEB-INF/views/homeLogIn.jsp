@@ -39,7 +39,7 @@
 	                            <br>GVT프로그램은 독일에서 만들어진 상급자용 볼륨 트레이닝입니다.</span></a>
 	                            
 	                            <a href="http://www.naver.com"><img class="prog-img" src="/views/images/progimg/stronglift.png" /><span>Strong lift 5x5<br>
-	                            Storng lift 5x5 프로그램은 2007년에 시작한 스트렝스 트레이닝입니다.</span></a>
+	                            Strong lift 5x5 프로그램은 2007년에 시작한 스트렝스 트레이닝입니다.</span></a>
 	                        </div>
 
 
