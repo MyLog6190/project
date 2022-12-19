@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	 "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.project.user.mapper.UserMapper'>
+	
+	<select id="findByUser_id" resultType="com.project.user.dto.User">
+		SELECT * FROM registration_user 
+		<where>
+		user_id = #{user_id}
+		</where>
+	</select>
+
+	<insert id="userSignUp" parameterType="com.project.user.dto.User" >
+	 	INSERT INTO registration_user (user_id, password, name, weight, sex, profile_image, role)
+	 	VALUES(#{user_id}, #{password}, #{name}, 0, #{sex}, #{profile_image}, #{role})
+	</insert>
+	
+	<select id="login" resultType="com.project.user.dto.User">
+		SELECT * FROM registration_user
+		<where>
+		user_id = #{user_id} and password = #{password}
+		</where>
+	</select>
+	
+	<update id="userUpdate" parameterType="com.project.user.dto.User">
+		UPDATE registration_user
+		<set>
+            <if test="password != null">
+                password = #{user.password},
+            </if>
+            <if test="name != null">
+                name=#{user.name},
+            </if>
+            <if test="weight != null">
+                weight=${user.weight},
+            </if>
+        </set>
+        <where>
+        user_id = #{user.user_id}
+        </where> 
+	</update>
+	
+</mapper>

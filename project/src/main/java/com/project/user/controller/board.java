@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class board {
 	
-	@GetMapping("/")
+	@GetMapping
 	public String mainPage() {
 		return "board-main";
 	}

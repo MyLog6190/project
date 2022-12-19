@@ -11,7 +11,10 @@
 <div class="container">
 <img src="/views/images/logimages/Start_Fit_logo_fin.png" class="center1" alt="로고">
 <div class="center2">
-<img src="/views/images/logimages/kakao_login_button.png" alt="카카오버튼">
+    <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=59cc93f38a07bc58003afcc13ee2a761&redirect_uri=http://localhost:8888/auth/kakao/callback&response_type=code">
+      <img src="/views/images/logimages/kakao_login_button.png" width="300px" height="45px"
+        alt="카카오 로그인 버튼" />
+    </a>
 </div>
 <div class="center3">
 <img src="/views/images/logimages/naver_login_button.png" width=300px height=45px alt="네이버버튼">

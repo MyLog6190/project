@@ -9,7 +9,11 @@
   </select>
   
   <select id='getOneExerciseLib' resultType="com.project.exercise.dto.ExerciseLibDTO">
-  	SELECT * FROM exercise_libraries where elid = ${elid}
+  	SELECT * FROM exercise_libraries 
+	
+	<where>
+	elid = ${elid}
+	</where>
   </select>
   
   <update id='updateBookmark' parameterType="int">
@@ -18,4 +22,5 @@
   	 elid = ${elid}
   	 </where>
   </update>
+  
 </mapper>
