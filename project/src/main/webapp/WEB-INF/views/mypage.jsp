@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +10,11 @@
 <link rel="stylesheet" href="/views/css/mypage.css">
 </head>
 <body>
-<%@include file ="common/loginheader.jsp" %>
+<%@include file ="common/header.jsp" %>
 <h1>마이 페이지</h1>
 <div class="container1">
-<img class="user_size" src="/views/images/mypageimages/usericon.png" alt="사용자사진">
-<span class="user_name_size">홍길동</span>
+<img style="border-radius: 100%;" class="user_size" src="${login.user.profile_image}" alt="사용자사진">
+<span class="user_name_size">${login.user.name }</span>
 </div>
 <script src="/views/js/mypage-graph.js"></script>
 <div class="container2">

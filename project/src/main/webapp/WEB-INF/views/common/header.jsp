@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+  <sec:authentication property="principal" var="login"/>
+</sec:authorize>
 
 <!DOCTYPE html>
 <html>
-    <head>     
+<head>     
         <!-- TITLE OF SITE --> 
         <title>StartFit - Landing Page Template</title>
         <!-- Meta -->
@@ -46,7 +51,6 @@
 
     </head>
     <body class="light">
-
         <!-- Start: Navbar Area
         ============================= -->
         <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
@@ -62,12 +66,22 @@
 
                     </div> <!-- End: .col-xs-3 -->
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6">
-
-                        <nav role="navigation" class="okayNav pull-right d-flex justify-content-end" id="js-navbar-menu">
+                        
+                        <nav role="navigation" class="okayNav pull-right d-flex justify-content-end" id="js-navbar-menu"> 
                             <ul id="navbar-nav" class="navbar-nav d-flex flex-row justify-content-end flex-wrap">
-                                <li><a class="btn-nav" href="#features">회원가입</a></li>
-                                <li><a class="btn-nav" href="#work">로그인</a></li>
-                                <li><a class="btn-nav" href="/views/common/dongbaek.jsp">고객센터</a></li>
+                                <c:choose>
+                                  <c:when test="${empty login }">
+                                    <li><a class="btn-nav" href="/auth/register">회원가입</a></li>
+                                    <li><a class="btn-nav" href="/auth/login">로그인</a></li>
+                                    <li><a class="btn-nav" href="/board">고객센터</a></li>
+                                  </c:when>
+                                  <c:otherwise>
+                                    <li><a class="btn-nav" href="/exlib">운동 라이브러리</a></li>
+                                    <li><a class="btn-nav" href="/logout">로그아웃</a></li>
+                                    <li><a class="btn-nav" href="/board">고객센터</a></li>
+                                    <li><a class="btn-nav" href="/mypage/my"><img class="" style="height: 2rem; border-radius: 100%;" src="${login.user.profile_image}"></a></li>
+                                  </c:otherwise>
+                                </c:choose>
                                 <li>
                                 	<div class="toggle">
 							          <span>Dark Mode</span>
@@ -76,6 +90,7 @@
 							          </div>
 							        </div>
                                 </li>
+
                            </ul>
                         </nav>
 

@@ -39,7 +39,7 @@ public class ExerciseLibController {
 		List<ExerciseLibDTO> list = null;
 		try {
 			list = exerciseLibService.getAllExerciseLib();
-			model.addAttribute("ellist", list);
+			model.addAttribute("elist", list);
 			log.info(model);
 		} catch(Exception e) {
 			log.error(e.getMessage());
@@ -53,7 +53,7 @@ public class ExerciseLibController {
 
 	@GetMapping("/login")
 	public String getKakaoLogin() {
-		return "/lib-login";
+		return "/login-example";
 	}
 		
 	@GetMapping("/api/{elid}")
