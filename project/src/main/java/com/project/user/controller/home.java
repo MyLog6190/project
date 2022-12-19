@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class home {
 	
-	@GetMapping("/in")
+	@GetMapping("/")
 	public String mainPage() {
-		return "homeLogIn";
+		return "home";
 	}
 	
-	@GetMapping("/out")
+	@GetMapping("/program")
 	public String mainPage2() {
-		return "homeLogOut";
+		return "exercise-program";
+	}
+	
+	@GetMapping("/program-detail")
+	public String mainPage3() {
+		return "program-detail";
 	}
 }

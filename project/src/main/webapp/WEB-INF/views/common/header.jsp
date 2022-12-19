@@ -49,6 +49,7 @@
 
         <!-- Start: Navbar Area
         ============================= -->
+
         <header id="header" class="okayNav-header navbar-fixed-top main-navbar-top">
             <div class="container">
                 <div class="d-flex">
@@ -56,11 +57,20 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="#">
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
                             <img src="/common/images/Logo_Start_Fit_1202.png" alt="" class="logo-1 img-responsive">
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
                             <img src="/common/images/Start_Fit_logo_fin.png" alt="" class="logo-1 img-responsive">
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
                             <img src="/common/images/Start_Fit_Logo.png" alt="" class="logo-2 img-responsive">
                         </a>
 
@@ -73,19 +83,20 @@
                                 <li><a class="btn-nav" href="#work">로그인</a></li>
                                 <li><a class="btn-nav" href="/views/common/dongbaek.jsp">고객센터</a></li>
                                 <li>
-                                	<div class="toggle">
-							          <span>Dark Mode</span>
-							          <div class="dark-mode-switch">
-							            <div class="dark-mode-switch-ident"></div>
-							          </div>
-							        </div>
+                                	
                                 </li>
                            </ul>
                         </nav>
-
+						
                     </div> <!-- End: .col-xs-9 -->
                 </div> <!-- End: .row -->
             </div> <!-- End: .container -->
+            <div class="toggle">
+				<span>Dark Mode</span>
+				<div class="dark-mode-switch">
+					<div class="dark-mode-switch-ident"></div>
+				</div>
+			</div>
         </header><!-- /header -->
         <!-- End: Navbar Area
         ============================= -->
@@ -104,7 +115,7 @@
                            <div class="part-inner text-center ">
 
                                 
-                                <h1 class="title">스타트핏에 오신 것을 환영합니다.<br>여기 뭐라고 쓸까요? 지워버리는 게 낫나 위 내비 버튼만 냅두고..?</h1> 
+                                <h1 class="title">Welcome to Im Startup Launch Your Product Now</h1> 
                             </div>
                         </div> <!-- End: .part-1 -->
 

@@ -35,14 +35,14 @@
         <input name="filter" id="abs" type="radio"><label class="exercise-field" data-filter="abs" for="abs">복근</label>
       </div>
       <div class="exercise-lib-container">
-        <c:forEach items="${elist }" var="list">
-          <div class="exercise-libs ${list.c_name } <c:if test="${list.bookmark eq true }">bookmark</c:if>">
+        <c:forEach items="${ellist }" var="list">
+          <div class="exercise-libs ${list.c_name } <%-- <c:if test="${list.bookmark eq true }">bookmark</c:if> --%>">
             <div class="d-flex flex-row justify-content-between">
-              <img class="libs-image" src="/views${list.e_Img }" />
+              <img class="libs-image" src="${list.e_img }" />
               <div class="libs-name">${list.e_name }</div>
               <div class="d-flex align-items-center">
 
-                <c:choose>
+<%--                 <c:choose>
                   <c:when test="${list.bookmark eq false }">
                     <svg class="bi bi-bookmark cursor-pointer" data-elid="${list.elid }" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
     				  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
@@ -53,7 +53,7 @@
                       <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
                     </svg>
                   </c:otherwise>
-                </c:choose>
+                </c:choose> --%>
                 <svg class="libs-detail bi bi-chevron-down" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                 </svg>
