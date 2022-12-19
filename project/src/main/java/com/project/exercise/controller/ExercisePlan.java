@@ -29,7 +29,7 @@ public class ExercisePlan {
 		List<ExerciseLibDTO> list = null;
 		try {
 			list = exerciseLibService.getAllExerciseLib();
-			model.addAttribute("ellist", list);
+			model.addAttribute("elist", list);
 			log.info(model);
 		} catch(Exception e) {
 			log.error(e.getMessage());
