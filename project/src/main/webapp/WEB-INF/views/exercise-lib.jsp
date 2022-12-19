@@ -61,7 +61,7 @@
             </div>
           
             <div class="detail-container d-none">
-              <div class="details">사진</div>
+              <div class="details"><img src="${list.e_img }"></div>
               <div class="d-flex justify-content-evenly">
                 <div class="box-ex">도구</div>
                 <div class="box-ex">타입</div>

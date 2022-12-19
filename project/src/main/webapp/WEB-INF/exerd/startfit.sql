@@ -156,7 +156,7 @@ INSERT INTO EXERCISE VALUES('E' || EXERCISE_SEQ.NEXTVAL,'덤벨 프레스', 'C2'
 4. 팔꿈치를 90도 각도로 구부리면서 숨을 들이 마시고 삼두근이 바닥과 평행하도록하십시오.
 5. 다시 팔을 펴면서 숨을 내쉬십시오.');
 
-
+	
 INSERT INTO EXERCISE VALUES('E' || EXERCISE_SEQ.NEXTVAL,'랫 풀다운', 'C3', '/views/images/libimages/back/lpdw.jpg',
 '1. 케이블 기계에 앉는다.
 2. 타겟 근육에 맞춰 그립 너비를 정하고, 손바닥이 앞으로 향한 상태로 바를 잡으십시오.
