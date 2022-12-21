@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 .MainBanner_main_banner {
 	padding : 50px;
@@ -101,11 +101,6 @@ button {
     font-size: 17px;
 }
 
-body{
-	margin-left: 350px;
-	margin-right: 300px;
-	margin-bottom: 200px;
-}
 
 .Search_btn_search:before {
     content: "";
