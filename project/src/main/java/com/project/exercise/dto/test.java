@@ -13,11 +13,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ExercisePlanDTO {
+public class test {
 	private String r_no;
 	private String r_date;
 	private String c_name;
 	private String e_no;
 	private String e_name;
 	private String e_img;
+	private String v_no;
+	private int v_reps;
+	private int v_set;
+	private int v_kg;
+	private int do_checked;
 }

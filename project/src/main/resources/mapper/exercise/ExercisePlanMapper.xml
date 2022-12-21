@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	 "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.project.exercise.mapper.ExercisePlanMapper'>
+	<select id="selectSeq" resultType="String">
+		SELECT 'R' || PR_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<insert id='insertSelectExercise'>
+		INSERT INTO PR(R_NO, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
+		VALUES( #{ r_no }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
+	</insert>
+	
+	<insert id="insertExerciseVolume">
+		INSERT INTO VOLUME(R_NO, V_NO) VALUES(#{ r_no },  'V' || VOLUME_SEQ.NEXTVAL )
+	</insert>
+	
+	<select id="selectExercisePlan" resultType="com.project.exercise.dto.ExercisePlanDTO">
+		SELECT * FROM PR WHERE R_DATE = #{ r_date }
+	</select>
+	
+	<select id="selectExerciseVolume" resultType="com.project.exercise.dto.ExerciseVolumeDTO">
+		SELECT * FROM VOLUME WHERE R_NO IN(SELECT R_NO FROM PR WHERE R_DATE = #{ r_date } )
+	</select>
+ 	
+	<delete id="deleteVolume" parameterType="String">
+		DELETE FROM VOLUME WHERE V_NO = #{ v_no }
+	</delete>
+	
+	<delete id="deleteRecode" parameterType="String">
+		DELETE FROM PR WHERE R_NO = #{ r_no } 
+	</delete>
+</mapper>
