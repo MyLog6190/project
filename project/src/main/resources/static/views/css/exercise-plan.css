@@ -311,7 +311,6 @@ h5{
 
 .excercise-to-do-plan{
 	margin-top: 20px;
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;

@@ -6,9 +6,13 @@ document.querySelector(".dark-mode-switch").onclick = () => {
 
 // 달력 출력
 class Calendar {
-	constructor(year, month) {
+	constructor(year, month, day) {
 		this.year = year;
 		this.month = month;
+		const date = `${ year }-${( month + 1 )}-${ day >= 10 ? "" : "0"}${ day }`;
+		const dateToPlan = document.querySelector('#date-to-plan')
+		dateToPlan.innerHTML = this.dateFormat(new Date(date));
+
 		this.getfullDayOfMonth();
 		this.prevMonth();
 		this.nextMonth();
@@ -59,7 +63,7 @@ class Calendar {
     dateFormat = (date) => {
  		const month = date.getMonth() + 1;
       	const day = date.getDate()
-      	return `${ date.getFullYear() }년 ${ month }월\t ${ day }일`
+      	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
 	}
 	
     prevMonth = () => {
@@ -108,7 +112,8 @@ class Calendar {
 const today = new Date();
 const year = today.getFullYear();
 const month = today.getMonth();
-const cal = new Calendar(year, month);
+const day = today.getDate();
+const cal = new Calendar(year, month, day);
 
 
 
