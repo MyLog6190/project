@@ -1,14 +1,14 @@
 package com.project.user.service;
 
-import com.project.user.dto.User;
+import com.project.user.dto.UserDTO;
 
 public interface UserService {
 	
-	User findUser(String user_id);
+	UserDTO findUser(String user_id);
 	
-	void userSignUp(User user);
+	void userSignUp(UserDTO user);
 	
-	User login(User user);
+	UserDTO userLogin(UserDTO user);
 
-	void userUpdate(User user);
+	void userUpdate(UserDTO user);
 }

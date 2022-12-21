@@ -1,21 +1,28 @@
 package com.project.exercise.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.exercise.dto.ExerciseLibDTO;
-import com.project.exercise.service.ExerciseLibService;
+import com.project.common.config.auth.PrincipalDetail;
+import com.project.exercise.dto.BookmarkDTO;
+import com.project.exercise.dto.ExerciseDTO;
+import com.project.exercise.service.ExerciseService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -27,46 +34,46 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ExerciseLibController {
 	
-	private final ExerciseLibService exerciseLibService;
+	private final ExerciseService exerciseService;
 	
+	//private final AuthenticationManager authenticationManager;
 
-	@Value("${exerciselib.imgdir}")
+	@Value("${exercise.imgdir}")
 	String imgdir;
 	
 	
 	@GetMapping
-	public String getLibraries(Model model) {
-		List<ExerciseLibDTO> list = null;
+	public String getLibraries(@AuthenticationPrincipal PrincipalDetail principal, Model model) {
+		List<ExerciseDTO> list = null;
+		List<BookmarkDTO> bList = null;
+		String user_id = principal.getUsername();
 		try {
-			list = exerciseLibService.getAllExerciseLib();
+			list = exerciseService.getAllExercise();
+			bList = exerciseService.getAllBookmark(user_id);
 			model.addAttribute("elist", list);
-			log.info(model);
+			model.addAttribute("bookmark", bList);
 		} catch(Exception e) {
 			log.error(e.getMessage());
 			log.warn("라이브러리 로드 과정에서 문제 발생");
 		}
 		
-		
 		return "/exercise-lib";
 	}
 	
-
-	@GetMapping("/login")
-	public String getKakaoLogin() {
-		return "/login-example";
-	}
 		
-	@GetMapping("/api/{elid}")
+	@GetMapping("/api/{e_no}")
 	@ResponseBody
-	public String updateOneBookmark(@PathVariable("elid") int elid) {
-		
+	public String updateOneBookmark(@AuthenticationPrincipal PrincipalDetail principal,
+			@PathVariable("e_no") String e_no) {
+		String user_id = principal.getUsername();
+				
 		String result = null;
 		
 		try {
-			result = exerciseLibService.updateBookmark(elid);
+			result = exerciseService.updateBookmark(user_id, e_no);
 		} catch(Exception e) {
 			log.error(e.getMessage());
-			log.warn("라이브러리 로드 과정에서 문제 발생");
+			log.warn("북마크 업데이트 과정에서 문제 발생");
 		}
 		return result;
 	}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	 "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.project.exercise.mapper.ExerciseMapper'>
+
+  <select id='getAllExercise' resultType="com.project.exercise.dto.ExerciseDTO">
+  	SELECT E_NO, E_NAME, E.C_NO AS C_NO, C_NAME, E_IMG, E_CONTENT FROM EXERCISE E JOIN EXERCISE_CATEGORY EC ON E.C_NO = EC.C_NO
+  </select>
+  
+  <select id='getOneExercise' resultType="com.project.exercise.dto.ExerciseDTO">
+  	SELECT * FROM EXERCISE
+	<where>
+	e_no = #{e_no}
+	</where>
+  </select>
+  
+  <select id='getAllBookmark' resultType="com.project.exercise.dto.BookmarkDTO">
+  	SELECT * FROM bookmark
+  	<where>
+  		user_id = #{user_id}
+  	</where>
+  </select>
+  
+  <select id='getOneBookmark' resultType="com.project.exercise.dto.BookmarkDTO">
+  	SELECT * FROM bookmark
+  	<where>
+  		user_id = #{user_id} and e_no = #{e_no}
+  	</where>
+  </select>
+  
+  <insert id='insertBookmark' >
+  	INSERT INTO bookmark (user_id, e_no)
+  	 values( #{user_id}, #{e_no})
+  </insert>
+  
+  <delete id='deleteBookmark'>
+  	DELETE FROM bookmark 
+  	<where>
+  		user_id = #{user_id} and e_no=#{e_no}
+  	</where>
+  </delete>
+  
+</mapper>

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.exercise.dto.ExerciseLibDTO;
-import com.project.exercise.service.ExerciseLibService;
+import com.project.exercise.dto.ExerciseDTO;
+import com.project.exercise.service.ExerciseService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,13 +22,13 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ExercisePlan {
 	
-	private final ExerciseLibService exerciseLibService ;
+	private final ExerciseService exerciseLibService ;
 	
 	@GetMapping("/plan")
 	public String hello(Model model) {
-		List<ExerciseLibDTO> list = null;
+		List<ExerciseDTO> list = null;
 		try {
-			list = exerciseLibService.getAllExerciseLib();
+			list = exerciseLibService.getAllExercise();
 			model.addAttribute("elist", list);
 			log.info(model);
 		} catch(Exception e) {

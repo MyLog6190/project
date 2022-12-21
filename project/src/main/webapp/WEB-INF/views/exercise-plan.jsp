@@ -29,12 +29,6 @@
       </div>
 
       <div class="calendar-footer">
-        <div class="toggle">
-          <span>Dark Mode</span>
-          <div class="dark-mode-switch">
-            <div class="dark-mode-switch-ident"></div>
-          </div>
-        </div>
       </div>
     </div>
     
@@ -88,6 +82,7 @@
 							</svg>
 			    		</div>
 			    	</div>
+			    	
 			    	<div class="exercise-to-do-check">
 			    		<div class="excercise_set">
 				    		<input class="excercise_set_count" id="set" type="number" min="0" max="5" value=""/>
@@ -159,10 +154,6 @@
 		</div>
     </div>
   </div>
-    <ul>
-      <li><a onclick="getGitLogin()">git</a></li>
-      <li><a onclick="kakaoLogin()">kakao</a></li>
-    </ul>
     
 </main>
 
@@ -226,26 +217,12 @@
         <h5 class="modal-title">운동 선택</h5>
         <button type="button" class="btn-close select-exercise-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <c:forEach items="${elist}" var="list">
-		  	<div class="exercise-list">
-		  		<div>
-		  			<input type="checkbox">
-		  			<img class="exercise-info_img" src="/views/images/g.png">
-		  			<span>${list.e_name}</span>
-		  		</div>
-		  		<div>
-		  			<i class="bi bi-bookmark"></i>
-		  			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-					  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-					</svg>
-		  		</div>
-		    </div>
-	  	</c:forEach>
-
+      <div class="modal-body select-exercise-body">
+		  <div class="exercise-list">
+		  </div>
 	  </div>      
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">운동하러 가기</button>
+        <button type="button" class="btn btn-primary select-exercise-btn">운동하러 가기</button>
       </div>
     </div>
   </div>
@@ -268,11 +245,88 @@
 	     let create_exercise_btn = document.querySelector(".create-exercise-btn");
     	 if(create_exercise_btn) {
 		    create_exercise_btn.onclick = () => {
-		    	let select_exercise = document.querySelector(".select-exercise");
+		    	const select_exercise = document.querySelector(".select-exercise")
+		    	let exercise_list = document.querySelectorAll(".exercise-list");
 		    	select_exercise.style.display = "block";
+		    	const select_exercise_body = document.querySelector(".select-exercise-body");
+		    	
+		    	fetch('/exercise/exercise-list', {
+		    		method:'POST'
+		    	}).then( res => {
+		    		return res.json();
+		    	}).then( data => {
+		    		let exerciseText = "";
+		    		data.forEach( exercise => {
+		    			exerciseText += "<div class='exercise-list'>"
+		    			exerciseText += "<div>";
+		    			exerciseText += "<input type='checkbox' class='select-exercise-check'>";
+		    			exerciseText += "<input type='hidden' id='eNo' value="+exercise.e_no+">";
+		    			exerciseText += "<input type='hidden' id='cName' value="+exercise.c_name+">";
+		    			exerciseText += "<img class='exercise-info_img' src="+exercise.e_img+">";
+		    			exerciseText += "<span class='eName'>"+exercise.e_name+"</span>";
+		    			exerciseText += "</div>";
+		    			exerciseText += "<div>";
+		    			exerciseText += "<i class='bi bi-bookmark'></i>";
+		    			exerciseText += "<svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-bookmark' viewBox='0 0 16 16'>";
+		    			exerciseText += "<path d='M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z'/>";
+		    			exerciseText += "</svg>";
+		    			exerciseText += "</div>";
+		    			exerciseText += "</div>";
+		    		});
+		    		select_exercise_body.innerHTML = exerciseText;
+		    	});
 		    }
     	 }
     };
+    
+    let select_exercise_btn = document.querySelector(".select-exercise-btn");
+    select_exercise_btn.onclick = () => {
+    	const exercise_list = document.querySelectorAll(".exercise-list");
+    	let enoList = [];
+    	let eNameList = [];
+    	let imgList = [];
+    	let cNameList = [];
+    	let dateList = [];
+    	exercise_list.forEach( (exercise) => {
+    		const checkBox = exercise.querySelector(".select-exercise-check");
+    		const is_checked = checkBox.checked;
+    		if(is_checked) {
+    			const eNo = exercise.querySelector("#eNo").value;
+    			const cName = exercise.querySelector("#cName").value;
+    			const eName = exercise.querySelector('.eName').innerText;
+    			const eImg = exercise.querySelector('.exercise-info_img').getAttribute('src');
+    			let date = document.querySelector('#date-to-plan').innerText;
+    			date = date.replace(/ /g,"");
+    			date = date.replace("일","");
+    			date = date.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,"-");
+    			
+    			enoList.push(eNo);
+    			eNameList.push(eName);
+    			cNameList.push(cName);
+    			imgList.push(eImg);
+    			dateList.push(date);
+    		}
+    	});
+    	
+    	fetch("/exercise/select-exercise", {
+			method:"POST",
+			headers: {
+		        'Content-Type': 'application/json',
+		    },
+		    body: JSON.stringify({
+		   		"enoList":enoList,
+		   		"eNameList":eNameList,
+		   		"cNameList":cNameList,
+		   		"imgList":imgList,
+		   		"dateList":dateList
+		    })
+		}).then( res => {
+			
+		}).then( date => {
+			const select_exercise = document.querySelector(".select-exercise")
+	    	select_exercise.style.display = "none";
+		});
+    }
     
     let select_exercise_close = document.querySelector(".select-exercise-close");
     select_exercise_close.onclick = (e) => {
@@ -293,40 +347,5 @@
 		let program = document.querySelector(".program");
 		program.style.display = "none";
 	}
-	
-	
-	
-    const getGitLogin = () => {
-  	  const gitUrl = "https://github.com/login/oauth/authorize";
-  	  const client_id = "7825cbafe9c48e56615a";
-  	  const finalUrl = gitUrl+"?client_id=" +client_id+ "&scope={read:user,user:email}";
-  	  location.href = finalUrl;
-    }
-    
-    const kakaoLogin = () => {
-    	Kakao.init('6b2dc1e464413590e4c2800c17ceee7e');
-    	Kakao.Auth.login({
-    		  scope:'profile_nickname, profile_image, account_email, gender',
-    	      success: (response) => {
-    	        Kakao.API.request({
-    	          url: '/v2/user/me',
-    	          success: (response) => {
-    	        	  const kakao_account = response.kakao_account;
-    	        	  console.log(kakao_account);
-    	        	  console.log(kakao_account.email );
-    	        	  console.log(kakao_account.gender );
-    	        	  console.log(kakao_account.profile.profile_image_url );
-    	        	  console.log(kakao_account.profile.nickname );
-    	          },
-    	          fail: (error) => {
-    	            console.log(error)
-    	          },
-    	        })
-    	      },
-    	      fail: (error) => {
-    	        console.log(error)
-    	      },
-    	 });
-    }
 </script>
 <%@include file ="common/footer.jsp" %>
