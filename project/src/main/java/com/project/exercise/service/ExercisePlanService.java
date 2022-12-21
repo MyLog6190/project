@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
-import com.project.exercise.dto.test;
 
 public interface ExercisePlanService {
 	int insertExercisePlan(List<ExercisePlanDTO> list);

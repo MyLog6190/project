@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	 "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.project.board.mapper.BoardMapper'>
+
+	<select id="getAllPost" resultType="com.project.board.dto.BoardDTO">
+		SELECT * FROM NOTICE_BOARD order by b_no
+	</select>
+
+	<select id="getOnePost" resultType="com.project.board.dto.BoardDTO" parameterType="int">
+		SELECT * FROM NOTICE_BOARD
+		<where>
+		b_no = #{b_no}
+		</where>
+	</select>
+
+	<insert id="insertPost" parameterType="com.project.board.dto.BoardDTO">
+		<selectKey resultType="int" keyProperty="b_no" order="BEFORE">
+        SELECT MAX(b_no)+1 FROM NOTICE_BOARD        
+    	</selectKey>    
+    	INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
+    	VALUES(#{b_no}, #{b_tag}, #{b_title}, #{b_content})
+	</insert>
+
+	<update id="updatePost" parameterType="com.project.board.dto.BoardDTO">
+		UPDATE NOTICE_BOARD
+		<set>
+            <if test="b_tag != null">
+                b_tag=#{b_tag},
+            </if>
+            <if test="b_title != null">
+                b_title = #{b_title},
+            </if>
+            <if test="b_content != null">
+                b_content=#{b_content},
+            </if>
+        </set>
+        <where>
+        b_no = #{b_no}
+        </where> 
+	</update>
+	
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM NOTICE_BOARD
+		<where>
+			b_no = #{b_no}
+		</where>
+	</delete>
+	
+</mapper>

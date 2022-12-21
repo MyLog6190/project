@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ExerciseLibDTO {
+public class ExerciseDTO {
 	// E_NO, E_NAME, E.C_NO, C_NAME, E_IMG, E_CONTENT
 	private String e_no;
 	private String e_name;

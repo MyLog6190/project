@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
-import com.project.exercise.dto.ExerciseLibDTO;
+import com.project.exercise.dto.ExerciseDTO;
 import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
-import com.project.exercise.service.ExerciseLibService;
 import com.project.exercise.service.ExercisePlanService;
+import com.project.exercise.service.ExerciseService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -34,7 +34,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ExercisePlanController {
 	
-	private final ExerciseLibService exerciseLibService ;
+	private final ExerciseService exerciseLibService ;
 	private final ExercisePlanService exercisePlanService;
 	
 	@GetMapping("/plan")
@@ -69,9 +69,9 @@ public class ExercisePlanController {
 	
 	@PostMapping("/exercise-list")
 	public void ExerciseList(HttpServletResponse response) {
-		List<ExerciseLibDTO> list = null;
+		List<ExerciseDTO> list = null;
 		try {
-			list = exerciseLibService.getAllExerciseLib();
+			list = exerciseLibService.getAllExercise();
 		} catch(Exception e) {
 			log.error(e.getMessage());
 			log.info("라이브러리 로드 과정에서 문제 발생");

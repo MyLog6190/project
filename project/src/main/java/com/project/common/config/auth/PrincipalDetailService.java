@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.project.user.dto.User;
+import com.project.user.dto.UserDTO;
 import com.project.user.mapper.UserMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class PrincipalDetailService implements UserDetailsService{
 	// username이 DB에 있는지 확인해 return
 	@Override
 	public UserDetails loadUserByUsername(String user_id) throws UsernameNotFoundException {
-		User principal = userMapper.findByUser_id(user_id);
+		UserDTO principal = userMapper.findByUser_id(user_id);
 	
 		if(principal == null) {
 			log.info("해당 유저를 찾을 수 없습니다. :" + user_id);

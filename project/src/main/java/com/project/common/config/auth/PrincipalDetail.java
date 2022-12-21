@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.project.user.dto.User;
+import com.project.user.dto.UserDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +19,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class PrincipalDetail implements UserDetails {
-	private User user; // composition
+	private UserDTO user; // composition
 
-	public PrincipalDetail(User user) {
+	public PrincipalDetail(UserDTO user) {
 		this.user = user;
 	}
 	

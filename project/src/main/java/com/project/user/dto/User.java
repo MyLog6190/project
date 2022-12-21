@@ -10,6 +10,7 @@ public class User {
 	private String password;
 	private String name;
 	private int weight;
+	private String login_group;
 	private String sex;
 	private String profile_image;
 	private String role;

@@ -60,9 +60,12 @@
                     
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                        <a class="okayNav-header__logo navbar-brand" href="#">
+                        <a class="okayNav-header__logo navbar-brand" href="/">
+
                             <img src="/common/images/Logo_Start_Fit_1202.png" alt="" class="logo-1 img-responsive">
+
                             <img src="/common/images/Start_Fit_logo_fin.png" alt="" class="logo-1 img-responsive">
+
                             <img src="/common/images/Start_Fit_Logo.png" alt="" class="logo-2 img-responsive">
                         </a>
 
@@ -79,7 +82,7 @@
                                   </c:when>
                                   <c:otherwise>
                                     <li><a class="btn-nav" href="/exlib">운동 라이브러리</a></li>
-                                    <li><a class="btn-nav" href="/logout">로그아웃</a></li>
+                                    <li><a class="btn-nav" href="javascript:logout(`${login.user.login_group}`)">로그아웃</a></li>
                                     <li><a class="btn-nav" href="/board">고객센터</a></li>
                                     <li><a class="btn-nav" href="/mypage/my"><img class="" style="height: 2rem; border-radius: 100%;" src="${login.user.profile_image}"></a></li>
                                   </c:otherwise>
@@ -128,6 +131,6 @@
         </section>
         <!-- End: Header Section
         ================================ -->
-       
+       <script src="/views/js/login.js"></script>
  	</body>
 </html>

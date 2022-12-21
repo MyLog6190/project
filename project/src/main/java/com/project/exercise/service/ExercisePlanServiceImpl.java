@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
-import com.project.exercise.dto.test;
 import com.project.exercise.mapper.ExercisePlanMapper;
 
 import lombok.RequiredArgsConstructor;

@@ -4,26 +4,26 @@
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace='com.project.user.mapper.UserMapper'>
 	
-	<select id="findByUser_id" resultType="com.project.user.dto.User">
+	<select id="findByUser_id" resultType="com.project.user.dto.UserDTO">
 		SELECT * FROM registration_user 
 		<where>
 		user_id = #{user_id}
 		</where>
 	</select>
 
-	<insert id="userSignUp" parameterType="com.project.user.dto.User" >
-	 	INSERT INTO registration_user (user_id, password, name, weight, sex, profile_image, role)
-	 	VALUES(#{user_id}, #{password}, #{name}, 0, #{sex}, #{profile_image}, #{role})
+	<insert id="userSignUp" parameterType="com.project.user.dto.UserDTO" >
+	 	INSERT INTO registration_user (user_id, password, name, weight, login_group, sex, profile_image, role)
+	 	VALUES(#{user_id}, #{password}, #{name}, nvl(#{weight}, 0), #{login_group}, #{sex}, #{profile_image}, #{role})
 	</insert>
 	
-	<select id="login" resultType="com.project.user.dto.User">
+	<select id="userLogin" resultType="com.project.user.dto.UserDTO">
 		SELECT * FROM registration_user
 		<where>
 		user_id = #{user_id} and password = #{password}
 		</where>
 	</select>
 	
-	<update id="userUpdate" parameterType="com.project.user.dto.User">
+	<update id="userUpdate" parameterType="com.project.user.dto.UserDTO">
 		UPDATE registration_user
 		<set>
             <if test="password != null">
@@ -33,7 +33,7 @@
                 name=#{user.name},
             </if>
             <if test="weight != null">
-                weight=${user.weight},
+                weight=#{user.weight},
             </if>
         </set>
         <where>
