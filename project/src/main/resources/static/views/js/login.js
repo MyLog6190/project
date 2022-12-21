@@ -3,6 +3,8 @@ function kakao_login(){
 	location.href="https://kauth.kakao.com/oauth/authorize?client_id=59cc93f38a07bc58003afcc13ee2a761&redirect_uri=http://localhost:8888/auth/kakao/callback&response_type=code";
 }
 
+
+
 function logout(login_group){
 	let REST_API_KEY;
 	let LOGOUT_REDIRECT_URI;
