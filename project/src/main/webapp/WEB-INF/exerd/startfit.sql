@@ -19,10 +19,7 @@ DROP SEQUENCE PR_SEQ;
 DROP SEQUENCE NOTICE_BOARD_SEQ;
 ---------------
 
-<<<<<<< HEAD
-=======
 delete from REGISTRATION_USER where user_id = 'seralove4@gmail.com' 
->>>>>>> branch 'master' of https://github.com/MyLog6190/project.git
 
 insert into bookmark values('tatelulove4@naver.com', 'E1')
 
@@ -41,7 +38,6 @@ CREATE TABLE REGISTRATION_USER (
 	ROLE VARCHAR2(15)
 );
 
-SELECT * FROM registration_user;
 -- USER COMMENT
 COMMENT ON COLUMN REGISTRATION_USER.USER_ID IS '사용자 ID';
 COMMENT ON COLUMN REGISTRATION_USER.PASSWORD IS '비밀번호';
