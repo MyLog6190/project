@@ -6,7 +6,7 @@ import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
 
 public interface ExercisePlanMapper {
-	int insertSelectExercise(ExercisePlanDTO dto);
+	int insertSelectExercise(ExercisePlanDTO dto, String user_id);
 
 	String selectSeq();
 
@@ -22,7 +22,7 @@ public interface ExercisePlanMapper {
 
 	List<ExerciseVolumeDTO> selectExerciseVolume(String r_date);
 
-	void deleteRecode(String r_no);
+	void deleteRecode(String r_no, String user_id);
 
 	int insertExerciseVolume(String r_no);
 
@@ -31,6 +31,7 @@ public interface ExercisePlanMapper {
 	void updateReps(String vNo, String repsValue);
 
 	void updateKg(String vNo, String kgValue);
-	
+
+	void updateChecked(String vNo, String checkValue);
 	
 }

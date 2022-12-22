@@ -19,10 +19,6 @@ DROP SEQUENCE PR_SEQ;
 DROP SEQUENCE NOTICE_BOARD_SEQ;
 ---------------
 
-delete from REGISTRATION_USER where user_id = 'seralove4@gmail.com' 
-
-insert into bookmark values('tatelulove4@naver.com', 'E1')
-
 
 --- 수정 가능 ---
 ----------- USER ------------
@@ -279,6 +275,7 @@ INSERT INTO EXERCISE VALUES('E' || EXERCISE_SEQ.NEXTVAL,'레그레이즈', 'C6',
 ----------- PR ------------
 -- PR TABLE CTEATE
 CREATE TABLE PR(
+	USER_ID VARCHAR2(50) NOT NULL,
 	R_NO VARCHAR2(20) PRIMARY KEY,
 	R_DATE VARCHAR2(20) NOT NULL,
 	C_NAME VARCHAR2(20) NOT NULL,

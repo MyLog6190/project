@@ -9,6 +9,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+import com.project.common.config.auth.PrincipalDetail;
 import com.project.exercise.dto.ExerciseDTO;
 import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
@@ -87,7 +91,7 @@ public class ExercisePlanController {
 	}
 	
 	@PostMapping("/select-exercise")
-	public void SelectExercise(@RequestBody Map<String, Object> pr ,HttpServletResponse response) {
+	public void SelectExercise(@RequestBody Map<String, Object> pr ,HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
 		List<ExercisePlanDTO> list = new ArrayList<>();
 		ExercisePlanDTO exercisePlanDTO = null;
 		System.out.println(pr.get("eNameList").toString());
@@ -96,6 +100,8 @@ public class ExercisePlanController {
 		String[] cNameList = pr.get("cNameList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
 		String[] eImgList = pr.get("imgList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
 		String[] rDateList = pr.get("dateList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String user_id = principal.getUsername();
+		System.out.println(user_id);
 		
 		for(int i = 0; i < eNoList.length; i++) {
 			exercisePlanDTO = new ExercisePlanDTO();
@@ -108,7 +114,7 @@ public class ExercisePlanController {
 		}
 		
 		try {
-			exercisePlanService.insertExercisePlan(list);
+			exercisePlanService.insertExercisePlan(list,user_id);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
@@ -126,11 +132,13 @@ public class ExercisePlanController {
 	}
 	
 	@PostMapping("/recode_delete")
-	public void deleteRecode(@RequestBody Map<String, String> rNo  ,HttpServletResponse response) {
+	public void deleteRecode(@RequestBody Map<String, String> rNo  ,HttpServletResponse response, PrincipalDetail principal) {
 		String r_no = rNo.get("rNo").toString();
+		String user_id = principal.getUsername();
+		System.out.println(user_id);
 		System.out.println(r_no);
 		try {
-			exercisePlanService.deleteRecode(r_no);
+			exercisePlanService.deleteRecode(r_no, user_id);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
@@ -170,6 +178,20 @@ public class ExercisePlanController {
 		System.out.println(kgValue);
 		try {
 			exercisePlanService.updateKg(vNo, kgValue);
+		}catch(Exception e) {
+			log.error(e.getMessage());
+		}
+	}
+	
+	@PostMapping("/do_check")
+	public void updateChecked(@RequestBody Map<String, String> data  ,HttpServletResponse response) {
+		String vNo = data.get("vNo").toString();
+		String checkValue = data.get("checkValue").toString();
+		
+		System.out.println(vNo);
+		System.out.println(checkValue);
+		try {
+			exercisePlanService.updateChecked(vNo, checkValue);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}

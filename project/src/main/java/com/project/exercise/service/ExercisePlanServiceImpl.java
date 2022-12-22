@@ -21,22 +21,17 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	private final ExercisePlanMapper exercisePlanMapper;
 	
 	@Override
-	public int insertExercisePlan(List<ExercisePlanDTO> list) {
+	public int insertExercisePlan(List<ExercisePlanDTO> list, String user_id) {
 		
 		for(ExercisePlanDTO dto : list) {
 			String r_no = exercisePlanMapper.selectSeq();
 			dto.setR_no(r_no);
-			System.out.println(r_no);
-			System.out.println(dto);
-			int result = exercisePlanMapper.insertSelectExercise(dto);
-			System.out.println(result);
+			int result = exercisePlanMapper.insertSelectExercise(dto, user_id);
 			
 			ExerciseVolumeDTO volume = new ExerciseVolumeDTO();
 			volume.setR_no(r_no);
 			
 			int result2 = exercisePlanMapper.insertExerciseVolume(volume);
-			System.out.println(result2);
-			
 		}
 		
 		return 0;
@@ -72,8 +67,8 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	}
 
 	@Override
-	public void deleteRecode(String r_no) {
-		exercisePlanMapper.deleteRecode(r_no);
+	public void deleteRecode(String r_no, String user_id) {
+		exercisePlanMapper.deleteRecode(r_no, user_id);
 	}
 
 	@Override
@@ -104,6 +99,11 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	@Override
 	public void updateKg(String vNo, String kgValue) {
 		exercisePlanMapper.updateKg(vNo, kgValue);		
+	}
+
+	@Override
+	public void updateChecked(String vNo, String checkValue) {
+		exercisePlanMapper.updateChecked(vNo, checkValue);
 	}
 
 }

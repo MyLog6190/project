@@ -318,19 +318,16 @@ class ExercisePlan {
 					test_text += "<div class='exercise-set-info'>";
 					test_text += "<img class='exercise-img' src="+ exercisePlan.e_img +">";
 					test_text += "<div class='excercise_sets'>";
-					evList.forEach( exerciseVolume => {
+					let idx = 0;
+					evList.forEach( (exerciseVolume) => {
 						if(exercisePlan.r_no == exerciseVolume.r_no){
 							test_text += "<div class='exercise-to-do-check'>";
 							test_text += "<div class='excercise_set'>";
-							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value="+ parseInt( exerciseVolume.v_set ) + "/>";
+							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value='"+ (idx += 1) + "'/>";
 							test_text += "<label for='set'> Set </label>";
-							let kg = exerciseVolume.v_kg.replace(/[^0-9]/g, "") 
-							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value=" + parseInt( kg ) + "/>";
-							console.log(exerciseVolume.v_kg);
+							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
 							test_text += "<label for='kg'> Kg </label>";
-							let reps = exerciseVolume.v_kg.replace(/[^0-9]/g, "")
-							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value="+ parseInt( reps )+"/>";
-							console.log(exerciseVolume.v_reps);
+							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value='"+ parseInt( exerciseVolume.v_reps )+"'/>";
 							test_text += "<label for='reps'>횟수</label>";
 							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
 							test_text += "</div>";
@@ -465,11 +462,13 @@ class ExercisePlan {
 		do_check_list.forEach( (do_check, idx) => {
 			do_check.onclick = () => {
 				let checkValue;
+				console.log(do_check.value);
 				if(do_check.value == 'F'){
 					checkValue = 'T';
 				}else {
 					checkValue = 'F';
 				}
+				console.log(checkValue);
 				const vNo = vNoList[idx].value;
 				
 				fetch('/exercise/do_check', {
@@ -525,9 +524,6 @@ class ExercisePlan {
 					    })
 				}).then( res => {
 					    console.log(res);
-				}).then( data => {
-					    const date = this.select_date();
-					    this.showExercisePlan(date);
 				});
 			}
 		})
@@ -552,12 +548,13 @@ class ExercisePlan {
 					    })
 				}).then( res => {
 					    console.log(res);
-				}).then( data => {
-					    const date = this.select_date();
-					    this.showExercisePlan(date);
 				});
 			}
 		})
+	}
+	
+	setUpdate = () => {
+		
 	}
 }
 
