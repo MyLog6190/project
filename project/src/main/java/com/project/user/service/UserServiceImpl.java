@@ -27,43 +27,40 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO findUser(String user_id) {
-
 		return userMapper.findByUser_id(user_id);
 	}
 	
 	@Override
-	public void userSignUp(UserDTO user) {
-		String rawPassword = user.getPassword();
+	public void userSignUp(UserDTO userDTO) {
+		String rawPassword = userDTO.getPassword();
 		String encPassword = encoder.encode(rawPassword); 
-		user.setPassword(encPassword);
-		user.setRole("USER");
-		userMapper.userSignUp(user);
+		userDTO.setPassword(encPassword);
+		userDTO.setRole("USER");
+		userMapper.userSignUp(userDTO);
 	}
 
 	@Override
 	@Transactional(readOnly = true) // Select 할 때 트랜잭션 시작, 서비스 종료 시에 트랜잭션 종료(정합성)
-	public UserDTO userLogin(UserDTO user) {
-		return userMapper.userLogin(user.getUser_id(), user.getPassword());
-		
+	public UserDTO userLogin(UserDTO userDTO) {
+
+		return userMapper.userLogin(userDTO.getUser_id(), userDTO.getPassword());
 	}
 
 	@Override
-	public void userUpdate(UserDTO user) {
-		
-		UserDTO findUser = userMapper.findByUser_id(user.getUser_id());
+	public void userUpdate(UserDTO userDTO) {
+		UserDTO findUser = userMapper.findByUser_id(userDTO.getUser_id());
 		
 		if(findUser == null) {
 			log.info("회원 찾기 실패");
 			return;
 		}
 		
-		String rawPassword = user.getPassword();
+		String rawPassword = userDTO.getPassword();
 		String encPassword = encoder.encode(rawPassword); 
 		findUser.setPassword(encPassword);
 		//findUser.setName(user.getName());
 		
 		//세션 등록
-
 		
 		userMapper.userUpdate(findUser);
 		

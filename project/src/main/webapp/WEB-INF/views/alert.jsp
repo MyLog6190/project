@@ -2,14 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>에러 페이지</title>
-</head>
-<body>
+<title>${msg}</title>
+
 <script>
 alert(`${msg}`)
 location.href=`${redirect}`
 </script>
-</body>
 </html>

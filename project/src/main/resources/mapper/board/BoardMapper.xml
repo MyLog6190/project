@@ -5,7 +5,19 @@
 <mapper namespace='com.project.board.mapper.BoardMapper'>
 
 	<select id="getAllPost" resultType="com.project.board.dto.BoardDTO">
-		SELECT * FROM NOTICE_BOARD order by b_no
+		SELECT * FROM NOTICE_BOARD
+	</select>
+
+	<select id="selectList" resultType="com.project.board.dto.BoardDTO">
+		SELECT * FROM( SELECT ROWNUM AS RNUM, A.* FROM (
+		SELECT * FROM NOTICE_BOARD N ORDER BY b_no
+    ) A WHERE ROWNUM &lt;= #{size}
+   ) B WHERE RNUM &gt;=#{skip}
+		
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(*) FROM NOTICE_BOARD
 	</select>
 
 	<select id="getOnePost" resultType="com.project.board.dto.BoardDTO" parameterType="int">
