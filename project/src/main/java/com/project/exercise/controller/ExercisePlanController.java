@@ -38,7 +38,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ExercisePlanController {
 	
-	private final ExerciseService exerciseLibService ;
+	private final ExerciseService exerciseLibService;
 	private final ExercisePlanService exercisePlanService;
 	
 	@GetMapping("/plan")
