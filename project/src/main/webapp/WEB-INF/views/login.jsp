@@ -18,8 +18,10 @@
     </a>
 	</div>
 	<div class="center3">
-
-		<button class="NaverLogin-btn" type ="button" onclick="location.href='${urlNaver}'"><img src="/views/images/logimages/naver_login_button.png" width=300px height=45px alt="네이버버튼"></button>
+	<a class="NaverLogin-btn" href="javascript:naver_login()">
+	  <img src="/views/images/logimages/naver_login_button.png" width="300px" height="45px"
+	   alt="네이버버튼">
+	</a>
 	</div>
 	<button onclick="loginPage();" class="login-btn">이메일로 로그인</button>
 </div>

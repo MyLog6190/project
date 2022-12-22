@@ -19,18 +19,38 @@
     </tr>
   </thead>
   <tbody>
-  <c:forEach items="${list }" var="list">
+  <c:forEach items="${responseDTO.dtoList }" var="list">
     <tr>
       <th scope="row">${list.b_no }</th>
       <td>${list.b_tag }</td>
       <td><a href="/board/${list.b_no }">${list.b_title }</a></td>
     </tr>
     </c:forEach>
+  
+
   </tbody>
 </table>
 <div class="d-flex justify-content-end">
   <a href="/board/post" class="mx-2 btn btn-primary">글 등록</a>
   </div>
+<div class="">
+	<ul class="pagination flex-wrap">
+		<c:if test="${responseDTO.prev}">
+			<li class="page-item">
+				<a class="page-link" data-num="${responseDTO.start-1}">&lt;</a>
+			</li>
+		</c:if>
+		<c:forEach begin="${responseDTO.start }" end="${responseDTO.end }" var="num">
+			<li class ="page-item ${responseDTO.page == num ? 'active': '' }"><a class="page-link" data-num="${num }" href="#">${num }</a>
+		</c:forEach> 
+				<c:if test="${responseDTO.next}">
+			<li class="page-item">
+				<a class="page-link" data-num="${responseDTO.end+1 }">&gt;</a>
+			</li>
+		</c:if>
+	</ul>
+</div>
+
 </div>
 </body>
 <%@ include file="../common/footer.jsp" %>

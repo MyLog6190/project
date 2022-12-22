@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.board.dto.BoardDTO;
+import com.project.board.dto.PageRequestDTO;
 import com.project.board.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -41,18 +43,37 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String getAllPost(Model model) {
-		List<BoardDTO> bList = null;
-		log.info(boardService.getAllPost());
-		try {
-			bList = boardService.getAllPost();
-			log.info(bList);
-			model.addAttribute("list", bList);
-		}catch (Exception e) {
-			log.error("게시글 불러오는 도중 에러 발생");
+	public String getAllPost(PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			pageRequestDTO = PageRequestDTO.builder().build();
 		}
+		model.addAttribute("responseDTO", boardService.getList(pageRequestDTO));
+//		List<BoardDTO> bList = null;
+//		log.info(boardService.getAllPost());
+//		try {
+//			bList = boardService.getAllPost();
+//			log.info(bList);
+//			model.addAttribute("list", bList);
+//		}catch (Exception e) {
+//			log.error("게시글 불러오는 도중 에러 발생");
+//		}
 		return "/board/list";
 	}
+	
+//	@GetMapping("/list")
+//	public String getAllPost(Model model) {
+//		List<BoardDTO> bList = null;
+//		log.info(boardService.getAllPost());
+//		try {
+//			bList = boardService.getAllPost();
+//			log.info(bList);
+//			model.addAttribute("list", bList);
+//		}catch (Exception e) {
+//			log.error("게시글 불러오는 도중 에러 발생");
+//		}
+//		return "/board/list";
+//	}
 	
 	@GetMapping("/{b_no}")
 	public String getOnePost(@PathVariable("b_no") int b_no, Model model){

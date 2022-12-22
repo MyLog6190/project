@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -311,6 +310,7 @@ h5{
 
 .excercise-to-do-plan{
 	margin-top: 20px;
+	display:flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -357,7 +357,7 @@ h5{
 	width: 450px;
 	display: flex;
 	justify-content: space-between;
-	
+	padding: 8px;
 }
 
 .check-and-delete {
@@ -386,14 +386,21 @@ h5{
 	margin-right: 10px;
 }
 
+.addSetBtn{
+	width: 500px;
+}
+
+.exercise-footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:10px;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-
     -webkit-appearance: none;
-
     margin: 0;
-
 }
 
 input[type="checkbox"]{

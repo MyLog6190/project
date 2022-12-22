@@ -9,15 +9,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ExercisePlanDTO {
-	private String r_no;
-	private String r_date;
-	private String c_name;
-	private String e_no;
-	private String e_name;
-	private String e_img;
+public class ExerciseVolumeDTO extends ExercisePlanDTO{
+	private String v_no;
+	private int v_reps;
+	private int v_set;
+	private int v_kg;
+	private String do_check;
 }

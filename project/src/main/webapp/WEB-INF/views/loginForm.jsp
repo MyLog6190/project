@@ -13,14 +13,18 @@
 </head>
 <body>
 
-<div class="container">
-<img src="/views/images/logimages/Start_Fit_logo_fin.png" class="center1" alt="로고">
+<div class="login-container">
+	<img src="/views/images/logimages/Start_Fit_logo_fin.png" class="center1" alt="로고">
 
-  <h1>회원가입</h1>
-<form class="container" method="POST" action="/auth/normal/login">
+<form class="" method="POST" action="/auth/normal/login">
+
+  <div class="mb-3" style="color:white;">
+  	<h1>로그인</h1>
+  </div>
+
   <div class="mb-3">
     <label for="user_id" class="form-label" style="color:white;">이메일(아이디)</label>
-    <input type="email" class="form-control" name="user_id" id="user_id" placeholder="name@example.com">
+    <input type="email" class="form-control" name="user_id" id="user_id"  placeholder="name@example.com">
   </div>
 
   <div class="mb-3">
