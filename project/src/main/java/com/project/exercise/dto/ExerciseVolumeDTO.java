@@ -17,5 +17,5 @@ public class ExerciseVolumeDTO extends ExercisePlanDTO{
 	private int v_reps;
 	private int v_set;
 	private int v_kg;
-	private int do_checked;
+	private String do_check;
 }

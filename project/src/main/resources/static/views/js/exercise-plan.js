@@ -15,20 +15,21 @@ class Calendar {
 		dateToPlan.innerHTML = this.dateFormat(new Date(date));
 		this.prevMonth();
 		this.nextMonth();
-		this.selectPlanDate();
-		this.showExercisePlan(date);
 	}
 	
+	// 달의 첫날
 	getFirstDayOfMonth = () => {
       const date = new Date(this.year, this.month, 1);
       return date.getDay();
     };
     
+    //달 마지막날
     getLastDayOfMonth = () => {
       const date = new Date(this.year, this.month + 1, 0);
       return date.getDate();
     }
     
+    // 달 모든 날짜 가져오기
     getfullDayOfMonth = () => {
 	  const yearPicker = document.querySelector("#year");
 	  const monthPicker = document.querySelector("#month-picker");
@@ -60,12 +61,14 @@ class Calendar {
       }
     }
     
+    // 날짜 포멧
     dateFormat = (date) => {
  		const month = date.getMonth() + 1;
       	const day = date.getDate()
       	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
 	}
 	
+	// 이전 달
     prevMonth = () => {
 	    const prev = document.querySelector("#prev-year");
 
@@ -80,7 +83,8 @@ class Calendar {
 		  this.selectPlanDate();
 	    }
 	}
-
+	
+	// 다음 달
 	nextMonth = () => {
 		const next = document.querySelector("#next-year");
 		
@@ -96,20 +100,188 @@ class Calendar {
 		}
 	}
 	
+}
+
+
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+const day = today.getDate();
+const cal = new Calendar(year, month, day);
+
+class ExercisePlan {
+	
+	constructor() {
+		const date = this.select_date();;
+		this.selectPlanDate();
+		this.exercise_list();
+		this.create_exercise_plan();
+		this.showExercisePlan(date);
+	}
+	
+	// 운동 리스트 출력
+	exercise_list = () => {
+		let btn = document.querySelector(".btn-primary");
+	    btn.onclick = () => {
+	    	 document.querySelector("#exercise").classList.remove('hidden');
+	    	 btn.classList.add('create-exercise-btn')
+	    	 let changeBtn = document.querySelector(".create-exercise-btn");
+	    	 changeBtn.value = "운동 계획 생성";
+	    	 
+		     let create_exercise_btn = document.querySelector(".create-exercise-btn");
+	    	 if(create_exercise_btn) {
+			    create_exercise_btn.onclick = () => {
+			    	const select_exercise = document.querySelector(".select-exercise")
+			    	select_exercise.style.display = "block";
+			    	const select_exercise_body = document.querySelector(".select-exercise-body");
+			    	
+			    	fetch('/exercise/exercise-list', {
+			    		method:'POST'
+			    	}).then( res => {
+			    		return res.json();
+			    	}).then( data => {
+			    		let exerciseText = "";
+			    		data.forEach( exercise => {
+			    			exerciseText += "<div class='exercise-list'>"
+			    			exerciseText += "<div>";
+			    			exerciseText += "<input type='checkbox' class='select-exercise-check'>";
+			    			exerciseText += "<input type='hidden' id='eNo' value="+exercise.e_no+">";
+			    			exerciseText += "<input type='hidden' id='cName' value="+exercise.c_name+">";
+			    			exerciseText += "<img class='exercise-info_img' src="+exercise.e_img+">";
+			    			exerciseText += "<span class='eName'>"+exercise.e_name+"</span>";
+			    			exerciseText += "</div>";
+			    			exerciseText += "<div>";
+			    			exerciseText += "<i class='bi bi-bookmark'></i>";
+			    			exerciseText += "<svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-bookmark' viewBox='0 0 16 16'>";
+			    			exerciseText += "<path d='M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z'/>";
+			    			exerciseText += "</svg>";
+			    			exerciseText += "</div>";
+			    			exerciseText += "</div>";
+			    		});
+			    		select_exercise_body.innerHTML = exerciseText;
+			    	});
+			    }
+	    	 }
+	    };
+	}
+	
+	 // 운동 계획생성
+	create_exercise_plan = () =>{
+		let select_exercise_btn = document.querySelector(".select-exercise-btn");
+	    select_exercise_btn.onclick = () => {
+	    	const exercise_list = document.querySelectorAll(".exercise-list");
+	    	let enoList = [];
+	    	let eNameList = [];
+	    	let imgList = [];
+	    	let cNameList = [];
+	    	let dateList = [];
+	    	exercise_list.forEach( (exercise) => {
+	    		const checkBox = exercise.querySelector(".select-exercise-check");
+	    		const is_checked = checkBox.checked;
+	    		if(is_checked) {
+	    			const eNo = exercise.querySelector("#eNo").value;
+	    			const cName = exercise.querySelector("#cName").value;
+	    			const eName = exercise.querySelector('.eName').innerText;
+	    			const eImg = exercise.querySelector('.exercise-info_img').getAttribute('src');
+	    			const date = this.select_date();
+	    			
+	    			enoList.push(eNo);
+	    			eNameList.push(eName);
+	    			cNameList.push(cName);
+	    			imgList.push(eImg);
+	    			dateList.push(date);
+	    		}
+	    	});
+	    	
+	    	fetch("/exercise/select-exercise", {
+				method:"POST",
+				headers: {
+			        'Content-Type': 'application/json',
+			    },
+			    body: JSON.stringify({
+			   		"enoList":enoList,
+			   		"eNameList":eNameList,
+			   		"cNameList":cNameList,
+			   		"imgList":imgList,
+			   		"dateList":dateList
+			    })
+			}).then( res => {
+				console.log(res);
+			}).then( date => {
+				const select_exercise = document.querySelector(".select-exercise")
+		    	select_exercise.style.display = "none";
+				
+		    	this.showExercisePlan1(date);
+			});
+	    }
+	}
+	
+	// 날짜 선택
 	selectPlanDate = () => {
 	  const dateToPlan = document.querySelector('#date-to-plan')
   	  const days = document.querySelectorAll('.day')
   	  days.forEach((day) => {
   		 day.onclick = (e) => {
   			 let id = e.target.id;
-  			 console.log(id)
   			 this.showExercisePlan(id);
   			 dateToPlan.innerHTML = this.dateFormat(new Date(id));
   		 }
   	  });
     }
     
-    showExercisePlan = (date) => {
+     // 운동 계획생성
+	create_exercise_plan = () =>{
+		let select_exercise_btn = document.querySelector(".select-exercise-btn");
+	    select_exercise_btn.onclick = () => {
+	    	const exercise_list = document.querySelectorAll(".exercise-list");
+	    	let enoList = [];
+	    	let eNameList = [];
+	    	let imgList = [];
+	    	let cNameList = [];
+	    	let dateList = [];
+	    	exercise_list.forEach( (exercise) => {
+	    		const checkBox = exercise.querySelector(".select-exercise-check");
+	    		const is_checked = checkBox.checked;
+	    		if(is_checked) {
+	    			const eNo = exercise.querySelector("#eNo").value;
+	    			const cName = exercise.querySelector("#cName").value;
+	    			const eName = exercise.querySelector('.eName').innerText;
+	    			const eImg = exercise.querySelector('.exercise-info_img').getAttribute('src');
+	    			let date = this.select_date();
+	    			
+	    			enoList.push(eNo);
+	    			eNameList.push(eName);
+	    			cNameList.push(cName);
+	    			imgList.push(eImg);
+	    			dateList.push(date);
+	    		}
+	    	});
+	    	
+	    	fetch("/exercise/select-exercise", {
+				method:"POST",
+				headers: {
+			        'Content-Type': 'application/json',
+			    },
+			    body: JSON.stringify({
+			   		"enoList":enoList,
+			   		"eNameList":eNameList,
+			   		"cNameList":cNameList,
+			   		"imgList":imgList,
+			   		"dateList":dateList
+			    })
+			}).then( res => {
+				console.log(res);
+			}).then( data => {
+				const select_exercise = document.querySelector(".select-exercise")
+		    	select_exercise.style.display = "none";
+				const selectDate = this.select_date();
+		    	this.showExercisePlan(selectDate);
+			});
+	    }
+	}
+	
+    // 운동 계획 보여주기
+	showExercisePlan = (date) => {
 		fetch("/exercise/plan",{
 			method:"post",
 			headers: {
@@ -150,16 +322,20 @@ class Calendar {
 						if(exercisePlan.r_no == exerciseVolume.r_no){
 							test_text += "<div class='exercise-to-do-check'>";
 							test_text += "<div class='excercise_set'>";
-							test_text += "<input class='excercise_set_count' id='set' type='number' min='0' max='5' value="+ parseInt(exerciseVolume.v_set) +"/>";
+							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value="+ parseInt( exerciseVolume.v_set ) + "/>";
 							test_text += "<label for='set'> Set </label>";
-							test_text += "<input class='excercise_set_count' id='weight' type='number' min='0' max='300' value=" + parseInt(exerciseVolume.v_kg) +"/>";
-							test_text += "<label for='weight'> Kg </label>";
-							test_text += "<input class='excercise_set_count' id='reps' type='number' min='0' max='300' value="+ parseInt(exerciseVolume.v_reps)+"/>";
+							let kg = exerciseVolume.v_kg.replace(/[^0-9]/g, "") 
+							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value=" + parseInt( kg ) + "/>";
+							console.log(exerciseVolume.v_kg);
+							test_text += "<label for='kg'> Kg </label>";
+							let reps = exerciseVolume.v_kg.replace(/[^0-9]/g, "")
+							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value="+ parseInt( reps )+"/>";
+							console.log(exerciseVolume.v_reps);
 							test_text += "<label for='reps'>횟수</label>";
+							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
 							test_text += "</div>";
 							test_text += "<div class='check-and-delete'>";
-							test_text += "<input type='checkbox' />";
-							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
+							test_text += "<input class='do_check' type='checkbox' value='"+ exerciseVolume.do_check +"'>";
 							test_text += "<i class='bi bi-trash'></i>";
 							test_text += "<svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-trash vDelete' viewBox='0 0 16 16'>";
 							test_text += "<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>";
@@ -180,21 +356,22 @@ class Calendar {
 			    this.vDelete();
 			    this.rDelete();
 			    this.addVolume();
+			    this.do_checked();
+			    this.checked();
+			    this.repUpdate();
+			    this.kgUpdate();
 			}
 		});
 	}
 	
+	// 운동 볼륨 삭제
 	vDelete = () => {
 		const deleteBtns = document.querySelectorAll('.vDelete');
-		console.log(deleteBtns);
 		const vNoList = document.querySelectorAll('.vno');
-		console.log(vNoList);
 		
 		deleteBtns.forEach( (btn, idx) => {
 			btn.onclick = () => {
-				console.log(idx);
 				const vNo = vNoList[idx].value;
-				console.log(vNo);
 				fetch('/exercise/volume_delete', {
 					method:"POST",
 					headers: {
@@ -206,16 +383,14 @@ class Calendar {
 				}).then( res => {
 					console.log(res);
 				}).then( data => {
-					 let date = document.querySelector('#date-to-plan').innerText;
-					 date = date.replace(/ /g,"");
-					 date = date.replace("일","");
-					 date = date.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,"-");
+					 const date = this.select_date();
 					 this.showExercisePlan(date);
 				});
 			}
 		});
 	 }
 	 
+	 // 운동 계획 삭제
 	rDelete = () => {
 		const exercise_to_do_list = document.querySelectorAll('.exercise-to-do-list');
 		exercise_to_do_list.forEach( exercise => {
@@ -235,18 +410,16 @@ class Calendar {
 					}).then( res => {
 					    	console.log(res);
 					}).then( data => {
-					    let date = document.querySelector('#date-to-plan').innerText;
-						date = date.replace(/ /g,"");
-						date = date.replace("일","");
-						date = date.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,"-");
+					    const date = this.select_date();
 						this.showExercisePlan(date);
 					});
 				};
 			}
 			
 		});
-	 }
-	 
+	}
+	
+	// 운동 볼륨추가 
 	addVolume = () => {
 		const exercise_to_do_list = document.querySelectorAll('.exercise-to-do-list');
 		exercise_to_do_list.forEach( exercise => {
@@ -266,27 +439,146 @@ class Calendar {
 					}).then( res => {
 					    	console.log(res);
 					}).then( data => {
-					    	let date = document.querySelector('#date-to-plan').innerText;
-							date = date.replace(/ /g,"");
-							date = date.replace("일","");
-							date = date.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,"-");
+					    	const date = this.select_date();
 					    	this.showExercisePlan(date);
 					});
 				};
 			}
 			
 		});
-	 }
-}
-
-
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth();
-const day = today.getDate();
-const cal = new Calendar(year, month, day);
-
-class ExercisePlan {
+	}
+	 
+	 // 선택된 날짜값 가져오기
+	select_date = () => {
+		let date = document.querySelector('#date-to-plan').innerText;
+		date = date.replace(/ /g,"");
+		date = date.replace("일","");
+		date = date.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,"-");
+		return date
+	}
 	
+	// 운동 했는지 체크 
+	do_checked = () => {
+		const do_check_list = document.querySelectorAll('.do_check');
+		const vNoList = document.querySelectorAll('.vno');
+		
+		do_check_list.forEach( (do_check, idx) => {
+			do_check.onclick = () => {
+				let checkValue;
+				if(do_check.value == 'F'){
+					checkValue = 'T';
+				}else {
+					checkValue = 'F';
+				}
+				const vNo = vNoList[idx].value;
+				
+				fetch('/exercise/do_check', {
+						method:"POST",
+						headers: {
+					        'Content-Type': 'application/json',
+					    },
+					    body: JSON.stringify({
+					    	"vNo": vNo,
+					    	"checkValue" : checkValue
+					    })
+				}).then( res => {
+					    console.log(res);
+				}).then( data => {
+					    const date = this.select_date();
+					    this.showExercisePlan(date);
+				});
+			}
+		});
+	}
+	
+	checked = () => {
+		const do_check_list = document.querySelectorAll('.do_check');
+		do_check_list.forEach( do_check => {
+			if(do_check.value == 'T'){
+				do_check.checked = true;
+			}
+		})
+	} 
+	
+	dateFormat = (date) => {
+ 		const month = date.getMonth() + 1;
+      	const day = date.getDate()
+      	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
+	}
+	
+	// 운동 횟수 
+	repUpdate = () => {
+		let reps = document.querySelectorAll('.reps');
+		reps.forEach( (r) => {
+			r.onkeyup = (e) => {
+				const excercise_set = e.target.parentElement
+				const repsValue = e.target.value
+				const vNo = excercise_set.querySelector('.vno').value;
+				fetch('/exercise/res_update', {
+						method:"POST",
+						headers: {
+					        'Content-Type': 'application/json',
+					    },
+					    body: JSON.stringify({
+					    	"vNo": vNo,
+					    	"repsValue":repsValue
+					    })
+				}).then( res => {
+					    console.log(res);
+				}).then( data => {
+					    const date = this.select_date();
+					    this.showExercisePlan(date);
+				});
+			}
+		})
+	}
+	
+	// 무게 
+	kgUpdate = () => {
+		let kg = document.querySelectorAll('.kg');
+		kg.forEach( (k) => {
+			k.onkeyup = (e) => {
+				const excercise_set = e.target.parentElement
+				const kgValue = e.target.value;
+				const vNo = excercise_set.querySelector('.vno').value;
+				fetch('/exercise/kg_update', {
+						method:"POST",
+						headers: {
+					        'Content-Type': 'application/json',
+					    },
+					    body: JSON.stringify({
+					    	"vNo": vNo,
+					    	"kgValue":kgValue
+					    })
+				}).then( res => {
+					    console.log(res);
+				}).then( data => {
+					    const date = this.select_date();
+					    this.showExercisePlan(date);
+				});
+			}
+		})
+	}
 }
 
+const exercisePlan = new ExercisePlan();
+    	
+    let select_exercise_close = document.querySelector(".select-exercise-close");
+    select_exercise_close.onclick = (e) => {
+		let select_exercise = document.querySelector(".select-exercise");
+		select_exercise.style.display = "none";
+	}
+	
+	let exercise_programs = document.querySelectorAll(".exercise-program");
+	exercise_programs.forEach( (exercise_program) => {
+		exercise_program.onclick = (e) => {
+			let program = document.querySelector(".program");
+			program.style.display = "block";
+		}
+	});
+	
+	let program_close = document.querySelector(".program-close");
+	program_close.onclick = (e) => {
+		let program = document.querySelector(".program");
+		program.style.display = "none";
+	}

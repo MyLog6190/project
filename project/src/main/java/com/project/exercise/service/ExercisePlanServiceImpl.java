@@ -44,7 +44,14 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 
 	@Override
 	public List<ExercisePlanDTO> selectExercisePlan(String r_date) {
-		List<ExercisePlanDTO> list = exercisePlanMapper.selectExercisePlan(r_date);
+		List<ExercisePlanDTO> list = null;
+		
+		try {
+			list = exercisePlanMapper.selectExercisePlan(r_date);
+		}catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		
 		return list;
 	}
 
@@ -78,6 +85,25 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	@Override
 	public void insertExerciseVolume(String r_no) {
 		int result = exercisePlanMapper.insertExerciseVolume(r_no);
+	}
+
+	@Override
+	public void updateDoCheck(String vNo, String checkValue) {
+		try {
+			exercisePlanMapper.updateDoCheck(vNo, checkValue);		
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+	}
+
+	@Override
+	public void updateReps(String vNo, String repsValue) {
+		exercisePlanMapper.updateReps(vNo, repsValue);		
+	}
+
+	@Override
+	public void updateKg(String vNo, String kgValue) {
+		exercisePlanMapper.updateKg(vNo, kgValue);		
 	}
 
 }

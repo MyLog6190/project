@@ -58,6 +58,7 @@ public class ExercisePlanController {
 		Map <String, Object> map = new HashMap<>();
 		map.put("eplist", eplist);
 		map.put("evlist", evlist);
+		System.out.println(evlist);
 		try {
 			new Gson().toJson(map,response.getWriter());
 		} catch (JsonIOException | IOException e) {
@@ -141,6 +142,34 @@ public class ExercisePlanController {
 		System.out.println(r_no);
 		try {
 			exercisePlanService.insertExerciseVolume(r_no);
+		}catch(Exception e) {
+			log.error(e.getMessage());
+		}
+	}
+	
+	@PostMapping("/res_update")
+	public void updateReps(@RequestBody Map<String, String> data  ,HttpServletResponse response) {
+		String vNo = data.get("vNo").toString();
+		String repsValue = data.get("repsValue").toString();
+		
+		System.out.println(vNo);
+		System.out.println(repsValue);
+		try {
+			exercisePlanService.updateReps(vNo, repsValue);
+		}catch(Exception e) {
+			log.error(e.getMessage());
+		}
+	}
+	
+	@PostMapping("/kg_update")
+	public void updateKg(@RequestBody Map<String, String> data  ,HttpServletResponse response) {
+		String vNo = data.get("vNo").toString();
+		String kgValue = data.get("kgValue").toString();
+		
+		System.out.println(vNo);
+		System.out.println(kgValue);
+		try {
+			exercisePlanService.updateKg(vNo, kgValue);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
