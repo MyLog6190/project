@@ -22,9 +22,8 @@ public class ProgramServiceImpl implements ProgramService {
 		List<ProgramDTO> pList = programMapper.getAllProgram();
 		return pList;
 	}
-	@Override
-	public ProgramDTO getOneProgram(String p_no) {
-		ProgramDTO plDTO = programMapper.getOneProgram(p_no);
-		return plDTO;
-	}
+	/*
+	 * @Override public ProgramDTO getOneProgram(String p_no) { ProgramDTO plDTO =
+	 * programMapper.getOneProgram(p_no); return plDTO; }
+	 */
 }

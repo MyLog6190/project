@@ -42,7 +42,7 @@
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner background-light">
                             		
-                                    <a href="exercise-program.jsp"><i class="icon features-icon icons8-classroom"></i></a>
+                                    <a href="/exprog"><i class="icon features-icon icons8-classroom"></i></a>
                                     <h6 class="title">프로그램</h6>
                                     <div class="detail">
                                         <p>운동 추천을 받고 운동을 시작해 보세요.</p>

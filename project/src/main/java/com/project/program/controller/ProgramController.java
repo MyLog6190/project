@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.common.config.auth.PrincipalDetail;
@@ -21,17 +22,19 @@ import lombok.extern.log4j.Log4j2;
 public class ProgramController {
 	private final ProgramService programService;
 
+	@GetMapping
 	public String getLibraries(@AuthenticationPrincipal PrincipalDetail principal, Model model) {
 		List<ProgramDTO> list = null;
 		String user_id = principal.getUsername();
+		log.info(user_id);
 		try {
 			list = programService.getAllProgram();
 			model.addAttribute("plist", list);
+			
 		} catch(Exception e) {
 			log.error(e.getMessage());
 			log.warn("프로그램 로드 과정에서 문제 발생");
 		}
-		return "/program-detail";
+		return "/exercise-program";
 	}
-
 }

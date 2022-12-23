@@ -22,15 +22,14 @@ public class ExerciseServiceImpl implements ExerciseService {
 	@Override
 	public List<ExerciseDTO> getAllExercise() {
 		List<ExerciseDTO> eList = exerciseMapper.getAllExercise();
-		
 		return eList;
 	}
 
-	@Override
-	public ExerciseDTO getOneExercise(String e_no) {
-		ExerciseDTO elDTO = exerciseMapper.getOneExercise(e_no);
-		return elDTO;
-	}
+//	@Override
+//	public ExerciseDTO getOneExercise(String e_no) {
+//		ExerciseDTO elDTO = exerciseMapper.getOneExercise(e_no);
+//		return elDTO;
+//	}
 
 	@Override
 	public String updateBookmark(String user_id, String e_no) {
@@ -40,7 +39,6 @@ public class ExerciseServiceImpl implements ExerciseService {
 		} else {
 		 exerciseMapper.deleteBookmark(bookmarkDTO); 
 		}
-		 
 		return "update done";
 	}
 
@@ -49,8 +47,4 @@ public class ExerciseServiceImpl implements ExerciseService {
 		List<BookmarkDTO> bList = exerciseMapper.getAllBookmark(user_id);
 		return bList;
 	}
-
-
-	
-	
 }

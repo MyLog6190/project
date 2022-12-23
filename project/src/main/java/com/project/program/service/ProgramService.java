@@ -8,6 +8,6 @@ public interface ProgramService {
 	
 	List<ProgramDTO> getAllProgram();
 	
-	ProgramDTO getOneProgram(String p_no);
+//	ProgramDTO getOneProgram(String p_no);
 	
 }

@@ -51,8 +51,8 @@ public class ExerciseLibController {
 		
 		return "/exercise-lib";
 	}
-	
-		
+
+
 	@GetMapping("/api/{e_no}")
 	@ResponseBody
 	public String updateOneBookmark(@AuthenticationPrincipal PrincipalDetail principal,

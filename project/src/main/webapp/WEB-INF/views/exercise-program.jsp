@@ -25,18 +25,18 @@
 
                         <div class="each-project row">
                             <div class="each-project-inner">
+					          <c:forEach items="${plist}" var="list" begin='0' end='0'>
                                 
                                 <div class="vertical-middle col-md-7 col-sm-6 col-xs-12">
-                                    <img class="project-image cover" src="/common/images/project/1.jpg">
+                        
+                                    <img class="project-image cover" src=${list.p_img }>
                                     
                                 </div>
                                 <div class="vertical-middle col-md-5 col-sm-6 col-xs-12">
                                     <div class="inner p-l-50">
-                                        
-                                        <h2 class="section-heading">초급</h2>
-
+                                        <h2 class="section-heading">초급<h4>${list.p_name }</h4></h2>
                                         <div class="detail">
-                                            <p>Lorem ipsum dolor sit amet, consectetuer elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                            <p>${list.p_contents }</p>
                                         </div>
 
                                         <!-- Button Area -->
@@ -46,10 +46,12 @@
 
                                     </div>
                                 </div>
+                                            </c:forEach>
 
                             </div>
                         </div> <!-- End: .row -->
 
+					          <c:forEach items="${plist}" var="list" begin='1' end='1'>
                         <div class="each-project row">
                             <div class="each-project-inner">
                                 
