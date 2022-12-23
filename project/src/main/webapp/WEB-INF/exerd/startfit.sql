@@ -19,10 +19,6 @@ DROP SEQUENCE PR_SEQ;
 DROP SEQUENCE NOTICE_BOARD_SEQ;
 ---------------
 
-delete from REGISTRATION_USER where user_id = 'seralove4@gmail.com' 
-
-insert into bookmark values('tatelulove4@naver.com', 'E1')
-
 
 --- 수정 가능 ---
 ----------- USER ------------

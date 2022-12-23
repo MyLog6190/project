@@ -1,4 +1,4 @@
-package com.project.exercise.mapper;
+package com.project.program.mapper;
 
 import java.util.List;
 
