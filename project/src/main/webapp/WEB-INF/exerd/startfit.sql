@@ -500,3 +500,5 @@ INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
  VALUES (5, '', '제목5', '내용5')
  ;
  
+ 
+ SELECT * FROM PR
