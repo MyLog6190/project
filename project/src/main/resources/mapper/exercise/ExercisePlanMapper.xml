@@ -8,8 +8,8 @@
 	</select>
 	
 	<insert id='insertSelectExercise'>
-		INSERT INTO PR(R_NO, USER_ID, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
-		VALUES( #{ r_no },#{ user_id }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
+		INSERT INTO PR(USER_ID, R_NO, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
+		VALUES( #{ user_id }, #{ r_no }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
 	</insert>
 	
 	<insert id="insertExerciseVolume">
@@ -47,4 +47,8 @@
 	<update id="updateChecked" parameterType="String">
 		UPDATE VOLUME SET DO_CHECK = #{checkValue} WHERE V_NO = #{vNo}
 	</update>
+	
+	<select id="workoutDay" parameterType='String' resultType="String">
+		SELECT DISTINCT R_DATE FROM PR WHERE USER_ID = #{ user_id }
+	</select>
 </mapper>

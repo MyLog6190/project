@@ -407,3 +407,9 @@ input[type="checkbox"]{
 	width:25px;
 	height:25px;
 }
+
+.workoutDay {
+	background-color: var(--bg-workoutDay);
+	color: var(--color-txt);
+	border-radius: 50%;
+}

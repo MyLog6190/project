@@ -17,6 +17,8 @@ class Calendar {
 		this.nextMonth();
 	}
 	
+	exercisePlan = new ExercisePlan();
+	
 	// 달의 첫날
 	getFirstDayOfMonth = () => {
       const date = new Date(this.year, this.month, 1);
@@ -59,8 +61,12 @@ class Calendar {
   	                `;
         }
       }
+      
     }
     
+   
+	
+	
     // 날짜 포멧
     dateFormat = (date) => {
  		const month = date.getMonth() + 1;
@@ -80,7 +86,8 @@ class Calendar {
 	        this.month--;
 	      }
 	      this.getfullDayOfMonth();
-		  this.selectPlanDate();
+	      this.exercisePlan.workDay();
+		  this.exercisePlan.selectPlanDate();
 	    }
 	}
 	
@@ -96,29 +103,27 @@ class Calendar {
 		       this.month++;
 		    }
 		    this.getfullDayOfMonth();
-		    this.selectPlanDate();      
+		    this.exercisePlan.workDay();
+		    this.exercisePlan.selectPlanDate();      
 		}
 	}
 	
 }
 
 
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth();
-const day = today.getDate();
-const cal = new Calendar(year, month, day);
+
 
 class ExercisePlan {
 	
-	constructor() {
+	constructor() {}
+	
+	start = () => {
 		const date = this.select_date();;
 		this.selectPlanDate();
 		this.exercise_list();
 		this.create_exercise_plan();
 		this.showExercisePlan(date);
 	}
-	
 	// 운동 리스트 출력
 	exercise_list = () => {
 		let btn = document.querySelector(".btn-primary");
@@ -299,6 +304,7 @@ class ExercisePlan {
 				const excercise_to_do_plan = document.querySelector(".excercise-to-do-plan");
 				const epList = data["eplist"];
 				const evList = data["evlist"];
+				console.log(epList);
 				epList.forEach( exercisePlan => {
 					test_text += "<div class='exercise-to-do-list'>";
 					test_text += "<div class='exercise-to-do'>";
@@ -323,7 +329,7 @@ class ExercisePlan {
 						if(exercisePlan.r_no == exerciseVolume.r_no){
 							test_text += "<div class='exercise-to-do-check'>";
 							test_text += "<div class='excercise_set'>";
-							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value='"+ (idx += 1) + "'/>";
+							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value='"+ (idx += 1) + "' readonly/>";
 							test_text += "<label for='set'> Set </label>";
 							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
 							test_text += "<label for='kg'> Kg </label>";
@@ -357,6 +363,7 @@ class ExercisePlan {
 			    this.checked();
 			    this.repUpdate();
 			    this.kgUpdate();
+			    this.workDay();
 			}
 		});
 	}
@@ -505,7 +512,7 @@ class ExercisePlan {
       	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
 	}
 	
-	// 운동 횟수 
+	// 운동 횟수 업데이트
 	repUpdate = () => {
 		let reps = document.querySelectorAll('.reps');
 		reps.forEach( (r) => {
@@ -529,7 +536,7 @@ class ExercisePlan {
 		})
 	}
 	
-	// 무게 
+	// 무게 업데이트
 	kgUpdate = () => {
 		let kg = document.querySelectorAll('.kg');
 		kg.forEach( (k) => {
@@ -553,12 +560,38 @@ class ExercisePlan {
 		})
 	}
 	
-	setUpdate = () => {
-		
+	 workDay = () => {
+		fetch('/exercise/workout_day', {
+			method:"POST",
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}).then(res => {
+			console.log(res);
+			return res.json();
+		}).then(data => {
+			console.log(data);
+			const days = document.querySelectorAll('.day');
+			data.forEach( workoutDay => {
+				days.forEach(day => {
+					if(workoutDay == day.id){
+						day.classList.add('workoutDay');
+					}					
+				});
+			})
+		})
 	}
+	
 }
 
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+const day = today.getDate();
+const cal = new Calendar(year, month, day);
 const exercisePlan = new ExercisePlan();
+exercisePlan.start();
+
     	
     let select_exercise_close = document.querySelector(".select-exercise-close");
     select_exercise_close.onclick = (e) => {

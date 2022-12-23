@@ -14,6 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ExercisePlanDTO {
+	private String user_id;
 	private String r_no;
 	private String r_date;
 	private String c_name;

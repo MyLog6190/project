@@ -1,12 +1,13 @@
 package com.project.exercise.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
 
 public interface ExercisePlanMapper {
-	int insertSelectExercise(ExercisePlanDTO dto, String user_id);
+	int insertSelectExercise(ExercisePlanDTO dto);
 
 	String selectSeq();
 
@@ -16,13 +17,13 @@ public interface ExercisePlanMapper {
 
 	List<ExerciseVolumeDTO> selectVolume(String date);
 
-	List<ExercisePlanDTO> selectExercisePlan(String r_date);
+	List<ExercisePlanDTO> selectExercisePlan(String r_date, String user_id);
 
 	int deleteVolume(String v_no);
 
-	List<ExerciseVolumeDTO> selectExerciseVolume(String r_date);
+	List<ExerciseVolumeDTO> selectExerciseVolume(String r_date, String user_id);
 
-	void deleteRecode(String r_no, String user_id);
+	void deleteRecode(String r_no);
 
 	int insertExerciseVolume(String r_no);
 
@@ -33,5 +34,7 @@ public interface ExercisePlanMapper {
 	void updateKg(String vNo, String kgValue);
 
 	void updateChecked(String vNo, String checkValue);
+
+	ArrayList<String> workoutDay(String user_id);
 	
 }
