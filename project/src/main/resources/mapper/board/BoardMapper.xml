@@ -7,12 +7,20 @@
 	<select id="getAllPost" resultType="com.project.board.dto.BoardDTO">
 		SELECT * FROM NOTICE_BOARD
 	</select>
+	
+	<select id="getNotice" resultType="com.project.board.dto.BoardDTO">
+		SELECT * FROM NOTICE_BOARD 
+		<where>
+		b_tag like 'notice'
+		</where>
+		order by b_no
+	</select>
 
 	<select id="selectList" resultType="com.project.board.dto.BoardDTO">
 		SELECT * FROM( SELECT ROWNUM AS RNUM, A.* FROM (
 		SELECT * FROM NOTICE_BOARD N ORDER BY b_no
-    ) A WHERE ROWNUM &lt;= #{size}
-   ) B WHERE RNUM &gt;=#{skip}
+    ) A WHERE ROWNUM &lt;= 10*#{page}
+   ) B WHERE RNUM &gt;=#{skip}+1
 		
 	</select>
 	
@@ -38,9 +46,8 @@
 	<update id="updatePost" parameterType="com.project.board.dto.BoardDTO">
 		UPDATE NOTICE_BOARD
 		<set>
-            <if test="b_tag != null">
-                b_tag=#{b_tag},
-            </if>
+            b_tag=#{b_tag},
+
             <if test="b_title != null">
                 b_title = #{b_title},
             </if>

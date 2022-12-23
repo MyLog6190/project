@@ -9,23 +9,50 @@
 <body>
   <%@include file="../common/header.jsp"%>
 
-<div class="container">
-  <div class="mb-3 mx-3">
-  <label for="user_id" class="form-label">제목: ${detail.b_title}</label>
+<form class="container" action="" method="get">
+<input type="hidden" name="b_no" value="<c:out value='${detail.b_no}'></c:out>">
+<input type="hidden" name="page"  value="${pageRequestDTO.page}">
+  <div class="input-group mb-3 mx-3">
+  	<span class="input-group-text">제목: </span>
+  	<input name="b_title" class="form-control" name="b_title" value="<c:out value='${detail.b_title}'></c:out>" readonly>
   </div>
   <hr>
   
-  <div class="mb-3 mx-3">
-    <label for="password" class="form-label">${detail.b_content}</label>
+  <div class="input-group mb-3 mx-3">
+  <span class="input-group-text">내용: </span>
+    <input name="b_content" class="form-control" name="b_title" value="${detail.b_content}" readonly>
   </div>
   
+
   <div class="d-flex justify-content-end">
-    <a href="/board/update/${detail.b_no }" class="btn btn-primary">수정</a>
-    <a href="/board/delete/${detail.b_no }" class="mx-2 btn btn-success">삭제</a>
-    <a href="/board/list" class="btn btn-secondary">목록으로 돌아가기</a>
+    <button type="submit" class="btn btn-primary">수정</button>
+    <button type="submit" class="btn btn-success">삭제</button>
+    <a href="/board/list?${pageRequestDTO.link}" class="mx-2 btn btn-secondary">목록</a>
   </div>
 
-</div>
+</form>
   <%@include file="../common/footer.jsp"%>
+  <script>
+  document.querySelector(".btn-primary").addEventListener("click", e=>{
+	  let f = document.querySelector('form');
+	  f.setAttribute('method', 'get');
+	  f.setAttribute('action', '/board/update');
+	  f.submit();
+  })
+  
+  
+  document.querySelector(".btn-success").addEventListener("click", e=>{
+	  let f = document.querySelector('form');
+	  f.setAttribute('method', 'post');
+	  f.setAttribute('action', '/board/delete');
+	  f.submit();
+  })
+
+  
+  
+  /* "?b_no=${detail.b_no}&${pageRequestDTO.link}"
+		  ="/board/list?${pageRequestDTO.link}"
+		  */
+  </script>
 </body>
 </html>

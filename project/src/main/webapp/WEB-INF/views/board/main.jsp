@@ -27,25 +27,13 @@
 
 <div class="TopTitle">공지 사항</div>
 <div class="Notice_notice_box">
-  <c:forEach items="${list }" var="list" varStatus="i" begin="0" end="3">
+  <c:forEach items="${list }" var="list" begin="0" end="2">
   <c:choose>
   <c:when test="${list.b_tag eq 'notice' }">
   <div class="Notice_item">
     <span class="Notice_badge">${list.b_tag }</span>
-    <a class="Notice_text" href="/board/${list.b_no }">${list.b_title }</a>
+    <a class="Notice_text" href="/board/read?b_no=${list.b_no }">${list.b_title }</a>
   </div>
-<%--   <div class="Notice_item">
-    <span class="Notice_badge">공지</span>
-    <a class="Notice_text" href="/board/notice/">번핏 약관 변경사항 대해 안내 드립니다.</a>
-  </div>
-  <div class="Notice_item">
-    <span class="Notice_badge">공지</span>
-    <a class="Notice_text" href="/board/notice/">기구나 용품 파손의 경우 배상내역이 발생할 수 있음을 고지 드립니다.</a>
-  </div>
-  <div class="Notice_item">
-    <span class="Notice_badge">공지</span>
-    <a class="Notice_text" href="/board/notice/">환불시 유의사항</a>
-  </div> --%>
   </c:when>
   </c:choose>
   </c:forEach>

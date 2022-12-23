@@ -14,11 +14,18 @@ public class PageRequestDTO {
 	@Builder.Default
 	private int page = 1;
 	
-	
-	@Builder.Default
-	private int size = 10;
+	private String link;
 	
 	public int getSkip() {
 		return (page -1 ) * 10;
+	}
+	
+	public String getLink() {
+		if(link == null) {
+			link = new StringBuilder()
+					.append("page=" + this.page)
+					.toString();
+		}
+		return link;
 	}
 }

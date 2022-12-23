@@ -11,12 +11,20 @@
 
 <form class="container" method="POST" action="/board/insert">
 
-  <input type="hidden" name="b_tag" value="notice"></input>
   <div class="mb-3 mx-3">
     <label for="b_title" class="form-label">제목</label>
     <input type="text" class="form-control" name="b_title" id="b_title">
   </div>
   <hr>
+  <div class="mb-3 mx-3">
+   <label for="b_title" class="form-label">말머리 선택</label>
+    <select name="b_tag" class="form-select" aria-label="Default select example">
+      <option value="" selected>없음</option>
+      <option value="notice">공지</option>
+      <option value="maintenance">점검</option>
+      <option value="service">서비스</option>
+    </select>
+  </div>
   
   <div class="mb-3 mx-3">
     <label for="b_content" class="form-label">내용</label>

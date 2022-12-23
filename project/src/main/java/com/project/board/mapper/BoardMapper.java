@@ -14,6 +14,8 @@ public interface BoardMapper {
 	
 	List<BoardDTO> getAllPost();
 	
+	List<BoardDTO> getNotice();
+	
 	List<BoardDTO> selectList(PageRequestDTO pageRequestDTO);
 	
 	int getCount(PageRequestDTO pageRequestDTO);
