@@ -47,14 +47,15 @@ public class ExercisePlanController {
 	}
 	
 	@PostMapping("/plan")
-	public void ShowExerciseShow(@RequestBody Map<String, String> date, HttpServletResponse response) {
+	public void ShowExerciseShow(@RequestBody Map<String, String> date, HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
 		List<ExercisePlanDTO> eplist = new ArrayList<>();
 		List<ExerciseVolumeDTO> evlist = new ArrayList<>();
 		String r_date = date.get("date").toString();
-		
+		String user_id = principal.getUsername();
+		System.out.println(user_id);
 		try {
-			eplist = exercisePlanService.selectExercisePlan(r_date);
-			evlist = exercisePlanService.selectExerciseVolume(r_date);
+			eplist = exercisePlanService.selectExercisePlan(r_date, user_id);
+			evlist = exercisePlanService.selectExerciseVolume(r_date, user_id);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
@@ -132,13 +133,11 @@ public class ExercisePlanController {
 	}
 	
 	@PostMapping("/recode_delete")
-	public void deleteRecode(@RequestBody Map<String, String> rNo  ,HttpServletResponse response, PrincipalDetail principal) {
+	public void deleteRecode(@RequestBody Map<String, String> rNo  ,HttpServletResponse response) {
 		String r_no = rNo.get("rNo").toString();
-		String user_id = principal.getUsername();
-		System.out.println(user_id);
 		System.out.println(r_no);
 		try {
-			exercisePlanService.deleteRecode(r_no, user_id);
+			exercisePlanService.deleteRecode(r_no);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
@@ -197,5 +196,24 @@ public class ExercisePlanController {
 		}
 	}
 	
-	
+	@PostMapping("/workout_day")
+	public void workoutDay(HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
+		ArrayList<String> r_date = null;
+		try {
+			String user_id = principal.getUsername();
+			r_date = exercisePlanService.workoutDay(user_id);
+		}catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		
+		try {
+			new Gson().toJson(r_date,response.getWriter());
+		} catch (JsonIOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

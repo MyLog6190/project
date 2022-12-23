@@ -1,5 +1,6 @@
 package com.project.exercise.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -26,7 +27,9 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 		for(ExercisePlanDTO dto : list) {
 			String r_no = exercisePlanMapper.selectSeq();
 			dto.setR_no(r_no);
-			int result = exercisePlanMapper.insertSelectExercise(dto, user_id);
+			dto.setUser_id(user_id);
+			System.out.println(dto);
+			int result = exercisePlanMapper.insertSelectExercise(dto);
 			
 			ExerciseVolumeDTO volume = new ExerciseVolumeDTO();
 			volume.setR_no(r_no);
@@ -38,11 +41,11 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	}
 
 	@Override
-	public List<ExercisePlanDTO> selectExercisePlan(String r_date) {
+	public List<ExercisePlanDTO> selectExercisePlan(String r_date, String user_id) {
 		List<ExercisePlanDTO> list = null;
 		
 		try {
-			list = exercisePlanMapper.selectExercisePlan(r_date);
+			list = exercisePlanMapper.selectExercisePlan(r_date, user_id);
 		}catch (Exception e) {
 			log.error(e.getMessage());
 		}
@@ -61,14 +64,14 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	}
 
 	@Override
-	public List<ExerciseVolumeDTO> selectExerciseVolume(String r_date) {
-		List<ExerciseVolumeDTO> list = exercisePlanMapper.selectExerciseVolume(r_date);
+	public List<ExerciseVolumeDTO> selectExerciseVolume(String r_date, String user_id) {
+		List<ExerciseVolumeDTO> list = exercisePlanMapper.selectExerciseVolume(r_date, user_id);
 		return list;
 	}
 
 	@Override
-	public void deleteRecode(String r_no, String user_id) {
-		exercisePlanMapper.deleteRecode(r_no, user_id);
+	public void deleteRecode(String r_no) {
+		exercisePlanMapper.deleteRecode(r_no);
 	}
 
 	@Override
@@ -105,5 +108,13 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 	public void updateChecked(String vNo, String checkValue) {
 		exercisePlanMapper.updateChecked(vNo, checkValue);
 	}
+
+	@Override
+	public ArrayList<String> workoutDay(String user_id) {
+		ArrayList<String> r_date = exercisePlanMapper.workoutDay(user_id);
+		return r_date;
+	}
+
+
 
 }

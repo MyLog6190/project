@@ -27,7 +27,7 @@ import lombok.extern.log4j.Log4j2;
 public class ExerciseLibController {
 	
 	private final ExerciseService exerciseService;
-	
+
 	//private final AuthenticationManager authenticationManager;
 
 	@Value("${exercise.imgdir}")

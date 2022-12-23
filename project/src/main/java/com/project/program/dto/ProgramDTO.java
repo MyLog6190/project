@@ -1,4 +1,4 @@
-package com.project.exercise.dto;
+package com.project.program.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

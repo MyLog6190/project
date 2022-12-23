@@ -54,11 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeHttpRequests()
 				.antMatchers("/", "/css/**", "/icons/**",
 						"/images/**", "/views/**", "/bootstrap/**",
-						"/auth/**", "/common/**", "/exlib/**", "/board", "/exercise/*", "/home/*") // 로그인 없이 접근 가능하도록 링크 설정해주기
-
-//					"/auth/**", "/common/**", "/board") // 로그인 없이 접근 가능하도록 링크 설정해주기
-
-
+						"/auth/**", "/common/**", "/exlib/**", "/board", "/home/*")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
