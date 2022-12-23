@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.exercise.dto.ProgramDTO;
-import com.project.exercise.mapper.ProgramMapper;
+import com.project.program.dto.ProgramDTO;
+import com.project.program.mapper.ProgramMapper;
 
 import lombok.RequiredArgsConstructor;
 
