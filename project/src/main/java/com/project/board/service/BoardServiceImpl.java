@@ -62,6 +62,11 @@ public class BoardServiceImpl implements BoardService {
 		return pageResponseDTO;
 	}
 
+	@Override
+	public List<BoardDTO> getNotice() {
+		return boardMapper.getNotice();
+	}
+
 
 	
 	

@@ -8,6 +8,8 @@ import com.project.board.dto.PageResponseDTO;
 
 public interface BoardService {
 	List<BoardDTO> getAllPost();
+	
+	List<BoardDTO> getNotice();
 
 	PageResponseDTO<BoardDTO> getList(PageRequestDTO pageRequestDTO);
 	

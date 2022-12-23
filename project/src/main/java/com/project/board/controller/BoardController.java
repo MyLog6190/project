@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.board.dto.BoardDTO;
 import com.project.board.dto.PageRequestDTO;
@@ -33,7 +34,7 @@ public class BoardController {
 		List<BoardDTO> bList = null;
 		
 		try {
-			bList = boardService.getAllPost();
+			bList = boardService.getNotice();
 			log.info(bList);
 			model.addAttribute("list", bList);
 		} catch(Exception e) {
@@ -75,8 +76,8 @@ public class BoardController {
 //		return "/board/list";
 //	}
 	
-	@GetMapping("/{b_no}")
-	public String getOnePost(@PathVariable("b_no") int b_no, Model model){
+	@GetMapping("/read")
+	public String getOnePost(int b_no, PageRequestDTO pageRequestDTO, Model model){
 		BoardDTO boardDTO = null;
 		try {
 			boardDTO = boardService.getOnePost(b_no);
@@ -87,8 +88,8 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
-	@GetMapping("/update/{b_no}")
-	public String updatePage(@PathVariable("b_no") int b_no, Model model) {
+	@GetMapping("/update")
+	public String updatePage(int b_no, PageRequestDTO pageRequestDTO, Model model) {
 		BoardDTO boardDTO = null;
 		try {
 			boardDTO = boardService.getOnePost(b_no);
@@ -99,14 +100,17 @@ public class BoardController {
 		return "/board/updateForm";
 	}
 	
-	@PostMapping("/update/{b_no}")
-	public String updatePost(@PathVariable int b_no, @ModelAttribute("detail") BoardDTO boardDTO,
+	@PostMapping("/update")
+	public String updatePost(int b_no, PageRequestDTO pageRequestDTO, @ModelAttribute("detail") BoardDTO boardDTO,
 				Model model) {
 		log.info(boardDTO);
 		try{
 			boardService.updatePost(boardDTO);
 			String msg = "글 수정 완료";
-			String red = "/board/"+b_no;
+			String red = new StringBuilder()
+					.append("/board/read?b_no=")
+					.append(b_no).toString();
+
 			log.info("글 수정 완료");
 			model.addAttribute("msg", msg);
 			model.addAttribute("redirect", red);
@@ -139,14 +143,31 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	@GetMapping("/delete/{b_no}")
-	public String deletePost(Model model, @PathVariable int b_no) {
+//	@GetMapping("/delete/{b_no}")
+//	public String deletePost(Model model, @PathVariable int b_no) {
+//		try {
+//		boardService.deletePost(b_no);
+//		String msg = "글이 정상적으로 삭제되었습니다.";
+//		String red = "/board/list";
+//		model.addAttribute("msg", msg);
+//		model.addAttribute("redirect", red);
+//		return "alert";
+//		} catch(Exception e) {
+//			log.error("게시글 삭제 중 문제 발생");
+//		}
+//		return "redirect:/board/list";
+//	}
+	
+	@PostMapping("/delete")
+	public String deletePost(Integer b_no, PageRequestDTO pageRequestDTO, Model model, RedirectAttributes redirectAttributes) {
 		try {
+			log.info(b_no);
 		boardService.deletePost(b_no);
 		String msg = "글이 정상적으로 삭제되었습니다.";
 		String red = "/board/list";
 		model.addAttribute("msg", msg);
 		model.addAttribute("redirect", red);
+		redirectAttributes.addAttribute("page", 1);
 		return "alert";
 		} catch(Exception e) {
 			log.error("게시글 삭제 중 문제 발생");

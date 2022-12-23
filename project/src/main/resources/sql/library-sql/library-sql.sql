@@ -7,6 +7,14 @@ CREATE TABLE bookmark(
 	
 )
 
+		SELECT * FROM( SELECT ROWNUM AS RNUM, A.* FROM (
+		SELECT * FROM NOTICE_BOARD N ORDER BY b_no
+    ) A WHERE ROWNUM <= 10
+   ) B WHERE RNUM >=1
+
+   		SELECT * FROM NOTICE_BOARD 
+		where b_tag like 'notice';
+   
 
 create table exercise_libraries(
 	ID

@@ -25,8 +25,7 @@ public class PageResponseDTO<E> {
 	@Builder
 	public PageResponseDTO(PageRequestDTO pageRequestDTO, List<E> dtoList, int total) {
 		this.page = pageRequestDTO.getPage();
-		this.size = pageRequestDTO.getSize();
-		
+		this.size = 10;
 		this.total = total;
 		this.dtoList = dtoList;
 		
