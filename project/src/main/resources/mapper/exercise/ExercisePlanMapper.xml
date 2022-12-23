@@ -8,8 +8,8 @@
 	</select>
 	
 	<insert id='insertSelectExercise'>
-		INSERT INTO PR(R_NO, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
-		VALUES( #{ r_no }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
+		INSERT INTO PR(R_NO, USER_ID, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
+		VALUES( #{ r_no },#{ user_id }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
 	</insert>
 	
 	<insert id="insertExerciseVolume">
@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="selectExerciseVolume" resultType="com.project.exercise.dto.ExerciseVolumeDTO">
-		SELECT * FROM VOLUME WHERE R_NO IN(SELECT R_NO FROM PR WHERE R_DATE = #{ r_date } )
+		SELECT * FROM VOLUME WHERE R_NO IN(SELECT R_NO FROM PR WHERE R_DATE = #{ r_date } AND USER_ID = #{ user_id })
 	</select>
  	
 	<delete id="deleteVolume" parameterType="String">
@@ -42,5 +42,9 @@
 	
 	<update id="updateKg" parameterType="String">
 		UPDATE VOLUME SET V_KG = #{kgValue} WHERE V_NO = #{vNo}
+	</update>
+	
+	<update id="updateChecked" parameterType="String">
+		UPDATE VOLUME SET DO_CHECK = #{checkValue} WHERE V_NO = #{vNo}
 	</update>
 </mapper>

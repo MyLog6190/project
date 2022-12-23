@@ -6,7 +6,7 @@ import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
 
 public interface ExercisePlanService {
-	int insertExercisePlan(List<ExercisePlanDTO> list);
+	int insertExercisePlan(List<ExercisePlanDTO> list, String user_id);
 
 	List<ExercisePlanDTO> selectExercisePlan(String r_date);
 
@@ -14,7 +14,7 @@ public interface ExercisePlanService {
 
 	List<ExerciseVolumeDTO> selectExerciseVolume(String r_date);
 
-	void deleteRecode(String r_no);
+	void deleteRecode(String r_no, String user_id);
 
 	void insertExerciseVolume(String r_no);
 
@@ -24,5 +24,7 @@ public interface ExercisePlanService {
 
 	void updateReps(String vNo, String repsValue);
 
-	void updateKg(String vNo, String kgValue); 
+	void updateKg(String vNo, String kgValue);
+
+	void updateChecked(String vNo, String checkValue); 
 }
