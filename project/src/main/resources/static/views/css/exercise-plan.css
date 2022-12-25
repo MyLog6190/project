@@ -242,6 +242,8 @@ h5{
 	background-color: var(--bg-main);
 	box-shadow: var(--shadow);
 	margin: 20px 20px 20px 20px;
+	color: var(--color-txt);
+	padding: 10px;
 	
 }
 
@@ -275,9 +277,7 @@ h5{
 	color: var(--color-txt);
 }
 
-.modal{
-	background-color: var(--bg-body);	
-}
+
 
 .exercise-to-do{
 	display: flex;
@@ -325,7 +325,7 @@ h5{
 	box-shadow: var(--shadow);
 	background: white;
 	color: var(--color-txt);
-	background-color: var(--bg-body);
+	background-color: var(--bg-main);
 	border: solid 1px var(--color-txt);
 	
 }
@@ -372,18 +372,20 @@ h5{
 }
 
 .excercise_set > input{
-	width:40px;
-	height:40px;
+	width:35px;
+	height:35px;
 	text-align: center;
-	font: 15px;
+	font: 13px;
 	color: var(--color-txt);
-	background: var(--bg-main);
+	background: var(--bg-body);
 	border: none;
+	border-radius: 5px;
+	margin-right: 5px;
 }
 
 .excercise_set > label{
 	font-size: 20px;
-	margin-right: 10px;
+	margin-right: 30px;
 }
 
 .addSetBtn{
@@ -413,3 +415,21 @@ input[type="checkbox"]{
 	color: var(--color-txt);
 	border-radius: 50%;
 }
+
+.modal-dialog{
+	max-width: 700px;
+	box-shadow: var(--shadow);
+}
+.modal-content{
+	background-color: var(--bg-body);
+	border-color: var(--color-txt);
+}
+.modal{
+	background-color: var(--bg-main);
+	color: var(--color-txt);
+}
+
+.modal-title{
+	margin:0px;
+}
+

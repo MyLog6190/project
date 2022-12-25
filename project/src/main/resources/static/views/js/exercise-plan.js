@@ -2,6 +2,8 @@
 document.querySelector(".dark-mode-switch").onclick = () => {
       document.querySelector("main").classList.toggle("dark");
       document.querySelector("main").classList.toggle("light");
+      document.querySelector(".select-exercise").classList.toggle("dark");
+      document.querySelector(".select-exercise").classList.toggle("light");
 };
 
 // 달력 출력
@@ -334,7 +336,7 @@ class ExercisePlan {
 							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
 							test_text += "<label for='kg'> Kg </label>";
 							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value='"+ parseInt( exerciseVolume.v_reps )+"'/>";
-							test_text += "<label for='reps'>횟수</label>";
+							test_text += "<label for='reps'> Reps </label>";
 							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
 							test_text += "</div>";
 							test_text += "<div class='check-and-delete'>";

@@ -253,20 +253,20 @@ h6 {
  * ====================================
  */
 .section-heading {
-  color: rgba(88, 88, 88, 0.95);
+  color: var(--color-txt);
   display: inline-block;
   padding-bottom: 23px;
   margin: 0;
 }
 .section-header {
   margin-bottom: 70px;
-  text-align: center;
+  margin-left: 10px;
 }
 .section-header .sub-heading {
   font-size: 15px;
   line-height: 25px;
   font-weight: 400;
-  color: rgba(88, 88, 88, 0.65);
+  color: var(--bg-second);
   margin: 0;
 }
 .section-header.text-left,
@@ -692,6 +692,11 @@ h6 {
  * CONTAINER HALF CONTENT
  * ================================
  */
+ .main-container{
+ 	background-color: var(--bg-body);
+ 	padding: 0px 250px 0px 250px;
+ }
+ 
 .content-half {
   position: relative;
 }
@@ -1026,13 +1031,23 @@ h6 {
   font-size: 60px;
   display: block;
   margin-bottom: 55px;
+  color: var(--color-txt);
 }
+
 .features-section-1 .title {
   margin-top: 0px;
+  color: var(--color-txt);
 }
+
 .features-section-1 .detail {
   margin-top: 24px;
+  color: var(--color-txt);
 }
+
+.detail>p {
+  color: var(--color-txt);
+}
+
 .features-section-1 .each-features .inner {
   margin-bottom: 30px;
   padding: 70px 55px;
@@ -1498,8 +1513,14 @@ h6 {
 .footer-section .section-separator {
   padding: 70px 0;
 }
+
 .footer-section .copyright p {
   color: rgba(255, 255, 255, 0.32);
   font-size: 15px;
   font-weight: 400;
+}
+
+.contents{
+	height:330px;
+	background-color: var(--bg-main);
 }

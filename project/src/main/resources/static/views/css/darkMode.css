@@ -6,8 +6,10 @@
   --dark-hover: #323048;
   --dark-text: #f8fbff;
   --dark-workoutDay: #0000ff;
-  
+  /* #585858 */
+  /*rgba(88, 88, 88, 0.8);*/
   --light-body: #f3f8fe;
+  /* --light-body: #e9ecef; */
   --light-main: #fdfdfd;
   --light-second: #c3c2c8;
   --light-hover: #edf0f5;
@@ -19,6 +21,12 @@
   --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   --font-family: cursive;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .dark {

@@ -11,13 +11,13 @@
     <!-- Start: Features Section 1
         ====================================== -->
         <section class="features-section-1 relative background-semi-dark" id="features">
-            <div class="container">
+            <div class="main-container">
                 <div class="row section-separator">
 
                     <!-- Start: Section Header -->
                     <div class="section-header col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-                        <h2 class="section-heading">StartFit</h2>
+                        <h1 class="section-heading">StartFit</h1>
                         <p class="sub-heading">운동을 시작해 보세요</p>
 
                     </div>
@@ -29,7 +29,7 @@
                         <div class="row">
                             
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner background-light">
+                                <div class="inner background-light contents">
                             		<a href="/exercise/plan"><i class="icon features-icon icons8-calendar"></i></a>
                                     <h6 class="title">오늘의 운동계획</h6>
                                     <div class="detail">
@@ -40,7 +40,7 @@
                             </div> <!-- End: .each-features -->
 
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner background-light">
+                                <div class="inner background-light contents">
                             		
                                     <a href="/exprog"><i class="icon features-icon icons8-classroom"></i></a>
                                     <h6 class="title">프로그램</h6>
@@ -52,7 +52,7 @@
                             </div> <!-- End: .each-features -->
 
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner background-light">
+                                <div class="inner background-light contents">
                                 	<i class=" icon features-icon icons8-collaboration"></i>
                                     <h6 class="title">커뮤니티</h6>
                                     <div class="detail">
@@ -61,7 +61,6 @@
 
                                 </div> <!-- End: .inner -->
                             </div> <!-- End: .each-features -->
-
                         </div>
                     </div>
 
@@ -71,6 +70,11 @@
         <!-- End: Features Section 1
         ======================================-->
 <%@include file ="common/footer.jsp" %>
-
+<script type="text/javascript">
+	document.querySelector(".dark-mode-switch").onclick = () => {
+	    document.querySelector("body").classList.toggle("dark");
+	    document.querySelector("body").classList.toggle("light");
+	};
+</script>
 </body>
 </html>

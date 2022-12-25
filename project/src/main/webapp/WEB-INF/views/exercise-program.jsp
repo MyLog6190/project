@@ -51,7 +51,6 @@
                             </div>
                         </div> <!-- End: .row -->
 
-					          <c:forEach items="${plist}" var="list" begin='1' end='1'>
                         <div class="each-project row">
                             <div class="each-project-inner">
                                 
