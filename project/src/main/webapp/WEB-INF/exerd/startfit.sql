@@ -337,7 +337,7 @@ INSERT INTO PROGRAM VALUES('P1', 'Strong Lift 5 by 5', '주 3회',
 
 INSERT INTO PROGRAM VALUES('P2', 'Golden Six', '주 3회',
 '마지막 세트 실패지점까지, 마지막 세트 13개 이상 성공하면 다음 워크아웃 최소 과부하',
-'/views/images/progimges/golden six.png'
+'/views/images/progimges/golden_six.png'
 );
 
 INSERT INTO PROGRAM VALUES('P3', 'GVT', '주 3회',

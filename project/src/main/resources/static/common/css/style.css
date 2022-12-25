@@ -292,9 +292,12 @@ h6 {
   color: rgba(255, 255, 255, 0.7);
 }
 .vertical-middle {
+  width: 700px;
+  padding: 20px;
   display: table-cell;
   float: none;
   vertical-align: middle;
+  background-color: var(--bg-main);
 }
 /**
  * ===============================
@@ -1499,6 +1502,9 @@ h6 {
 .project-item .btn-form {
   margin-top: 60px;
 }
+.each-project-inner{
+	 box-shadow: var(--shadow);
+}
 .project-item .each-project .each-project-inner {
   margin-bottom: 90px;
 }
@@ -1523,4 +1529,25 @@ h6 {
 .contents{
 	height:330px;
 	background-color: var(--bg-main);
+}
+
+.features-section-8{
+	background-color: var(--bg-body);
+
+}
+
+.project-image{
+	margin: 0px;
+	width: 535px;
+	height: 567px;
+	background-size: contain;
+}
+
+.r-inner{
+	padding-right: 50px;
+	padding-left: 0px;
+}
+.l-inner{
+	padding-right: 0px;
+	padding-left: 50px;
 }
