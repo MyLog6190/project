@@ -595,22 +595,22 @@ const exercisePlan = new ExercisePlan();
 exercisePlan.start();
 
     	
-    let select_exercise_close = document.querySelector(".select-exercise-close");
-    select_exercise_close.onclick = (e) => {
-		let select_exercise = document.querySelector(".select-exercise");
-		select_exercise.style.display = "none";
-	}
+let select_exercise_close = document.querySelector(".select-exercise-close");
+select_exercise_close.onclick = () => {
+	let select_exercise = document.querySelector(".select-exercise");
+	select_exercise.style.display = "none";
+}
 	
-	let exercise_programs = document.querySelectorAll(".exercise-program");
-	exercise_programs.forEach( (exercise_program) => {
-		exercise_program.onclick = (e) => {
-			let program = document.querySelector(".program");
-			program.style.display = "block";
-		}
-	});
-	
-	let program_close = document.querySelector(".program-close");
-	program_close.onclick = (e) => {
+let exercise_programs = document.querySelectorAll(".exercise-program");
+exercise_programs.forEach( (exercise_program) => {
+	exercise_program.onclick = () => {
 		let program = document.querySelector(".program");
-		program.style.display = "none";
+		program.style.display = "block";
 	}
+});
+	
+let program_close = document.querySelector(".program-close");
+program_close.onclick = () => {
+	let program = document.querySelector(".program");
+	program.style.display = "none";
+}

@@ -32,7 +32,7 @@
 		                                </div>
 		                                <div class="vertical-middle col-md-5 col-sm-6 col-xs-12">
 		                                    <div class="inner r-inner p-l-50">
-		                                        <h2 class="section-heading">초급<h4>${program.p_name }</h4></h2>
+		                                        <h2 class="section-heading">${program.p_level}<h4>${program.p_name }</h4></h2>
 		                                        <div class="detail">
 		                                            <p>${program.p_contents }</p>
 		                                        </div>
@@ -52,7 +52,7 @@
 		                                <div class="vertical-middle col-md-5 col-sm-6 col-xs-12">
 		                                    <div class="inner l-inner p-r-50">
 		                                        
-		                                        <h2 class="section-heading">중급<h4>${program.p_name }</h4></h2>
+		                                        <h2 class="section-heading">${program.p_level}<h4>${program.p_name }</h4></h2>
 		
 		                                        <div class="detail">
 		                                            <p>${program.p_contents }</p>
