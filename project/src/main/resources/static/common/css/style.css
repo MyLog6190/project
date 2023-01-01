@@ -143,6 +143,7 @@ body {
   overflow-x: hidden !important;
   text-align: left;
   position: relative;
+  background: var(--bg-body);
 }
 a {
   text-decoration: none !important;
@@ -698,6 +699,7 @@ h6 {
  .main-container{
  	background-color: var(--bg-body);
  	padding: 0px 250px 0px 250px;
+ 	border-radius: 15px;
  }
  
 .content-half {

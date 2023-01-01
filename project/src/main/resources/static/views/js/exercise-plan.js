@@ -1,10 +1,3 @@
-// 다크 모드
-document.querySelector(".dark-mode-switch").onclick = () => {
-      document.querySelector("main").classList.toggle("dark");
-      document.querySelector("main").classList.toggle("light");
-      document.querySelector(".select-exercise").classList.toggle("dark");
-      document.querySelector(".select-exercise").classList.toggle("light");
-};
 
 // 달력 출력
 class Calendar {

@@ -85,7 +85,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   
   <script type="text/javascript" src="/views/js/exercise-lib.js"></script>
-
+  <script src="/views/js/darkMode.js"></script>
 </body>
 
 </html>

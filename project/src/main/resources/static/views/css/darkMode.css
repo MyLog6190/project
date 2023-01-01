@@ -29,6 +29,29 @@
   box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: dark) {
+  .scheme   { 
+	 --bg-body: var(--dark-body);
+	 --bg-main: var(--dark-main);
+	 --bg-second: var(--dark-second);
+	 --bg-workoutDay: var(--dark-workoutDay);
+	 --color-hover: var(--dark-hover);
+	 --color-txt: var(--dark-text);
+	
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .scheme   {  
+  	 --bg-body: var(--light-body);
+	 --bg-main: var(--light-main);
+	 --bg-second: var(--light-second);
+	 --bg-workoutDay: var(--light-workoutDay);
+	 --color-hover: var(--light-hover);
+	 --color-txt: var(--light-text); 
+  }
+}
+
 .dark {
   --bg-body: var(--dark-body);
   --bg-main: var(--dark-main);

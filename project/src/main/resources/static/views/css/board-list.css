@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+h1{
+	padding-top: 30px;
+	margin-bottom: 40px;
+	color: var(--color-txt);
+}
+
+
+.main-container{
+	height: 90vh;
+	margin: 40px;
+	background: var(--bg-main);
+	padding: 0px 150px 0px 150px;
+}
+
+.board-tag {
+	width: 80px;
+	border: solid 1px;
+	color: red;
+	text-align: center;
+}
+
+
+thead {
+	text-align: center;
+	color: var(--color-txt);
+}
+
+tbody > tr {
+	display: table-row;	
+}
+
+
+tbody > tr > th{
+	width: 100px;
+}
+
+tbody > tr > td > div{
+	padding:5px 10px 5px 10px;
+	text-align:center;
+	color: var(--color-txt);
+}
+
+
+.board-title > div {
+	padding: 5px 10px 5px 10px;
+}
+
+
+.insert-notice {
+	margin-top: 20px;	
+}
+
+.pagination-div {
+	margin-bottom: 20px;
+}

@@ -431,9 +431,10 @@ COMMENT ON COLUMN VOLUME.DO_CHECK IS '운동 여부 체크';
 -- NOTICE_BOARD TABLE CREATE
 CREATE TABLE NOTICE_BOARD(
 	B_NO NUMBER NOT NULL PRIMARY KEY,
-	B_TAG VARCHAR2(20),
+	B_TAG VARCHAR2(20) DEFAULT 'none',
 	B_TITLE VARCHAR2(200) NOT NULL,
-	B_CONTENT VARCHAR2(4000) NOT NULL	
+	B_CONTENT VARCHAR2(4000) NOT NULL,
+	B_DATE DATE DEFAULT SYSDATE
 );
 
 -- NOTICE_BOARD COMMENT
@@ -443,20 +444,11 @@ COMMENT ON COLUMN NOTICE_BOARD.B_TITLE IS '글 제목';
 COMMENT ON COLUMN NOTICE_BOARD.B_CONTENT IS '글 내용';
 
 INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
- VALUES (1, '', '제목1', '내용1');
+ VALUES (1, '공지','2023 업데이트 내역', '내용1');
 
 INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
- VALUES (2, '', '제목2', '내용2');
+ VALUES (2, '공지','2022 업데이트 내역', '내용2');
  
-INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
- VALUES (3, '', '제목3', '내용3');
 
-INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
- VALUES (4, '', '제목4', '내용4');
- 
-INSERT INTO NOTICE_BOARD(b_no, b_tag, b_title, b_content)
- VALUES (5, '', '제목5', '내용5')
- ;
- 
  
  SELECT * FROM PR

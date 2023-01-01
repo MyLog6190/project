@@ -83,10 +83,7 @@
         ======================================-->
 <%@include file ="common/footer.jsp" %>
 <script type="text/javascript">
-	document.querySelector(".dark-mode-switch").onclick = () => {
-	    document.querySelector("body").classList.toggle("dark");
-	    document.querySelector("body").classList.toggle("light");
-	};
 </script>
 </body>
+<script src="/views/js/darkMode.js"></script>
 </html>

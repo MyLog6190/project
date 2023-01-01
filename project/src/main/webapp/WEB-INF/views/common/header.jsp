@@ -50,7 +50,7 @@
         <![endif]-->
 
     </head>
-    <body class="light">
+    <body >
         <!-- Start: Navbar Area
         ============================= -->
 
@@ -78,11 +78,12 @@
                                   <c:when test="${empty login }">
                                     <li><a class="btn-nav" href="/auth/register">회원가입</a></li>
                                     <li><a class="btn-nav" href="/auth/login">로그인</a></li>
+                                    <li><a class="btn-nav" href="/board/list">공지사항</a></li>
                                     <li><a class="btn-nav" href="/board">고객센터</a></li>
                                   </c:when>
                                   <c:otherwise>
-                                    <li><a class="btn-nav" href="/exlib">운동 라이브러리</a></li>
                                     <li><a class="btn-nav" href="javascript:logout(`${login.user.login_group}`)">로그아웃</a></li>
+                                     <li><a class="btn-nav" href="/board/list">공지사항</a></li>
                                     <li><a class="btn-nav" href="/board">고객센터</a></li>
                                     <li><a class="btn-nav" href="/mypage/my"><img class="" style="height: 2rem; border-radius: 100%;" src="${login.user.profile_image}"></a></li>
                                   </c:otherwise>
@@ -121,7 +122,7 @@
                            <div class="part-inner text-center ">
 
                                 
-                                <h1 class="title">Welcome to Im Startup Launch Your Product Now</h1> 
+                                <h1 class="title">Welcome to StartFit Exercise Planning.</h1> 
                             </div>
                         </div> <!-- End: .part-1 -->
 

@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<%@include file ="common/header.jsp" %>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file ="common/header.jsp" %>
+
 <!-- Start: Features Section 7
         ====================================== -->
         <section class="features-section-7 content-half background-light" >
@@ -20,17 +21,14 @@
 
                     <div class="col-md-6">
                         <div class="inner">
-
                             <h2 class="section-heading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam notincidunt.</h2>
                             <div class="detail">
                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 
                                 <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in he.</p>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

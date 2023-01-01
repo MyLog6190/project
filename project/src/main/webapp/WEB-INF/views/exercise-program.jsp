@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-program.css" />
   <!-- Start: Features Section 7
         ====================================== -->
-        <section class="features-section-8 relative background-light light" id="work">
+        <section class="features-section-8 relative background-light" id="work">
             
             <div class="container">
                 <div class="row section-separator">
@@ -82,8 +82,5 @@
         ======================================-->
 <%@include file ="common/footer.jsp" %>
 <script type="text/javascript">
-	document.querySelector(".dark-mode-switch").onclick = () => {
-	    document.querySelector(".features-section-8").classList.toggle("dark");
-	    document.querySelector(".features-section-8").classList.toggle("light");
-	};
 </script>
+<script src="/views/js/darkMode.js"></script>
