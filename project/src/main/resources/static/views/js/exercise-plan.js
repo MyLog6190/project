@@ -119,6 +119,7 @@ class ExercisePlan {
 		this.create_exercise_plan();
 		this.showExercisePlan(date);
 	}
+	
 	// 운동 리스트 출력
 	exercise_list = () => {
 		let btn = document.querySelector(".btn-primary");

@@ -12,8 +12,6 @@ main{
   background-color: var(--bg-body);
 }
 
-
-
 .calendar {
   height: max-content;
   width: max-content;
@@ -433,3 +431,10 @@ input[type="checkbox"]{
 	margin:0px;
 }
 
+.day:nth-child(7n -6) {
+	color: red;
+}
+
+.day:nth-child(7n) {
+	color: #0d6efd;
+}
