@@ -6,10 +6,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.common.config.auth.PrincipalDetail;
 import com.project.program.dto.ProgramDTO;
+import com.project.program.dto.ProgramExerciseDTO;
 import com.project.program.service.ProgramService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,5 +38,18 @@ public class ProgramController {
 			log.warn("프로그램 로드 과정에서 문제 발생");
 		}
 		return "/exercise-program";
+	}
+	
+	@GetMapping("/{p_no}")
+	public String getProgramInfo(@PathVariable String p_no, Model model) {
+		String pNo = p_no;
+		
+		ProgramDTO program = programService.getProgram(pNo);
+		model.addAttribute("program", program);
+		
+		List<ProgramExerciseDTO> eList = programService.getExercises(pNo);
+		model.addAttribute("eList", eList);
+		
+		return "/program-detail";
 	}
 }

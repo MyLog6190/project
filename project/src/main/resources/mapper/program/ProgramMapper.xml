@@ -3,11 +3,17 @@
     "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace='com.project.program.mapper.ProgramMapper'>
-<select id='getAllProgram' resultType='com.project.program.dto.ProgramDTO'>
-SELECT * FROM PROGRAM
-</select>
-
-<!-- <select id='getOneProgram'
- -->
-
- </mapper>
+	<select id='getAllProgram' resultType='com.project.program.dto.ProgramDTO'>
+		SELECT * FROM PROGRAM
+	</select>
+	
+	<select id='getProgram' parameterType="String" resultType="com.project.program.dto.ProgramDTO">
+		SELECT * FROM PROGRAM WHERE P_NO = #{pNo}
+	</select>
+	
+	<select id="getExercises" resultType="com.project.program.dto.ProgramExerciseDTO">
+		SELECT E.E_NO, E_NAME, E_IMG, E_CONTENT, P_NO, P_SET, P_REPS, P_KG
+		FROM EXERCISE E LEFT JOIN PROGRAM_EXERCISE PE ON E.E_NO = PE.E_NO
+		WHERE PE.P_NO = #{pNo}
+	</select>
+</mapper>

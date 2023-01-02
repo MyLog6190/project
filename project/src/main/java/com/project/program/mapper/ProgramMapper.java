@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
 import com.project.program.dto.ProgramDTO;
+import com.project.program.dto.ProgramExerciseDTO;
 
 
 @Repository
@@ -14,6 +15,8 @@ public interface ProgramMapper {
 
 List<ProgramDTO> getAllProgram();
 
-ProgramDTO getOneProgram(String p_no);
+ProgramDTO getProgram(String pNo);
+
+List<ProgramExerciseDTO> getExercises(String pNo);
 
 }

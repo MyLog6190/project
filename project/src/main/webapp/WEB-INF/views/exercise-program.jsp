@@ -38,7 +38,7 @@
 		                                        </div>
 		                                        <!-- Button Area -->
 		                                        <div class="btn-form">
-		                                            <a href="#" class="btn btn-fill right-icon">GO WORKOUT <i class="icon icons8-advance"></i></a>
+		                                            <a href="/exprog/${program.p_no}" class="btn btn-fill right-icon">GO WORKOUT <i class="icon icons8-advance"></i></a>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -59,7 +59,7 @@
 		                                        </div>
 		                                        <!-- Button Area -->
 		                                        <div class="btn-form">
-		                                            <a href="#" class="btn btn-fill right-icon">GO WORKOUT <i class="icon icons8-advance"></i></a>
+		                                            <a href="/exprog/${program.p_no}" class="btn btn-fill right-icon">GO WORKOUT <i class="icon icons8-advance"></i></a>
 		                                        </div>
 		                                    </div>
 		                                </div>
