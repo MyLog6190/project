@@ -16,7 +16,7 @@
 
 	        <c:set var='program' value='${program}'/>
             <div class="container-half-left background-light"></div>
-            <div class="container-half container-half-right cover" style="background-image: url(${program.p_img});"></div>
+            <div class="container-half container-half-right" style="background-image: url(${program.p_img});"></div>
 
             <div class="container">
                 <div class="row section-separator text-left">
@@ -44,7 +44,7 @@
                     <div class="section-header col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                         <h2 class="section-heading">운동 리스트</h2>
-                        <p class="sub-heading">Lorem ipsum dolor sit amet, consectetuer elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p class="sub-heading">운동 프로그램에 따라 추천하는 운동 리스트</p>
 
                     </div>
                     <!-- End: Section Header -->
@@ -57,7 +57,7 @@
                             
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner background-light">
-                                    <div class="exercise-image cover" style="background-image: url(${exercise.e_img});"></div>
+                                    <div class="cover exercise-image" style="background-image: url(${exercise.e_img});"></div>
                                     <h6 class="title">${exercise.e_name}</h6>
                                     <div class="detail">
                                         <p>세트 :  ${exercise.p_set}</p>
