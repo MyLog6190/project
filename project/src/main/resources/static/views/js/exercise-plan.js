@@ -46,7 +46,7 @@ class Calendar {
         if (i >= firstDay + 1) {
           day.classList.add("day");
           day.classList.add("calendar-day-hover");
-          day.setAttribute("id", `${ this.year }-${( this.month + 1 )}-${ i - firstDay >= 10 ? "" : "0"}${(i - firstDay)}`);
+          day.setAttribute("id", `${ this.year }-${( this.month + 1 >= 10 ? "" : "0")}${( this.month + 1 )}-${ i - firstDay >= 10 ? "" : "0"}${(i - firstDay)}`);
           day.innerHTML = i - firstDay;
           day.innerHTML += `
   		                <span></span>
@@ -66,7 +66,7 @@ class Calendar {
     dateFormat = (date) => {
  		const month = date.getMonth() + 1;
       	const day = date.getDate()
-      	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
+      	return `${ date.getFullYear() }년 ${( month + 1 >= 10 ? "" : "0")} ${ month }월 ${ day >= 10 ? "" : "0"}${ day }일`
 	}
 	
 	// 이전 달
@@ -128,6 +128,7 @@ class ExercisePlan {
 	    	 btn.classList.add('create-exercise-btn')
 	    	 let changeBtn = document.querySelector(".create-exercise-btn");
 	    	 changeBtn.value = "운동 계획 생성";
+	    	 this.getPrograms();
 	    	 
 		     let create_exercise_btn = document.querySelector(".create-exercise-btn");
 	    	 if(create_exercise_btn) {
@@ -166,62 +167,12 @@ class ExercisePlan {
 	    };
 	}
 	
-	 // 운동 계획생성
-	create_exercise_plan = () =>{
-		let select_exercise_btn = document.querySelector(".select-exercise-btn");
-	    select_exercise_btn.onclick = () => {
-	    	const exercise_list = document.querySelectorAll(".exercise-list");
-	    	let enoList = [];
-	    	let eNameList = [];
-	    	let imgList = [];
-	    	let cNameList = [];
-	    	let dateList = [];
-	    	exercise_list.forEach( (exercise) => {
-	    		const checkBox = exercise.querySelector(".select-exercise-check");
-	    		const is_checked = checkBox.checked;
-	    		if(is_checked) {
-	    			const eNo = exercise.querySelector("#eNo").value;
-	    			const cName = exercise.querySelector("#cName").value;
-	    			const eName = exercise.querySelector('.eName').innerText;
-	    			const eImg = exercise.querySelector('.exercise-info_img').getAttribute('src');
-	    			const date = this.select_date();
-	    			
-	    			enoList.push(eNo);
-	    			eNameList.push(eName);
-	    			cNameList.push(cName);
-	    			imgList.push(eImg);
-	    			dateList.push(date);
-	    		}
-	    	});
-	    	
-	    	fetch("/exercise/select-exercise", {
-				method:"POST",
-				headers: {
-			        'Content-Type': 'application/json',
-			    },
-			    body: JSON.stringify({
-			   		"enoList":enoList,
-			   		"eNameList":eNameList,
-			   		"cNameList":cNameList,
-			   		"imgList":imgList,
-			   		"dateList":dateList
-			    })
-			}).then( res => {
-				console.log(res);
-			}).then( date => {
-				const select_exercise = document.querySelector(".select-exercise")
-		    	select_exercise.style.display = "none";
-				
-		    	this.showExercisePlan1(date);
-			});
-	    }
-	}
 	
 	// 날짜 선택
 	selectPlanDate = () => {
 	  const dateToPlan = document.querySelector('#date-to-plan')
   	  const days = document.querySelectorAll('.day')
-  	  days.forEach((day) => {
+  	  days.forEach( day => {
   		 day.onclick = (e) => {
   			 let id = e.target.id;
   			 this.showExercisePlan(id);
@@ -271,7 +222,7 @@ class ExercisePlan {
 			   		"dateList":dateList
 			    })
 			}).then( res => {
-				console.log(res);
+				console.log(res.status);
 			}).then( data => {
 				const select_exercise = document.querySelector(".select-exercise")
 		    	select_exercise.style.display = "none";
@@ -291,16 +242,15 @@ class ExercisePlan {
 		    body: JSON.stringify({
 				"date":date
 		    })
-		}).then(res => {
-			console.log(res);
+		}).then( res => {
+			console.log(res.status);
 			return res.json();
-		}).then(data => {
+		}).then( data => {
 			let test_text = "";
 			if(data){
 				const excercise_to_do_plan = document.querySelector(".excercise-to-do-plan");
 				const epList = data["eplist"];
 				const evList = data["evlist"];
-				console.log(epList);
 				epList.forEach( exercisePlan => {
 					test_text += "<div class='exercise-to-do-list'>";
 					test_text += "<div class='exercise-to-do'>";
@@ -381,14 +331,14 @@ class ExercisePlan {
 						 "vNo": vNo
 					})
 				}).then( res => {
-					console.log(res);
+					console.log(res.status);
 				}).then( data => {
 					 const date = this.select_date();
 					 this.showExercisePlan(date);
 				});
 			}
 		});
-	 }
+	}
 	 
 	 // 운동 계획 삭제
 	rDelete = () => {
@@ -408,7 +358,7 @@ class ExercisePlan {
 					    	"rNo": rNo
 					    })
 					}).then( res => {
-					    	console.log(res);
+					    	console.log(res.status);
 					}).then( data => {
 					    const date = this.select_date();
 						this.showExercisePlan(date);
@@ -437,7 +387,7 @@ class ExercisePlan {
 					    	"rNo": rNo
 					    })
 					}).then( res => {
-					    	console.log(res);
+					    	console.log(res.status);
 					}).then( data => {
 					    	const date = this.select_date();
 					    	this.showExercisePlan(date);
@@ -465,13 +415,11 @@ class ExercisePlan {
 		do_check_list.forEach( (do_check, idx) => {
 			do_check.onclick = () => {
 				let checkValue;
-				console.log(do_check.value);
 				if(do_check.value == 'F'){
 					checkValue = 'T';
 				}else {
 					checkValue = 'F';
 				}
-				console.log(checkValue);
 				const vNo = vNoList[idx].value;
 				
 				fetch('/exercise/do_check', {
@@ -484,7 +432,7 @@ class ExercisePlan {
 					    	"checkValue" : checkValue
 					    })
 				}).then( res => {
-					    console.log(res);
+					    console.log(res.status);
 				}).then( data => {
 					    const date = this.select_date();
 					    this.showExercisePlan(date);
@@ -502,10 +450,10 @@ class ExercisePlan {
 		})
 	} 
 	
-	dateFormat = (date) => {
+ 	dateFormat = (date) => {
  		const month = date.getMonth() + 1;
       	const day = date.getDate()
-      	return `${ date.getFullYear() }년 ${ month }월 ${ day }일`
+      	return `${ date.getFullYear() }년 ${( month + 1 >= 10 ? "" : "0")} ${ month }월 ${ day >= 10 ? "" : "0"}${ day }일`
 	}
 	
 	// 운동 횟수 업데이트
@@ -526,7 +474,7 @@ class ExercisePlan {
 					    	"repsValue":repsValue
 					    })
 				}).then( res => {
-					    console.log(res);
+					    console.log(res.status);
 				});
 			}
 		})
@@ -550,26 +498,63 @@ class ExercisePlan {
 					    	"kgValue":kgValue
 					    })
 				}).then( res => {
-					    console.log(res);
+					    console.log(res.status);
 				});
 			}
 		})
 	}
 	
-	 workDay = () => {
+	// 운동 프로그램
+	getPrograms = () => {
+		fetch('/exercise/program', {
+			method:"POST",
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}).then( res => {
+			console.log(res.status);
+			return res.json();
+		}).then( data => {
+			console.log(data);
+			let programList = "";
+			data.forEach( program => {
+				programList += "<div class='exercise-program'>";
+				programList += "<img class='exercise_program_img' src='"+ program.p_img + "'>";
+				programList += "<h5>" + program.p_name + "</h5>";
+				programList += "<input type='hidden' value=" + program.p_no + ">";
+				programList += "</div>";
+			});
+			const excercise = document.querySelector("#exercise")
+			excercise.innerHTML = programList;
+		})
+	}
+	
+	// 프로그램 운동 리스트
+	getProgramExerciseList = () => {
+		 const exercise_program = document.querySelector(".exercise-program");
+		 exercise-program.forEach( program => {
+			 program.onclick = (e) =>{
+				 
+			 }
+		 });
+		 
+	}
+	
+	
+	// 운동 계획한 날짜 표시
+	workDay = () => {
 		fetch('/exercise/workout_day', {
 			method:"POST",
 			headers: {
 				'Content-Type': 'application/json',
 			}
-		}).then(res => {
-			console.log(res);
+		}).then( res => {
+			console.log(res.status);
 			return res.json();
-		}).then(data => {
-			console.log(data);
+		}).then( data => {
 			const days = document.querySelectorAll('.day');
 			data.forEach( workoutDay => {
-				days.forEach(day => {
+				days.forEach( day => {
 					if(workoutDay == day.id){
 						day.classList.add('workoutDay');
 					}					

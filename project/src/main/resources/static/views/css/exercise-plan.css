@@ -263,6 +263,7 @@ h5{
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--bg-main)
 }
 
 .exercise_program_img{
