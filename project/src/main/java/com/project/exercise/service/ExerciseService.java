@@ -10,7 +10,7 @@ public interface ExerciseService {
 
 	List<ExerciseDTO> getAllExercise();
 	
-	ExerciseDTO getOneExercise(String e_no);
+//	ExerciseDTO getOneExercise(String e_no);
 	
 	String updateBookmark(String user_id, String e_no);
 	

@@ -1,0 +1,30 @@
+@import url("./board-detail.css");
+
+.input-group-text{
+	background: var(--bg-body);
+	color: var(--color-txt);
+}
+
+.form-control {
+	background: var(--bg-body);
+	color: var(--color-txt);
+}
+
+.form-control:focus {
+	background: var(--bg-body);
+	color: var(--color-txt);
+}
+
+.update-notice-content {
+	height: 500px;
+}
+
+.form-select{
+	background: var(--bg-body);
+	color: var(--color-txt);
+}
+
+.form-select:focus{
+	background: var(--bg-body);
+	color: var(--color-txt);
+}

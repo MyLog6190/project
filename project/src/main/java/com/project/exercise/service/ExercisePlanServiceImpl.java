@@ -74,11 +74,6 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 		exercisePlanMapper.deleteRecode(r_no);
 	}
 
-	@Override
-	public void insert_volume(String r_no) {
-		
-		
-	}
 
 	@Override
 	public void insertExerciseVolume(String r_no) {

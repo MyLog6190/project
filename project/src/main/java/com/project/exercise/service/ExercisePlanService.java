@@ -19,8 +19,6 @@ public interface ExercisePlanService {
 
 	void insertExerciseVolume(String r_no);
 
-	void insert_volume(String r_no);
-
 	void updateDoCheck(String vNo, String checkValue);
 
 	void updateReps(String vNo, String repsValue);

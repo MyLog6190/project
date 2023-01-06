@@ -15,8 +15,8 @@ public interface ExerciseMapper {
 	
 	List<ExerciseDTO> getAllExercise();
 	
-	ExerciseDTO getOneExercise(String e_no);
-	
+//	ExerciseDTO getOneExercise(String e_no);
+
 	BookmarkDTO getOneBookmark(BookmarkDTO bookmarkDTO);
 	
 	List<BookmarkDTO> getAllBookmark(String user_id);
@@ -24,6 +24,5 @@ public interface ExerciseMapper {
 	void insertBookmark(BookmarkDTO bookmarkDTO);
 	
 	void deleteBookmark(BookmarkDTO bookmarkDTO);
-	
 
 }

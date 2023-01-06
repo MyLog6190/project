@@ -33,6 +33,7 @@ public class ExerciseLibController {
 	@Value("${exercise.imgdir}")
 	String imgdir;
 	
+
 	
 	@GetMapping
 	public String getLibraries(@AuthenticationPrincipal PrincipalDetail principal, Model model) {
@@ -51,8 +52,8 @@ public class ExerciseLibController {
 		
 		return "/exercise-lib";
 	}
-	
-		
+
+
 	@GetMapping("/api/{e_no}")
 	@ResponseBody
 	public String updateOneBookmark(@AuthenticationPrincipal PrincipalDetail principal,

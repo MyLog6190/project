@@ -2,7 +2,7 @@
 <%@include file ="common/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-plan.css" />
-<main class="light">
+<main>
   <div class="pick">
     <div class="calendar">
       <div class="calendar-header">
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<div class="modal select-exercise light" tabindex="-1">
+<div class="modal select-exercise" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -192,6 +192,7 @@
 
 
 <script src="/views/js/exercise-plan.js"></script>
+<script src="/views/js/darkMode.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
 <%@include file ="common/footer.jsp" %>

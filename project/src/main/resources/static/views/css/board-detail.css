@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+.insert-notice-form {
+	padding: 40px;
+	color: var(--color-txt);
+}
+
+.main-container{
+	height: 850px;
+	margin: 100px 300px 100px 300px;
+	background: var(--bg-main);
+	padding: 0px 150px 0px 150px;
+}
+
+.notice-content {
+	height: 680px;
+}
+
+
+.input-group-text{
+	background: var(--bg-body);
+	color: var(--color-txt);
+}
+
+.form-control {
+	background: var(--bg-main);
+	color: var(--color-txt);
+}
+

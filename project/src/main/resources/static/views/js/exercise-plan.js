@@ -1,8 +1,3 @@
-// 다크 모드
-document.querySelector(".dark-mode-switch").onclick = () => {
-      document.querySelector("main").classList.toggle("dark");
-      document.querySelector("main").classList.toggle("light");
-};
 
 // 달력 출력
 class Calendar {
@@ -124,6 +119,7 @@ class ExercisePlan {
 		this.create_exercise_plan();
 		this.showExercisePlan(date);
 	}
+	
 	// 운동 리스트 출력
 	exercise_list = () => {
 		let btn = document.querySelector(".btn-primary");
@@ -334,7 +330,7 @@ class ExercisePlan {
 							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
 							test_text += "<label for='kg'> Kg </label>";
 							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value='"+ parseInt( exerciseVolume.v_reps )+"'/>";
-							test_text += "<label for='reps'>횟수</label>";
+							test_text += "<label for='reps'> Reps </label>";
 							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
 							test_text += "</div>";
 							test_text += "<div class='check-and-delete'>";
@@ -593,22 +589,22 @@ const exercisePlan = new ExercisePlan();
 exercisePlan.start();
 
     	
-    let select_exercise_close = document.querySelector(".select-exercise-close");
-    select_exercise_close.onclick = (e) => {
-		let select_exercise = document.querySelector(".select-exercise");
-		select_exercise.style.display = "none";
-	}
+let select_exercise_close = document.querySelector(".select-exercise-close");
+select_exercise_close.onclick = () => {
+	let select_exercise = document.querySelector(".select-exercise");
+	select_exercise.style.display = "none";
+}
 	
-	let exercise_programs = document.querySelectorAll(".exercise-program");
-	exercise_programs.forEach( (exercise_program) => {
-		exercise_program.onclick = (e) => {
-			let program = document.querySelector(".program");
-			program.style.display = "block";
-		}
-	});
-	
-	let program_close = document.querySelector(".program-close");
-	program_close.onclick = (e) => {
+let exercise_programs = document.querySelectorAll(".exercise-program");
+exercise_programs.forEach( (exercise_program) => {
+	exercise_program.onclick = () => {
 		let program = document.querySelector(".program");
-		program.style.display = "none";
+		program.style.display = "block";
 	}
+});
+	
+let program_close = document.querySelector(".program-close");
+program_close.onclick = () => {
+	let program = document.querySelector(".program");
+	program.style.display = "none";
+}
