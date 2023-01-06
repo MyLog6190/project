@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 
 
@@ -303,3 +304,233 @@ a{
 a:visited, a:hover, a:link, a:active{
 	color: white;
 }
+=======
+@charset "UTF-8";
+
+:root{
+  --box-ex-width: 200px;
+  --box-ex-height: 150px;
+}
+
+body{
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-use-select: none;
+ user-select: none;
+}
+
+.main-container{
+	background-color: var(--bg-main);
+}
+
+.lib-container {
+	margin: 0px 20px 0px 20px;
+	padding: 30px;
+    background-color: var(--bg-body);
+	border-radius:20px; 
+	width: 80vw;
+}
+
+#title-container{
+  position: relative;
+  padding :20px;
+ 
+}
+
+
+#libs{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#libs-title{
+  background-color: var(--bg-main); 
+  border: 1px solid var(--color--hover);
+  color:var(--color-txt);
+  width: max(50vw,600px);
+  height: 5rem;
+  text-align: center;
+  line-height: 5rem;
+  border-radius:50px; 
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#lib-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#finder-container{
+  width: min(50vw, 550px);
+  height: 3rem;
+  border: 1px solid var(--color-txt);
+  border-radius: 15px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-main);
+}
+
+#finder-container:hover{
+  background-color: var(--color-hover);
+}
+
+#finder-container:focus-within{
+  background-color: var(--bg-main);
+}
+
+#finder{
+  width: min(45vw,500px);
+  text-align: left;
+  height: 2.5rem;
+  border: 0px;
+  margin-left: 10px;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--color-txt);
+}
+
+#finder:focus{
+  outline: none;
+}
+
+#finder::placeholder{
+  color: var(--color-txt);
+}
+
+.finder-img{
+  width: 25px;
+  height: 25px;
+  margin: 5;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--color-txt);
+}
+
+.bi-search{
+	  color: var(--color-txt);
+}
+
+input[type=radio]{
+  display: none;
+  box-sizing: border-box;
+}
+
+input[type=radio]:checked + label {
+  background-color: #333333;
+  border: 1px solid #333333;
+  color: #cccccc;
+}
+
+#filter-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding:20px;
+}
+
+.exercise-field{
+  margin: 10px 20px;
+  background-color: var(--bg-main);
+  width: 200px;
+  height: 3rem;
+  border-radius: 15px;
+  
+  line-height: 3rem;
+  font-size: 2rem;
+  color: var(--color-txt);
+  text-align: center;
+}
+
+.exercise-field:hover{
+  cursor: pointer;
+}
+
+#exercise-lib-container{
+  flex-direction: column;
+  align-items: between;
+}
+
+.exercise-libs{
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  margin: 25px 20px;
+  width: 60vw;
+  background-color:var(--bg-main);
+  padding: 15px;
+  line-height: 5rem;
+  font-size: 2rem;
+  color: var(--color-txt);
+  text-align: center;
+  border-radius: 20px; 
+  box-shadow: var(--shadow);
+}
+
+.bookmark-container{
+  display: flex;
+  align-items: center;
+}
+
+.cursor-pointer{
+  cursor:pointer;
+}
+
+
+.libs-image{
+  height:5rem;
+  border:1px solid #aaaaaa;
+  
+}
+
+.libs-detail{
+  height: 5rem;
+}
+
+.libs-detail:hover{
+  cursor: pointer;
+}
+
+.detail-rotate {
+  display: block;
+  transform: rotateZ(180deg);
+}
+
+
+.detail-container{
+  display: block;
+}
+
+.detail-container :not(last-child){
+  border-bottom: 1px solid black;
+}
+
+.details{
+  background-color: Blanchedalmond;
+  box-sizing: bordor-box;
+}
+
+.box-ex{
+  width: var(--box-ex-width);
+  height: var(--box-ex-height);
+  line-height: var(--box-ex-height);
+  
+}
+
+
+a{
+	cursor: pointer;
+}
+
+a:visited, a:hover, a:link, a:active{
+	color: white;
+}
+>>>>>>> branch 'master' of https://github.com/MyLog6190/project

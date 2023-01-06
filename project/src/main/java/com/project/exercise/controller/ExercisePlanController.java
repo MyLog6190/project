@@ -10,8 +10,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +25,8 @@ import com.project.exercise.dto.ExercisePlanDTO;
 import com.project.exercise.dto.ExerciseVolumeDTO;
 import com.project.exercise.service.ExercisePlanService;
 import com.project.exercise.service.ExerciseService;
+import com.project.program.dto.ProgramDTO;
+import com.project.program.service.ProgramService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -40,6 +40,7 @@ public class ExercisePlanController {
 	
 	private final ExerciseService exerciseLibService;
 	private final ExercisePlanService exercisePlanService;
+	private final ProgramService programService;
 	
 	@GetMapping("/plan")
 	public String calendar(Model model) {
@@ -47,12 +48,11 @@ public class ExercisePlanController {
 	}
 	
 	@PostMapping("/plan")
-	public void ShowExerciseShow(@RequestBody Map<String, String> date, HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
+	public void showExerciseShow(@RequestBody Map<String, String> date, HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
 		List<ExercisePlanDTO> eplist = new ArrayList<>();
 		List<ExerciseVolumeDTO> evlist = new ArrayList<>();
 		String r_date = date.get("date").toString();
 		String user_id = principal.getUsername();
-		System.out.println(user_id);
 		try {
 			eplist = exercisePlanService.selectExercisePlan(r_date, user_id);
 			evlist = exercisePlanService.selectExerciseVolume(r_date, user_id);
@@ -83,7 +83,7 @@ public class ExercisePlanController {
 			log.info("라이브러리 로드 과정에서 문제 발생");
 		}
 		try {
-			new Gson().toJson(list,response.getWriter());
+			new Gson().toJson(list, response.getWriter());
 		} catch (JsonIOException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -209,10 +209,21 @@ public class ExercisePlanController {
 		try {
 			new Gson().toJson(r_date,response.getWriter());
 		} catch (JsonIOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/program")
+	public void getPrograms(HttpServletResponse response) {
+		List<ProgramDTO> pList = programService.getAllProgram();
+		
+		try {
+			new Gson().toJson(pList, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
