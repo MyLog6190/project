@@ -18,9 +18,11 @@ function bookmarkInit(){
 
 
 function updateBookmark(){
+	
 	const bookmarks = document.querySelectorAll(".bookmark-container");
 	bookmarks.forEach(bookmark=>{
 		bookmark.children[0].addEventListener("click",e=>{
+			
 			const e_no = bookmark.children[0].dataset.e_no
 			isBookmarked(e_no)
 			const classList = bookmark.children[0].classList
@@ -41,7 +43,6 @@ function updateBookmark(){
 
 
 async function isBookmarked(e_no) {
-	console.log(e_no)
     const result = await axios.get(`/exlib/api/${e_no}`)
 }
  
@@ -67,7 +68,6 @@ function start (){
             }
         })
     }))
-    oneDetail()
     find()
     bookmarkInit()
     updateBookmark();
@@ -77,39 +77,6 @@ function start (){
 start()
 
 
-
-function oneDetail(){
-	const libsDetails = document.querySelectorAll('.libs-detail')
-
-
-	libsDetails.forEach(btn => btn.addEventListener("click", e =>{
-		e.preventDefault()
-		const detailContainers = document.querySelectorAll('.detail-container')
-		let presentNode = e.target
-		if(e.target.tagName==='path')
-			presentNode = e.target.parentNode
-		const presentDetail = presentNode.parentNode.parentNode.nextElementSibling;
-		const presentBtn = presentNode
-		const classList = presentBtn.classList
-		classList.toggle("detail-rotate")
-
-		detailContainers.forEach(detail => {
-			const detailBtn = detail.previousElementSibling.children[2].lastElementChild
-			if(detailBtn != presentBtn){
-				detailBtn.classList.remove("detail-rotate")
-			}
-			if(presentDetail != detail){
-				detail.classList.add("d-none");
-			} else {
-				if(classList.contains("detail-rotate")){
-					presentDetail.classList.remove('d-none');
-				} else{
-					presentDetail.classList.add('d-none');
-				}
-			}
-		})
-	}))
-}
 
 function find(){
 	const finder = document.querySelector("#finder")

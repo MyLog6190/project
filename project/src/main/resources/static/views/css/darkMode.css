@@ -6,6 +6,7 @@
   --dark-hover: #323048;
   --dark-text: #f8fbff;
   --dark-workoutDay: #0000ff;
+
   /* #585858 */
   /*rgba(88, 88, 88, 0.8);*/
   --light-body: #f3f8fe;
@@ -15,6 +16,7 @@
   --light-hover: #edf0f5;
   --light-text: #151426;
   --light-workoutDay: #e9ecef;
+  
   
   --white: #fff;
 
@@ -37,7 +39,6 @@
 	 --bg-workoutDay: var(--dark-workoutDay);
 	 --color-hover: var(--dark-hover);
 	 --color-txt: var(--dark-text);
-	
   }
 }
 

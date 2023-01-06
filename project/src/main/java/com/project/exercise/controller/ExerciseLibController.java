@@ -33,6 +33,7 @@ public class ExerciseLibController {
 	@Value("${exercise.imgdir}")
 	String imgdir;
 	
+
 	
 	@GetMapping
 	public String getLibraries(@AuthenticationPrincipal PrincipalDetail principal, Model model) {

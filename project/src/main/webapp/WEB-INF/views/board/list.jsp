@@ -42,6 +42,8 @@
 			      </td>
 			      <td>
 			      	<div>
+			      		${list.b_date }
+
 			      	</div>
 			      </td>
 			    </tr>

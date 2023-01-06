@@ -1,5 +1,7 @@
 package com.project.board.dto;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,4 +16,5 @@ public class BoardDTO {
 	private String b_tag;
 	private String b_title;
 	private String b_content;
+	private Date b_date;
 }

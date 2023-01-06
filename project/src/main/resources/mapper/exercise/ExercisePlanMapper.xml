@@ -18,7 +18,8 @@
 	
 	<select id="selectExercisePlan" resultType="com.project.exercise.dto.ExercisePlanDTO">
 		SELECT R_NO, R_DATE, C_NAME, P.E_NO AS E_NO, E_NAME, E_IMG
-		FROM EXERCISE_CATEGORY C JOIN EXERCISE E ON E.C_NO = C.C_NO 
+		FROM EXERCISE_CATEGORY C 
+			JOIN EXERCISE E ON E.C_NO = C.C_NO 
 			JOIN PR P ON P.E_NO = E.E_NO 
 		WHERE R_DATE = #{ r_date }
 	</select>
@@ -54,4 +55,5 @@
 	<select id="workoutDay" parameterType='String' resultType="String">
 		SELECT DISTINCT R_DATE FROM PR WHERE USER_ID = #{ user_id }
 	</select>
+
 </mapper>
