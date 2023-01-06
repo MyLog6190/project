@@ -77,7 +77,7 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 
 	@Override
 	public void insertExerciseVolume(String r_no) {
-		int result = exercisePlanMapper.insertExerciseVolume(r_no);
+		exercisePlanMapper.insertExerciseVolume(r_no);
 	}
 
 	@Override

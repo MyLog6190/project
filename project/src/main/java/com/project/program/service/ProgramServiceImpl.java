@@ -42,11 +42,11 @@ public class ProgramServiceImpl implements ProgramService {
 	}
 
 	@Override
-	public List<ProgramExerciseDTO> getExercises(String pNo) {
+	public List<ProgramExerciseDTO> getProgramExercises(String pNo) {
 		List<ProgramExerciseDTO> exercises = null;
 		
 		try {
-			exercises = programMapper.getExercises(pNo);
+			exercises = programMapper.getProgramExercises(pNo);
 		}catch (Exception e) {
 			log.error(e);
 		}

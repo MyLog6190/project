@@ -26,6 +26,7 @@ import com.project.exercise.dto.ExerciseVolumeDTO;
 import com.project.exercise.service.ExercisePlanService;
 import com.project.exercise.service.ExerciseService;
 import com.project.program.dto.ProgramDTO;
+import com.project.program.dto.ProgramExerciseDTO;
 import com.project.program.service.ProgramService;
 
 import lombok.RequiredArgsConstructor;
@@ -95,21 +96,14 @@ public class ExercisePlanController {
 	public void SelectExercise(@RequestBody Map<String, Object> pr ,HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
 		List<ExercisePlanDTO> list = new ArrayList<>();
 		ExercisePlanDTO exercisePlanDTO = null;
-		System.out.println(pr.get("eNameList").toString());
 		String[] eNoList = pr.get("enoList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
-		String[] eNameList = pr.get("eNameList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
-		String[] cNameList = pr.get("cNameList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
-		String[] eImgList = pr.get("imgList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
 		String[] rDateList = pr.get("dateList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
 		String user_id = principal.getUsername();
 		System.out.println(user_id);
 		
 		for(int i = 0; i < eNoList.length; i++) {
 			exercisePlanDTO = new ExercisePlanDTO();
-			exercisePlanDTO.setC_name(cNameList[i]);
 			exercisePlanDTO.setE_no(eNoList[i]);
-			exercisePlanDTO.setE_name(eNameList[i]);
-			exercisePlanDTO.setE_img(eImgList[i]);
 			exercisePlanDTO.setR_date(rDateList[i]);
 			list.add(exercisePlanDTO);
 		}
@@ -135,7 +129,7 @@ public class ExercisePlanController {
 	@PostMapping("/recode_delete")
 	public void deleteRecode(@RequestBody Map<String, String> rNo  ,HttpServletResponse response) {
 		String r_no = rNo.get("rNo").toString();
-		System.out.println(r_no);
+		
 		try {
 			exercisePlanService.deleteRecode(r_no);
 		}catch(Exception e) {
@@ -146,7 +140,7 @@ public class ExercisePlanController {
 	@PostMapping("/insert_volume")
 	public void insertVolume(@RequestBody Map<String, String> rNo  ,HttpServletResponse response) {
 		String r_no = rNo.get("rNo").toString();
-		System.out.println(r_no);
+
 		try {
 			exercisePlanService.insertExerciseVolume(r_no);
 		}catch(Exception e) {
@@ -159,8 +153,6 @@ public class ExercisePlanController {
 		String vNo = data.get("vNo").toString();
 		String repsValue = data.get("repsValue").toString();
 		
-		System.out.println(vNo);
-		System.out.println(repsValue);
 		try {
 			exercisePlanService.updateReps(vNo, repsValue);
 		}catch(Exception e) {
@@ -173,8 +165,6 @@ public class ExercisePlanController {
 		String vNo = data.get("vNo").toString();
 		String kgValue = data.get("kgValue").toString();
 		
-		System.out.println(vNo);
-		System.out.println(kgValue);
 		try {
 			exercisePlanService.updateKg(vNo, kgValue);
 		}catch(Exception e) {
@@ -199,12 +189,10 @@ public class ExercisePlanController {
 	@PostMapping("/workout_day")
 	public void workoutDay(HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
 		ArrayList<String> r_date = null;
-		try {
-			String user_id = principal.getUsername();
-			r_date = exercisePlanService.workoutDay(user_id);
-		}catch (Exception e) {
-			log.error(e.getMessage());
-		}
+		
+		String user_id = principal.getUsername();
+		r_date = exercisePlanService.workoutDay(user_id);
+		
 		
 		try {
 			new Gson().toJson(r_date,response.getWriter());
@@ -226,5 +214,31 @@ public class ExercisePlanController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@PostMapping("/program-exercises")
+	public void getProgramExercises(@RequestBody Map<String, String> data, HttpServletResponse response) {
+		String p_no = data.get("pNo").toString();
+		List<ProgramExerciseDTO> eList = programService.getProgramExercises(p_no);
+		
+		try {
+			new Gson().toJson(eList, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/exercise/insert-program-exercise")
+	public void insertProgramExercise(@RequestBody Map<String, Object> data, HttpServletResponse response, @AuthenticationPrincipal PrincipalDetail principal) {
+		String[] eNoList = data.get("eNoList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String[] rDateList = data.get("dateList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String[] pSetList = data.get("pSetList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String[] pRepsList = data.get("pRepsList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String[] pKgList = data.get("pKgList").toString().replace("[", "").replace("]","").replace(" ", "").split(",");
+		String user_id = principal.getUsername();
+		
+		
 	}
 }

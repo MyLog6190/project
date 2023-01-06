@@ -17,6 +17,6 @@ List<ProgramDTO> getAllProgram();
 
 ProgramDTO getProgram(String pNo);
 
-List<ProgramExerciseDTO> getExercises(String pNo);
+List<ProgramExerciseDTO> getProgramExercises(String pNo);
 
 }
