@@ -42,10 +42,8 @@
 			      </td>
 			      <td>
 			      	<div>
-<<<<<<< HEAD
 			      		${list.b_date }
-=======
->>>>>>> branch 'master' of https://github.com/MyLog6190/project
+
 			      	</div>
 			      </td>
 			    </tr>
