@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-<%@include file ="common/header.jsp" %>
+<%@include file ="../common/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-plan.css" />
 <main>
@@ -87,4 +87,4 @@
 <script src="/views/js/darkMode.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
-<%@include file ="common/footer.jsp" %>
+<%@include file ="../common/footer.jsp" %>

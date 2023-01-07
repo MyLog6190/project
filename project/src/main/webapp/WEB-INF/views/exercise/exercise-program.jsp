@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<%@include file ="common/header.jsp" %>
+<%@include file ="../common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/views/css/exercise-program.css" />
   <!-- Start: Features Section 7
         ====================================== -->
@@ -80,7 +80,7 @@
         </section>
         <!-- End: Features Section 8
         ======================================-->
-<%@include file ="common/footer.jsp" %>
+<%@include file ="../common/footer.jsp" %>
 <script type="text/javascript">
 </script>
 <script src="/views/js/darkMode.js"></script>

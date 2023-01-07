@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%@include file ="common/header.jsp" %>
+<%@include file ="../common/header.jsp" %>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -83,7 +83,7 @@
             </div> <!-- End: .container -->
         </section>
         <!-- End: Features Section -->
-<%@include file ="common/footer.jsp" %>
+<%@include file ="../common/footer.jsp" %>
 </body>
 <script src="/views/js/darkMode.js"></script>
 </html>

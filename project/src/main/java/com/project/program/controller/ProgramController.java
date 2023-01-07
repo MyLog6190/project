@@ -37,7 +37,7 @@ public class ProgramController {
 			log.error(e.getMessage());
 			log.warn("프로그램 로드 과정에서 문제 발생");
 		}
-		return "/exercise-program";
+		return "/exercise/exercise-program";
 	}
 	
 	@GetMapping("/{p_no}")
@@ -50,6 +50,6 @@ public class ProgramController {
 		List<ProgramExerciseDTO> eList = programService.getProgramExercises(pNo);
 		model.addAttribute("eList", eList);
 		
-		return "/program-detail";
+		return "/exercise/program-detail";
 	}
 }

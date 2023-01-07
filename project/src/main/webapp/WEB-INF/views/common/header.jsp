@@ -50,7 +50,7 @@
         <![endif]-->
 
     </head>
-    <body class="light">
+    <body>
         <!-- Start: Navbar Area
         ============================= -->
 
