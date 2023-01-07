@@ -113,7 +113,7 @@ class ExercisePlan {
 	constructor() {}
 	
 	start = () => {
-		const date = this.select_date();;
+		const date = this.selectDate();
 		this.selectPlanDate();
 		this.exercise_list();
 		this.create_exercise_plan();
@@ -195,7 +195,7 @@ class ExercisePlan {
 	    		const is_checked = checkBox.checked;
 	    		if(is_checked) {
 	    			const eNo = exercise.querySelector("#eNo").value;
-	    			let date = this.select_date();
+	    			let date = this.selectDate();
 	    			
 	    			enoList.push(eNo);
 	    			dateList.push(date);
@@ -216,7 +216,7 @@ class ExercisePlan {
 			}).then( () => {
 				const select_exercise = document.querySelector(".select-exercise")
 		    	select_exercise.style.display = "none";
-				const selectDate = this.select_date();
+				const selectDate = this.selectDate();
 		    	this.showExercisePlan(selectDate);
 			});
 	    }
@@ -267,10 +267,10 @@ class ExercisePlan {
 							test_text += "<div class='excercise_set'>";
 							test_text += "<input class='excercise_set_count set' id='set' type='number' min='0' max='5' value='"+ (idx += 1) + "' readonly/>";
 							test_text += "<label for='set'> Set </label>";
-							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
-							test_text += "<label for='kg'> Kg </label>";
 							test_text += "<input class='excercise_set_count reps' id='reps' type='number' min='0' max='300' value='"+ parseInt( exerciseVolume.v_reps )+"'/>";
 							test_text += "<label for='reps'> Reps </label>";
+							test_text += "<input class='excercise_set_count kg' id='kg' type='number' min='0' max='300' value='" + parseInt( exerciseVolume.v_kg ) + "'/>";
+							test_text += "<label for='kg'> Kg </label>";
 							test_text += "<input class='vno' type='hidden' value='"+ exerciseVolume.v_no +"'/>";
 							test_text += "</div>";
 							test_text += "<div class='check-and-delete'>";
@@ -292,20 +292,20 @@ class ExercisePlan {
 					test_text += "</div>";
 				});
 				excercise_to_do_plan.innerHTML = test_text;
-			    this.vDelete();
-			    this.rDelete();
+			    this.deleteVloume();
+			    this.deleteRecode();
 			    this.addVolume();
-			    this.do_checked();
+			    this.doChecked();
 			    this.checked();
-			    this.repUpdate();
-			    this.kgUpdate();
+			    this.updateReps();
+			    this.updateKg();
 			    this.workDay();
 			}
 		});
 	}
 	
 	// 운동 볼륨 삭제
-	vDelete = () => {
+	deleteVloume = () => {
 		const deleteBtns = document.querySelectorAll('.vDelete');
 		const vNoList = document.querySelectorAll('.vno');
 		
@@ -323,7 +323,7 @@ class ExercisePlan {
 				}).then( res => {
 					console.log(res.status);
 				}).then( () => {
-					 const date = this.select_date();
+					 const date = this.selectDate();
 					 this.showExercisePlan(date);
 				});
 			}
@@ -331,7 +331,7 @@ class ExercisePlan {
 	}
 	 
 	// 운동 계획 삭제
-	rDelete = () => {
+	deleteRecode = () => {
 		const exercise_to_do_list = document.querySelectorAll('.exercise-to-do-list');
 		exercise_to_do_list.forEach( exercise => {
 			const delete_btn = exercise.querySelector(".rDelete");
@@ -350,7 +350,7 @@ class ExercisePlan {
 					}).then( res => {
 					    	console.log(res.status);
 					}).then( () => {
-					    const date = this.select_date();
+					    const date = this.selectDate();
 						this.showExercisePlan(date);
 					});
 				};
@@ -379,7 +379,7 @@ class ExercisePlan {
 					}).then( res => {
 					    	console.log(res.status);
 					}).then( () => {
-					    	const date = this.select_date();
+					    	const date = this.selectDate();
 					    	this.showExercisePlan(date);
 					});
 				};
@@ -389,7 +389,7 @@ class ExercisePlan {
 	}
 	 
 	 // 선택된 날짜값 가져오기
-	select_date = () => {
+	selectDate = () => {
 		let date = document.querySelector('#date-to-plan').innerText;
 		date = date.replace(/ /g,"");
 		date = date.replace("일","");
@@ -398,7 +398,7 @@ class ExercisePlan {
 	}
 	
 	// 운동 했는지 체크 
-	do_checked = () => {
+	doChecked = () => {
 		const do_check_list = document.querySelectorAll('.do_check');
 		const vNoList = document.querySelectorAll('.vno');
 		
@@ -424,7 +424,7 @@ class ExercisePlan {
 				}).then( res => {
 					    console.log(res.status);
 				}).then( () => {
-					    const date = this.select_date();
+					    const date = this.selectDate();
 					    this.showExercisePlan(date);
 				});
 			}
@@ -447,7 +447,7 @@ class ExercisePlan {
 	}
 	
 	// 운동 횟수 업데이트
-	repUpdate = () => {
+	updateReps = () => {
 		let reps = document.querySelectorAll('.reps');
 		reps.forEach( (r) => {
 			r.onkeyup = (e) => {
@@ -471,7 +471,7 @@ class ExercisePlan {
 	}
 	
 	// 무게 업데이트
-	kgUpdate = () => {
+	updateKg = () => {
 		let kg = document.querySelectorAll('.kg');
 		kg.forEach( (k) => {
 			k.onkeyup = (e) => {
@@ -524,11 +524,9 @@ class ExercisePlan {
 	// 프로그램 운동 리스트
 	getProgramExerciseList = () => {
 		 const exercise_program = document.querySelectorAll('.exercise-program');
-		 console.log(exercise_program);
 		 exercise_program.forEach( program => {
 			 program.onclick = () =>{
 				 const pNo = program.querySelector('.pNo').value;
-				 console.log(pNo);
 				 fetch('/exercise/program-exercises', {
 					method:"POST",
 					headers: {
@@ -543,7 +541,6 @@ class ExercisePlan {
 					return res.json();
 					
 				 }).then( data => {
-					console.log(data);
 					const program_exercise_list = document.querySelector('.exercise-program-list');
 					let exercise_list = "";
 					
@@ -564,15 +561,15 @@ class ExercisePlan {
 					program_exercise_list.innerHTML = exercise_list;
 					const program = document.querySelector(".program");
 					program.style.display = "block";
-					
+					this.insertExercisePlan();
 				 });
 			 }
 		});
 		 
 	}
 	
-	// 프로그램 운동 등록
-	insertProgramExercise = () => {
+	// 프로그램으로 운동 계획
+	insertExercisePlan = () => {
 		const insert_program_btn = document.querySelector('.insert-program-btn');
 		insert_program_btn.onclick = () => {
 			let eNoList = [];
@@ -580,11 +577,13 @@ class ExercisePlan {
 			let pSetList = [];
 			let pRepsList = [];
 			let pKgList = [];
-	    	let date = this.select_date();
+	    	let date = this.selectDate();
 			
-			const exercise_info = document.querySelectorAll('.exercise_info');
+			const exercise_info = document.querySelectorAll('.exercise-info');
+			console.log(exercise_info);
 			exercise_info.forEach( (exercise) => {
 	    		const eNo = exercise.querySelector(".eNo").value;
+	    		console.log(eNo)
 	    		const pSet = exercise.querySelector(".pSet").value;
 	    		const pReps = exercise.querySelector(".pReps").value;
 	    		const pKg = exercise.querySelector(".pKg").value;
@@ -596,7 +595,7 @@ class ExercisePlan {
 	    		pKgList.push(pKg);
 	    	});
 			
-			fetch('exercise/insert-program-exercise', {
+			fetch('/exercise/insert-exercise-plan', {
 				method:"POST",
 				headers: {
 					'Content-Type': 'application/json',
@@ -610,9 +609,11 @@ class ExercisePlan {
 			   	})
 			}).then(res => {
 				console.log(res.status);
-				return res.json();
 			}).then( () => {
-				this.showExercisePlan(selectDate);
+				const program = document.querySelector(".program")
+		    	program.style.display = "none";
+				const date = this.selectDate();
+				this.showExercisePlan(date);
 			})
 		}
 	}

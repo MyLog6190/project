@@ -25,7 +25,7 @@ public interface ExercisePlanMapper {
 
 	void deleteRecode(String r_no);
 
-	int insertExerciseVolume(String r_no);
+	int insertExerciseVolume(String r_no, int v_reps, int v_kg);
 
 	void updateDoCheck(String vNo, String checkValue);
 

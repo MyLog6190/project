@@ -13,7 +13,7 @@
 	</insert>
 	
 	<insert id="insertExerciseVolume">
-		INSERT INTO VOLUME(R_NO, V_NO) VALUES(#{ r_no },  'V' || VOLUME_SEQ.NEXTVAL )
+		INSERT INTO VOLUME(R_NO, V_NO, V_REPS, V_KG) VALUES(#{ r_no },  'V' || VOLUME_SEQ.NEXTVAL, #{v_reps}, #{v_kg} )
 	</insert>
 	
 	<select id="selectExercisePlan" resultType="com.project.exercise.dto.ExercisePlanDTO">

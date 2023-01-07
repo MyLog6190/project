@@ -51,7 +51,6 @@ public class ProgramServiceImpl implements ProgramService {
 			log.error(e);
 		}
 		
-		System.out.println(exercises);
 		return exercises;
 	}
 
