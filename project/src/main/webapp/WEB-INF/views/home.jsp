@@ -65,7 +65,7 @@
 
                             <div class="each-features text-center col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner background-light contents">
-                                	<i class=" icon features-icon icons8-collaboration"></i>
+                                	<a href="/community"><i class=" icon features-icon icons8-collaboration"></i></a>
                                     <h6 class="title">커뮤니티</h6>
                                     <div class="detail">
                                         <p>다른 사람들과 의견을 공유해 보세요.</p>

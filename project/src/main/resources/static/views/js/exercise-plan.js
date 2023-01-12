@@ -524,8 +524,11 @@ class ExercisePlan {
 	// 프로그램 운동 리스트
 	getProgramExerciseList = () => {
 		 const exercise_program = document.querySelectorAll('.exercise-program');
+		 
 		 exercise_program.forEach( program => {
 			 program.onclick = () =>{
+				 const pTitle = program.querySelector('h5').textContent;
+				 console.log(pTitle);
 				 const pNo = program.querySelector('.pNo').value;
 				 fetch('/exercise/program-exercises', {
 					method:"POST",
@@ -539,8 +542,10 @@ class ExercisePlan {
 				 }).then( res => {
 					console.log(res.status);
 					return res.json();
-					
 				 }).then( data => {
+					const program_title = document.querySelector('.program-title');
+					program_title.innerHTML = pTitle;
+					
 					const program_exercise_list = document.querySelector('.exercise-program-list');
 					let exercise_list = "";
 					

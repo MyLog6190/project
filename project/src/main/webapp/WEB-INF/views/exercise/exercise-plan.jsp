@@ -51,7 +51,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">프로그램 이름</h5>
+        <h5 class="modal-title program-title">프로그램 이름</h5>
         <button type="button" class="btn-close program-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
