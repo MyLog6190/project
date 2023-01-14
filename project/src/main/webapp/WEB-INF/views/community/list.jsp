@@ -11,10 +11,13 @@
 	<div class="container">
     	<div class='main-container'>
 			<h1>커뮤니티</h1>
-			<div>
+			<div class="tag">
 				<span>전체</span>
 				<span>자유게시판</span>
-				<span>질문</span>
+				<span>운동식단</span>
+				<span>정보공유</span>
+				<span>질문&답변</span>
+				<span>바디체크</span>
 			</div>
 			<hr>
 			<table class="table">
@@ -54,7 +57,7 @@
 			</table>
 			
 			<div class="d-flex justify-content-end insert-notice">
-			  <a href="/board/post" class="mx-2 btn btn-primary">글 등록</a>
+			  <a href="/community/post" class="mx-2 btn btn-primary">글 등록</a>
 			</div>
 			
 			<div class="pagination-div">

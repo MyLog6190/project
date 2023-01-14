@@ -1,11 +1,14 @@
 @charset "UTF-8";
 
-h1{
+h1 {
 	padding-top: 30px;
 	margin-bottom: 40px;
 	color: var(--color-txt);
 }
 
+hr {
+	background-color: var(--color-txt);
+}
 
 .main-container{
 	height: 90vh;
@@ -54,4 +57,10 @@ tbody > tr > td > div{
 
 .pagination-div {
 	margin-bottom: 20px;
+}
+
+.tag > span {
+	border: 1px solid;
+	padding: 10px;	
+	color: var(--color-txt);
 }

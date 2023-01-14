@@ -37,7 +37,7 @@ public class ProgramController {
 			log.error(e.getMessage());
 			log.warn("프로그램 로드 과정에서 문제 발생");
 		}
-		return "/exercise/exercise-program";
+		return "/exercise/program";
 	}
 	
 	@GetMapping("/{p_no}")

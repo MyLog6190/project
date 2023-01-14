@@ -46,7 +46,7 @@ public class ExercisePlanController {
 	
 	@GetMapping("/plan")
 	public String calendar(Model model) {
-		return "/exercise/exercise-plan";
+		return "/exercise/plan";
 	}
 	
 	@PostMapping("/plan")
