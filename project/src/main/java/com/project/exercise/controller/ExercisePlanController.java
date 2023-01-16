@@ -55,7 +55,6 @@ public class ExercisePlanController {
 		List<ExerciseVolumeDTO> evlist = new ArrayList<>();
 		String r_date = date.get("date").toString();
 		String user_id = principal.getUsername();
-		
 		eplist = exercisePlanService.selectExercisePlan(r_date, user_id);
 		evlist = exercisePlanService.selectExerciseVolume(r_date, user_id);
 		

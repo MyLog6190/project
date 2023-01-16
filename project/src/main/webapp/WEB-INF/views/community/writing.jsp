@@ -9,18 +9,16 @@
 </head>
 <body>
 <div class='main-container'>
-	<form class="insert-notice-form" method="POST" action="/board/insert">
+	<form class="insert-notice-form" method="POST" action="/community/writing">
 	
 	  <div class="mb-3 mx-3">
-	    <label for="b_title" class="form-label">제목</label>
-	    <input type="text" class="form-control" name="b_title" id="b_title">
+	    <label for="cb_title" class="form-label">제목</label>
+	    <input type="text" class="form-control" name="cb_title" id="cb_title" required>
 	  </div>
 	  <hr>
 	  <div class="mb-3 mx-3">
-	   <label for="b_title" class="form-label">말머리 선택</label>
-	    <select name="b_tag" class="form-select" aria-label="Default select example">
-	      <option value="none" selected>없음</option>
-	      <option value="공지">공지</option>
+	   <label for="cb_title" class="form-label">말머리 선택</label>
+	    <select name="cb_tag" class="form-select" aria-label="Default select example">
 	      <option value="자유게시판">자유게시판</option>
 	      <option value="운동식단">운동식단</option>
 	      <option value="정보공유">정보공유</option>
@@ -30,8 +28,8 @@
 	  </div>
 	  
 	  <div class="mb-3 mx-3 ">
-	    <label for="b_content" class="form-label ">내용</label>
-	    <textarea class="form-control update-notice-content" name="b_content" id="b_content" rows="5"></textarea>
+	    <label for="cb_content" class="form-label ">내용</label>
+	    <textarea class="form-control update-notice-content" name="cb_content" id="cb_content" rows="5"></textarea>
 	  </div>
 	  
 	  <div class="d-flex justify-content-end">

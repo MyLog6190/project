@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class PrincipalDetail implements UserDetails {
+	
 	private UserDTO user; // composition
 
 	public PrincipalDetail(UserDTO user) {
@@ -35,6 +36,10 @@ public class PrincipalDetail implements UserDetails {
 	@Override
 	public String getUsername() {
 		return user.getUser_id();
+	}
+	
+	public String getName() {
+		return user.getName();
 	}
 
 	

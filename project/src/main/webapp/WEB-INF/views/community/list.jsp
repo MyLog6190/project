@@ -29,26 +29,26 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-				  <c:forEach items="${responseDTO.dtoList }" var="list">
+				  <c:forEach items="${Community}" var="list">
 				    <tr>
 				      <th class='board-title'>
 				      	<div class='board-tag'>
-				      		${list.b_tag }
+				      		${list.cb_tag }
 				      	</div>
 				      </th>
 				      <td>
 				      	<div>
-					      	<a href="/board/read?b_no=${list.b_no }&${pageRequestDTO.link}" class="text-decoration-none" data-b-no="${list.b_no }">${list.b_title }</a>
+					      	<a href="/community/read?no=${list.cb_no }" class="text-decoration-none">${list.cb_title }</a>
 				      	</div>
 				      </td>
 				      <td>
 				      	<div>
-				      		 ${list.b_tag }
+				      		 ${list.cb_writer }
 				      	</div>
 				      </td>
 				      <td>
 				      	<div>
-				      		${list.b_date }
+				      		${list.cb_date }
 				      	</div>
 				      </td>
 				    </tr>
@@ -57,7 +57,7 @@
 			</table>
 			
 			<div class="d-flex justify-content-end insert-notice">
-			  <a href="/community/post" class="mx-2 btn btn-primary">글 등록</a>
+			  <a href="/community/writing" class="mx-2 btn btn-primary">글 등록</a>
 			</div>
 			
 			<div class="pagination-div">

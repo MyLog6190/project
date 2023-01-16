@@ -36,10 +36,6 @@
 		DELETE FROM PR WHERE R_NO = #{ r_no } 
 	</delete>
 	
-	<update id="updateDoCheck" parameterType="String">
-		UPDATE VOLUME SET DO_CHECK = #{ checkValue } WHERE V_NO = #{ vNo }
-	</update>
-	
 	<update id="updateReps" parameterType="String">
 		UPDATE VOLUME SET V_REPS = #{ repsValue } WHERE V_NO = #{ vNo }
 	</update>

@@ -125,14 +125,7 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 		}
 	}
 
-	@Override
-	public void updateDoCheck(String vNo, String checkValue) {
-		try {
-			exercisePlanMapper.updateDoCheck(vNo, checkValue);		
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-	}
+	
 
 	@Override
 	public void updateReps(String vNo, String repsValue) {
@@ -152,7 +145,7 @@ public class ExercisePlanServiceImpl implements ExercisePlanService{
 			log.error(e.getMessage());
 		}
 	}
-
+	
 	@Override
 	public void updateChecked(String vNo, String checkValue) {
 		try {

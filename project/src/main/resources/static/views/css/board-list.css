@@ -18,10 +18,11 @@ hr {
 }
 
 .board-tag {
-	width: 80px;
+	width: 85px;
 	border: solid 1px;
 	color: red;
 	text-align: center;
+	font-size: 12px;
 }
 
 
