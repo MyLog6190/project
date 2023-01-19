@@ -6,7 +6,8 @@
   --dark-hover: #323048;
   --dark-text: #f8fbff;
   --dark-workoutDay: #0000ff;
-
+  --dark-border: #42434c;
+  
   /* #585858 */
   /*rgba(88, 88, 88, 0.8);*/
   --light-body: #f3f8fe;
@@ -16,7 +17,7 @@
   --light-hover: #edf0f5;
   --light-text: #151426;
   --light-workoutDay: #e9ecef;
-  
+  --light-border: rgba(0, 0, 0, 0.1);
   
   --white: #fff;
 
@@ -31,34 +32,13 @@
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  .scheme   { 
-	 --bg-body: var(--dark-body);
-	 --bg-main: var(--dark-main);
-	 --bg-second: var(--dark-second);
-	 --bg-workoutDay: var(--dark-workoutDay);
-	 --color-hover: var(--dark-hover);
-	 --color-txt: var(--dark-text);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .scheme   {  
-  	 --bg-body: var(--light-body);
-	 --bg-main: var(--light-main);
-	 --bg-second: var(--light-second);
-	 --bg-workoutDay: var(--light-workoutDay);
-	 --color-hover: var(--light-hover);
-	 --color-txt: var(--light-text); 
-  }
-}
-
 .dark {
   --bg-body: var(--dark-body);
   --bg-main: var(--dark-main);
   --bg-second: var(--dark-second);
   --bg-workoutDay: var(--dark-workoutDay);
   --color-hover: var(--dark-hover);
+  --color-border: var(--dark-border);
   --color-txt: var(--dark-text);
 }
 
@@ -68,6 +48,7 @@
   --bg-second: var(--light-second);
   --bg-workoutDay: var(--light-workoutDay);
   --color-hover: var(--light-hover);
+  --color-border: var(--light-border);
   --color-txt: var(--light-text);
 }
 

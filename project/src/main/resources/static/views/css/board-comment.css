@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.content {
+	border: 2px solid var(--color-txt);
+	border-radius: 8px;
+	padding: 30px;
+	color: var(--color-txt);
+}
+
+.comments > span, p{
+	font-size: 15px;
+	color: var(--color-txt);
+}
+.comments > p {
+	margin: 0px;
+	color: var(--color-txt);
+}
+
+.comment-info > span {
+	font-size: 12px;
+	color: var(--bg-second);
+}
+
+.writing-comment {
+	display: grid;
+	padding: 20px;
+	border: 2px solid var(--color-border);
+	border-radius: 8px;
+	color: var(--color-txt);
+}
+
+.writing-comment > textarea {
+	margin-top: 10px;
+	padding: 8px;
+	background-color: var(--bg-main);
+	border: 2px solid var(--color-border);
+	border-radius: 8px;
+	resize: none;
+	color: var(--color-txt);
+	
+}
