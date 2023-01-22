@@ -33,8 +33,8 @@
 	    	<hr>
 	    	<div class="comments" >
 	    		<ul>
-	    			<li>
-	    				<div class="comment">
+	    			<li class="comment">
+	    				<div>
 		    				<span>User</span>
 				    		<p>comments contents</p>
 		    				<div class="comment-info">
@@ -51,8 +51,28 @@
 					    	</div>
 	    				</div>
 	    			</li>
-	    			<li>
-	    				<div class="comment">
+	    			
+	    			<li class="comment reply">
+	    				<div>
+		    				<span>User</span>
+				    		<p>comments contents</p>
+		    				<div class="comment-info">
+				    			<span>2023-01-02</span>
+				    			<span class="writing-reply">댓글쓰기</span>
+				    		</div>
+		    				<div class="write reply-form hidden">
+					    		<span>User</span>
+					    		<textarea rows="1" placeholder="내용 입력"></textarea>
+					    		<div class="register">
+						    		<input class="cancellation" type="button" value="취소">
+						    		<input type="button" value="등록">
+					    		</div>
+					    	</div>
+	    				</div>
+	    			</li>
+	    			
+	    			<li class="comment">
+	    				<div>
 		    				<span>User</span>
 				    		<p>comments contents</p>
 		    				<div class="comment-info">

@@ -45,9 +45,13 @@
 	font-size: 15px;
 	color: var(--color-txt);
 }
-.comment > p {
+.comment > div > p {
 	margin: 0px;
 	color: var(--color-txt);
+}
+
+.reply {
+	margin-left: 60px; 
 }
 
 .comment-info > span {
