@@ -8,6 +8,46 @@
 <title>운동 라이브러리</title>
 
 <link rel="stylesheet" href="/views/css/exercise-lib.css">
+<style>
+.detail-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  
+  z-index:5;
+}
+
+.detail-container.show {
+  display: block;
+}
+
+.modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 600px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+    </style>
+
 </head>
 <body>
   <%@include file="common/header.jsp"%>
@@ -42,20 +82,24 @@
 	      <div class="exercise-lib-container flex-wrap">
 	        <c:forEach items="${elist }" var="list">
 
- 	          <div class="exercise-libs ${list.c_name } <c:forEach items="${bookmark}" var="bookmark"><c:if test="${bookmark.user_id eq login.user.user_id }"><c:if test="${bookmark.e_no == list.e_no}">bookmark</c:if></c:if></c:forEach>"
- 	          		data-bs-toggle="modal" data-bs-target="#${list.e_no}">
+ 	          <div class="exercise-libs ${list.c_name } btn-open-popup <c:forEach items="${bookmark}" var="bookmark"><c:if test="${bookmark.user_id eq login.user.user_id }"><c:if test="${bookmark.e_no == list.e_no}">bookmark</c:if></c:if></c:forEach>"
+ 	          		>
 	            <div class="d-flex flex-column justify-content-between">
 	              <img class="libs-image" src="${list.e_img }" />
-	              <div class="libs-name">${list.e_name }</div>
 	              <div class="bookmark-container">
-	                <svg class="bi cursor-pointer" data-e_no=${list.e_no } data-c_name="${list.c_name }" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-	                 <path d="" />               
-	                </svg>
-	              </div>
-                
+	              	<div class="libs-name">${list.e_name }</div>
+	                <div>
+	                  <svg class="bi cursor-pointer" data-e_no=${list.e_no } data-c_name="${list.c_name }" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+	                   <path d="" />               
+	                  </svg>
+	                </div>
+                  </div>
 	            </div>
 	          </div>
-	          <div class="modal detail-container fade" id="${list.e_no }" tabindex="-1" aria-labelledby="${list.e_no }ModalLabel" aria-hidden="true">
+  <div class="detail-container" id="${list.e_no }" tabindex="-1">
+    <div class="modal-body">Modal</div>
+  </div>
+	          <%-- <div class="detail-container" id="${list.e_no }" tabindex="-1" aria-labelledby="${list.e_no }ModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 				  <div class="modal-content">
 				    <div class="modal-header">
@@ -82,6 +126,7 @@
 				  </div>
 			  	</div>
 			  </div>
+ --%>
 
 	        </c:forEach>
 	      </div>
@@ -98,6 +143,40 @@
   
   <script type="text/javascript" src="/views/js/exercise-lib.js"></script>
   <script src="/views/js/darkMode.js"></script>
+  
+  <script>
+  const body = document.querySelector('body');
+  const modal = document.querySelector(`.detail-container`);
+  const btnOpenPopup = document.querySelector('.btn-open-popup');
+
+  btnOpenPopup.addEventListener('click', () => {
+    modal.classList.toggle('show');
+
+    if (modal.classList.contains('show')) {
+      body.style.overflow = 'hidden';
+    }
+    modal.focus();
+  });
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.classList.toggle('show');
+
+      if (!modal.classList.contains('show')) {
+        body.style.overflow = '';
+      }
+    }
+  });
+  
+  modal.addEventListener('keyup', (event)=>{
+	  if(event.keyCode===27)
+          modal.classList.toggle('show');
+
+      if (!modal.classList.contains('show')) {
+        body.style.overflow = '';
+      }
+  })
+</script>
 </body>
 
 </html>

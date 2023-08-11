@@ -124,11 +124,12 @@ class ExercisePlan {
 	exercise_list = () => {
 		let btn = document.querySelector(".btn-primary");
 	    btn.onclick = () => {
-	    	 document.querySelector("#exercise").classList.remove('hidden');
+	    	
 	    	 btn.classList.add('create-exercise-btn')
 	    	 let changeBtn = document.querySelector(".create-exercise-btn");
 	    	 changeBtn.value = "운동 계획 생성";
 	    	 this.getPrograms();
+	    	 
 	    	 
 		     let create_exercise_btn = document.querySelector(".create-exercise-btn");
 	    	 if(create_exercise_btn) {
@@ -162,6 +163,7 @@ class ExercisePlan {
 			    		});
 			    		select_exercise_body.innerHTML = exerciseText;
 			    	});
+			    	
 			    }
 	    	 }
 	    };
@@ -187,24 +189,15 @@ class ExercisePlan {
 	    select_exercise_btn.onclick = () => {
 	    	const exercise_list = document.querySelectorAll(".exercise-list");
 	    	let enoList = [];
-	    	let eNameList = [];
-	    	let imgList = [];
-	    	let cNameList = [];
 	    	let dateList = [];
 	    	exercise_list.forEach( (exercise) => {
 	    		const checkBox = exercise.querySelector(".select-exercise-check");
 	    		const is_checked = checkBox.checked;
 	    		if(is_checked) {
 	    			const eNo = exercise.querySelector("#eNo").value;
-	    			const cName = exercise.querySelector("#cName").value;
-	    			const eName = exercise.querySelector('.eName').innerText;
-	    			const eImg = exercise.querySelector('.exercise-info_img').getAttribute('src');
 	    			let date = this.select_date();
 	    			
 	    			enoList.push(eNo);
-	    			eNameList.push(eName);
-	    			cNameList.push(cName);
-	    			imgList.push(eImg);
 	    			dateList.push(date);
 	    		}
 	    	});
@@ -216,14 +209,11 @@ class ExercisePlan {
 			    },
 			    body: JSON.stringify({
 			   		"enoList":enoList,
-			   		"eNameList":eNameList,
-			   		"cNameList":cNameList,
-			   		"imgList":imgList,
 			   		"dateList":dateList
 			    })
 			}).then( res => {
 				console.log(res.status);
-			}).then( data => {
+			}).then( () => {
 				const select_exercise = document.querySelector(".select-exercise")
 		    	select_exercise.style.display = "none";
 				const selectDate = this.select_date();
@@ -332,7 +322,7 @@ class ExercisePlan {
 					})
 				}).then( res => {
 					console.log(res.status);
-				}).then( data => {
+				}).then( () => {
 					 const date = this.select_date();
 					 this.showExercisePlan(date);
 				});
@@ -340,7 +330,7 @@ class ExercisePlan {
 		});
 	}
 	 
-	 // 운동 계획 삭제
+	// 운동 계획 삭제
 	rDelete = () => {
 		const exercise_to_do_list = document.querySelectorAll('.exercise-to-do-list');
 		exercise_to_do_list.forEach( exercise => {
@@ -359,7 +349,7 @@ class ExercisePlan {
 					    })
 					}).then( res => {
 					    	console.log(res.status);
-					}).then( data => {
+					}).then( () => {
 					    const date = this.select_date();
 						this.showExercisePlan(date);
 					});
@@ -374,7 +364,7 @@ class ExercisePlan {
 		const exercise_to_do_list = document.querySelectorAll('.exercise-to-do-list');
 		exercise_to_do_list.forEach( exercise => {
 			const addSetBtn = exercise.querySelector(".addSetBtn");
-			let rNo
+			let rNo;
 			if(exercise.querySelector(".rno")){
 				rNo = exercise.querySelector(".rno").value
 				addSetBtn.onclick = () => {
@@ -388,7 +378,7 @@ class ExercisePlan {
 					    })
 					}).then( res => {
 					    	console.log(res.status);
-					}).then( data => {
+					}).then( () => {
 					    	const date = this.select_date();
 					    	this.showExercisePlan(date);
 					});
@@ -433,7 +423,7 @@ class ExercisePlan {
 					    })
 				}).then( res => {
 					    console.log(res.status);
-				}).then( data => {
+				}).then( () => {
 					    const date = this.select_date();
 					    this.showExercisePlan(date);
 				});
@@ -515,31 +505,117 @@ class ExercisePlan {
 			console.log(res.status);
 			return res.json();
 		}).then( data => {
-			console.log(data);
 			let programList = "";
 			data.forEach( program => {
 				programList += "<div class='exercise-program'>";
 				programList += "<img class='exercise_program_img' src='"+ program.p_img + "'>";
 				programList += "<h5>" + program.p_name + "</h5>";
-				programList += "<input type='hidden' value=" + program.p_no + ">";
+				programList += "<input class='pNo' type='hidden' value=" + program.p_no + ">";
 				programList += "</div>";
 			});
-			const excercise = document.querySelector("#exercise")
+			const excercise = document.querySelector("#exercise");
+		    excercise.classList.remove('hidden');
 			excercise.innerHTML = programList;
+			this.getProgramExerciseList();
 		})
+		
 	}
 	
 	// 프로그램 운동 리스트
 	getProgramExerciseList = () => {
-		 const exercise_program = document.querySelector(".exercise-program");
-		 exercise-program.forEach( program => {
-			 program.onclick = (e) =>{
-				 
+		 const exercise_program = document.querySelectorAll('.exercise-program');
+		 console.log(exercise_program);
+		 exercise_program.forEach( program => {
+			 program.onclick = () =>{
+				 const pNo = program.querySelector('.pNo').value;
+				 console.log(pNo);
+				 fetch('/exercise/program-exercises', {
+					method:"POST",
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						'pNo': pNo
+			   		})
+					
+				 }).then( res => {
+					console.log(res.status);
+					return res.json();
+					
+				 }).then( data => {
+					console.log(data);
+					const program_exercise_list = document.querySelector('.exercise-program-list');
+					let exercise_list = "";
+					
+					data.forEach( exercise => {
+						exercise_list += '<div class="exercise-info">';
+						exercise_list += '<img class="exercise-info_img" src="'+ exercise.e_img +'">';
+						exercise_list += '<div>';
+						exercise_list += '<input class="eNo" type="hidden" value='+ exercise.e_no +'>';
+						exercise_list += '<input class="pSet" type="hidden" value='+ exercise.p_set +'>';
+						exercise_list += '<input class="pReps" type="hidden" value='+ exercise.p_reps +'>';
+						exercise_list += '<input class="pKg" type="hidden" value='+ exercise.p_kg +'>';
+						exercise_list += '<h4>'+ exercise.e_name +'</h4>';
+						exercise_list += '<span> Set '+ exercise.p_set +' X Reps ' + exercise.p_reps +'</span>';
+						exercise_list += '</div>';
+						exercise_list += '</div>';
+					});
+					
+					program_exercise_list.innerHTML = exercise_list;
+					const program = document.querySelector(".program");
+					program.style.display = "block";
+					
+				 });
 			 }
-		 });
+		});
 		 
 	}
 	
+	// 프로그램 운동 등록
+	insertProgramExercise = () => {
+		const insert_program_btn = document.querySelector('.insert-program-btn');
+		insert_program_btn.onclick = () => {
+			let eNoList = [];
+			let dateList = [];
+			let pSetList = [];
+			let pRepsList = [];
+			let pKgList = [];
+	    	let date = this.select_date();
+			
+			const exercise_info = document.querySelectorAll('.exercise_info');
+			exercise_info.forEach( (exercise) => {
+	    		const eNo = exercise.querySelector(".eNo").value;
+	    		const pSet = exercise.querySelector(".pSet").value;
+	    		const pReps = exercise.querySelector(".pReps").value;
+	    		const pKg = exercise.querySelector(".pKg").value;
+	    			
+	    		eNoList.push(eNo);
+	    		dateList.push(date);
+	    		pSetList.push(pSet);
+	    		pRepsList.push(pReps);
+	    		pKgList.push(pKg);
+	    	});
+			
+			fetch('exercise/insert-program-exercise', {
+				method:"POST",
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					'eNoList': eNoList,
+					'dateList': dateList,
+					'pSetList': pSetList,
+					'pRepsList': pRepsList,
+					'pKgList': pKgList
+			   	})
+			}).then(res => {
+				console.log(res.status);
+				return res.json();
+			}).then( () => {
+				this.showExercisePlan(selectDate);
+			})
+		}
+	}
 	
 	// 운동 계획한 날짜 표시
 	workDay = () => {
@@ -593,3 +669,4 @@ program_close.onclick = () => {
 	let program = document.querySelector(".program");
 	program.style.display = "none";
 }
+

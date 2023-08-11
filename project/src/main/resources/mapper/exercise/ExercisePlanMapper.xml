@@ -8,8 +8,8 @@
 	</select>
 	
 	<insert id='insertSelectExercise'>
-		INSERT INTO PR(USER_ID, R_NO, R_DATE, C_NAME, E_NO, E_NAME, E_IMG)
-		VALUES( #{ user_id }, #{ r_no }, #{ r_date }, #{ c_name }, #{e_no}, #{ e_name }, #{ e_img } )
+		INSERT INTO PR(USER_ID, R_NO, R_DATE, E_NO)
+		VALUES( #{ user_id }, #{ r_no }, #{ r_date }, #{ e_no } )
 	</insert>
 	
 	<insert id="insertExerciseVolume">
@@ -17,7 +17,11 @@
 	</insert>
 	
 	<select id="selectExercisePlan" resultType="com.project.exercise.dto.ExercisePlanDTO">
-		SELECT * FROM PR WHERE R_DATE = #{ r_date }
+		SELECT R_NO, R_DATE, C_NAME, P.E_NO AS E_NO, E_NAME, E_IMG
+		FROM EXERCISE_CATEGORY C 
+			JOIN EXERCISE E ON E.C_NO = C.C_NO 
+			JOIN PR P ON P.E_NO = E.E_NO 
+		WHERE R_DATE = #{ r_date }
 	</select>
 	
 	<select id="selectExerciseVolume" resultType="com.project.exercise.dto.ExerciseVolumeDTO">
@@ -33,15 +37,15 @@
 	</delete>
 	
 	<update id="updateDoCheck" parameterType="String">
-		UPDATE VOLUME SET DO_CHECK = #{checkValue} WHERE V_NO = #{vNo}
+		UPDATE VOLUME SET DO_CHECK = #{ checkValue } WHERE V_NO = #{ vNo }
 	</update>
 	
 	<update id="updateReps" parameterType="String">
-		UPDATE VOLUME SET V_REPS = #{repsValue} WHERE V_NO = #{vNo}
+		UPDATE VOLUME SET V_REPS = #{ repsValue } WHERE V_NO = #{ vNo }
 	</update>
 	
 	<update id="updateKg" parameterType="String">
-		UPDATE VOLUME SET V_KG = #{kgValue} WHERE V_NO = #{vNo}
+		UPDATE VOLUME SET V_KG = #{ kgValue } WHERE V_NO = #{ vNo }
 	</update>
 	
 	<update id="updateChecked" parameterType="String">
@@ -51,4 +55,5 @@
 	<select id="workoutDay" parameterType='String' resultType="String">
 		SELECT DISTINCT R_DATE FROM PR WHERE USER_ID = #{ user_id }
 	</select>
+
 </mapper>

@@ -3,8 +3,8 @@ function bookmarkInit(){
 	const exerciseBookmarked = document.querySelectorAll(".exercise-libs");
 	exerciseBookmarked.forEach(lib=>{
 		bookmarks = lib.querySelector(".bookmark-container");
-		const classList = bookmarks.children[0].classList
-		const path = bookmarks.children[0].children[0];
+		const classList = bookmarks.children[1].children[0].classList
+		const path = bookmarks.children[1].children[0].children[0];
 		if(lib.classList.contains("bookmark")){
 			classList.add('bi-bookmark-fill')
 			path.setAttribute('d', "M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z")
@@ -21,12 +21,12 @@ function updateBookmark(){
 	
 	const bookmarks = document.querySelectorAll(".bookmark-container");
 	bookmarks.forEach(bookmark=>{
-		bookmark.children[0].addEventListener("click",e=>{
-			
-			const e_no = bookmark.children[0].dataset.e_no
+		bookmark.children[1].addEventListener("click", e=>{
+			e.stopPropagation();
+			const e_no = bookmark.children[1].children[0].dataset.e_no
 			isBookmarked(e_no)
-			const classList = bookmark.children[0].classList
-			const path = bookmark.children[0].children[0];
+			const classList = bookmark.children[1].children[0].classList
+			const path = bookmark.children[1].children[0].children[0];
 			classList.toggle('bi-bookmark-fill')
 			classList.toggle('bi-bookmark')
 			bookmark.parentNode.parentNode.classList.toggle('bookmark')
@@ -40,10 +40,18 @@ function updateBookmark(){
 	})
 }
 
+function libsClick(){
+	const libs = document.querySelectorAll(".exercise-libs");
+	libs.forEach(lib=>{
+		lib.addEventListener("click", e=>{
+			console.log(e);
+		})
+	})
+}
 
 
 async function isBookmarked(e_no) {
-    const result = await axios.get(`/exlib/api/${e_no}`)
+    await axios.get(`/exlib/api/${e_no}`)
 }
  
 function start (){
@@ -71,6 +79,7 @@ function start (){
     find()
     bookmarkInit()
     updateBookmark();
+    libsClick();
     
 }
 

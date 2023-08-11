@@ -242,7 +242,7 @@ h5{
 	margin: 20px 20px 20px 20px;
 	color: var(--color-txt);
 	padding: 10px;
-	
+	border-radius: 15px;
 }
 
 .exercise-list>div {
@@ -263,6 +263,7 @@ h5{
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--bg-main)
 }
 
 .exercise_program_img{
@@ -286,14 +287,20 @@ h5{
 .exercise-info{
 	display: flex;
 	padding: 0px 20px 20px 0px;
+	background-color: var(--bg-main);
 	box-shadow: var(--shadow);
-	
+	margin: 20px 20px 20px 20px;
+	color: var(--color-txt);
+	padding: 10px;
+	border-radius: 15px;
 }
 .exercise-info>div {
 	display: grid;
-	place-items: center;
 	padding: 10px;
 	
+}
+.exercise-info > div > * {
+	color: var(--color-txt);
 }
 .exercise-info_img {
 	width:100px;
@@ -319,12 +326,11 @@ h5{
 	width:700px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border-radius: 15px;
 	box-shadow: var(--shadow);
-	background: white;
 	color: var(--color-txt);
 	background-color: var(--bg-main);
 	border: solid 1px var(--color-txt);
+	border-radius: 15px;
 	
 }
 
@@ -437,4 +443,5 @@ input[type="checkbox"]{
 
 .day:nth-child(7n) {
 	color: #0d6efd;
+
 }

@@ -33,6 +33,10 @@ public class ExerciseLibController {
 	@Value("${exercise.imgdir}")
 	String imgdir;
 	
+	@GetMapping("/exam")
+	public String exPage() {
+		return "/userExist";
+	}
 
 	
 	@GetMapping

@@ -47,7 +47,7 @@ public class ProgramController {
 		ProgramDTO program = programService.getProgram(pNo);
 		model.addAttribute("program", program);
 		
-		List<ProgramExerciseDTO> eList = programService.getExercises(pNo);
+		List<ProgramExerciseDTO> eList = programService.getProgramExercises(pNo);
 		model.addAttribute("eList", eList);
 		
 		return "/program-detail";

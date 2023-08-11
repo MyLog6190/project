@@ -55,46 +55,10 @@
         <button type="button" class="btn-close program-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-	  	<div class="exercise-program-list">
-	  		<div class="exercise-info">
-	  			<img class="exercise-info_img" src="/views/images/g.png">
-		  		<div>
-		  			<h4>운동 종목</h4>
-		  			<span>3set X 15reps</span>
-		  		</div>
-	  		</div>
-	  		<div class="exercise-info">
-	  			<img class="exercise-info_img" src="/views/images/g.png">
-		  		<div>
-		  			<h4>운동 종목</h4>
-		  			<span>3set X 15reps</span>
-		  		</div>
-	  		</div>
-	  		<div class="exercise-info">
-	  			<img class="exercise-info_img" src="/views/images/g.png">
-		  		<div>
-		  			<h4>운동 종목</h4>
-		  			<span>3set X 15reps</span>
-		  		</div>
-	  		</div>
-	  		<div class="exercise-info">
-	  			<img class="exercise-info_img" src="/views/images/g.png">
-		  		<div>
-		  			<h4>운동 종목</h4>
-		  			<span>3set X 15reps</span>
-		  		</div>
-	  		</div>
-	  		<div class="exercise-info">
-	  			<img class="exercise-info_img" src="/views/images/g.png">
-		  		<div>
-		  			<h4>운동 종목</h4>
-		  			<span>3set X 15reps</span>
-		  		</div>
-	  		</div>
-	    </div>
+	  	<div class="exercise-program-list"></div>
 	  </div>      
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">운동하러 가기</button>
+        <button type="button" class="btn btn-primary insert-program-btn">운동하러 가기</button>
       </div>
     </div>
   </div>

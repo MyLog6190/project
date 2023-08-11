@@ -217,6 +217,8 @@ input[type=radio]:checked + label {
   border-radius: 20px; 
   box-shadow: var(--shadow);
   cursor:pointer;
+  
+  z-index:1 !important;
 }
 
 .exercise-libs > div{
@@ -229,17 +231,10 @@ input[type=radio]:checked + label {
 
 .bookmark-container{
   display: flex;
-  align-items: center;
-  justify-content:end;
-  z-index: 5;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.btn-bookmark{
-  box-sizing: content-box;
-  width: 1em;
-  height: 1em;
-  background-color: transparent;
-}
 
 .cursor-pointer{
   cursor:pointer;
