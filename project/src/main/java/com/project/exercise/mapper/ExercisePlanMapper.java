@@ -9,9 +9,9 @@ import com.project.exercise.dto.ExerciseVolumeDTO;
 public interface ExercisePlanMapper {
 	int insertSelectExercise(ExercisePlanDTO dto);
 
-	String selectSeq();
-
 	int insertExerciseVolume(ExerciseVolumeDTO volume);
+	
+	String selectSeq();
 
 	List<ExercisePlanDTO> selectPr(String date);
 
@@ -25,9 +25,7 @@ public interface ExercisePlanMapper {
 
 	void deleteRecode(String r_no);
 
-	int insertExerciseVolume(String r_no);
-
-	void updateDoCheck(String vNo, String checkValue);
+	int insertExerciseVolume(String r_no, int v_reps, int v_kg);
 
 	void updateReps(String vNo, String repsValue);
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	 "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.project.board.mapper.CommunityMapper'>
+	<select id="selectAllCommunity" resultType="com.project.board.dto.CommunityBoardDTO">
+		SELECT * FROM COMMUNITY_BOARD
+	</select>
+	
+	<insert id="insertCommunity" parameterType="com.project.board.dto.CommunityBoardDTO">
+		INSERT INTO COMMUNITY_BOARD VALUES(COMMUNITY_SEQ.NEXTVAL, #{user_id}, #{cb_writer}, #{cb_tag}, #{cb_title}, #{cb_content}, SYSDATE)
+	</insert>
+	
+	<select id="selectCommunity" resultType="com.project.board.dto.CommunityBoardDTO">
+		SELECT * FROM COMMUNITY_BOARD WHERE CB_NO = #{no}
+	</select>
+	
+	<update id="updateCommunity" parameterType="com.project.board.dto.CommunityBoardDTO">
+		UPDATE COMMUNITY_BOARD SET CB_TAG = #{cb_tag}, CB_TITLE = #{cb_title}, CB_CONTENT = #{cb_content} WHERE CB_NO = #{cb_no}
+	</update>
+	
+	<delete id="deleteCommunity" parameterType="int">
+		DELETE FROM COMMUNITY_BOARD WHERE CB_NO = #{no}
+	</delete>
+</mapper>

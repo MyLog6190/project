@@ -13,7 +13,7 @@
 	</insert>
 	
 	<insert id="insertExerciseVolume">
-		INSERT INTO VOLUME(R_NO, V_NO) VALUES(#{ r_no },  'V' || VOLUME_SEQ.NEXTVAL )
+		INSERT INTO VOLUME(R_NO, V_NO, V_REPS, V_KG) VALUES(#{ r_no },  'V' || VOLUME_SEQ.NEXTVAL, #{v_reps}, #{v_kg} )
 	</insert>
 	
 	<select id="selectExercisePlan" resultType="com.project.exercise.dto.ExercisePlanDTO">
@@ -35,10 +35,6 @@
 	<delete id="deleteRecode" parameterType="String">
 		DELETE FROM PR WHERE R_NO = #{ r_no } 
 	</delete>
-	
-	<update id="updateDoCheck" parameterType="String">
-		UPDATE VOLUME SET DO_CHECK = #{ checkValue } WHERE V_NO = #{ vNo }
-	</update>
 	
 	<update id="updateReps" parameterType="String">
 		UPDATE VOLUME SET V_REPS = #{ repsValue } WHERE V_NO = #{ vNo }
